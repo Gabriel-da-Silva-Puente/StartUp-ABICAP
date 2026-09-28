@@ -63,7 +63,7 @@ O PonteEscola oferece um **canal oficial** entre escola e família, com:
 |---|---|
 | 📄 Documentação do Projeto (AC1) | [Google Docs](https://docs.google.com/document/d/1qNMrtLopg8fIFg4Wt9QJkrzxaej2pps_dFxfPcN8lYs/edit?tab=t.0) |
 | 🧪 Planilha de Teste de Usabilidade | [Google Sheets](https://docs.google.com/spreadsheets/d/19xOnLLK_7is7UFR0Kb8XYMJ54Sn2aR47nqkAI8BORKk/edit?gid=1392540101#gid=1392540101) |
-
+| 🎨 Protótipo Navegável (Figma Make) | [Figma Make](https://www.figma.com/make/9deQojtbyI4S7AXxzjgW4g/Criar-conte%25C3%25BAdo-do-markdown?p=f&fullscreen=1&preview-route=%2Flanding) |
 ---
 
 ## 🧑‍💻 Equipe
