@@ -75,7 +75,7 @@ O PonteEscola oferece um **canal oficial** entre escola e família, com:
 | Enrico Pimentel Gotti Encarnação | RA250779 | Back-end e Banco de Dados |
 | Levi da Silva Vitorio | RA252190 | Front-end e Interface |
 | João Vítor Vieira Skierzynski | RA250964 | UX/UI e Testes |
-| Isabelly | 987654 | Organização e Qualidade |
+| Isabelly | RA987654 | Organização e Qualidade |
 
 ---
 
