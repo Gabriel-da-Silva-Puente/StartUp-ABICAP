@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PonteEscola - Avisos</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/avisos.css">
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                PE
+            </div>
+
+            <span>
+                PonteEscola
+            </span>
+
+        </div>
+
+
+        <nav class="main-nav">
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-inicio"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Início
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-atividades"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ☑
+                </span>
+
+                <span>
+                    Atividades
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item active"
+                id="btn-nav-avisos"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ➤
+                </span>
+
+                <span>
+                    Avisos
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-ocorrencias"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    △
+                </span>
+
+                <span>
+                    Ocorrências
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-autorizacoes"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ☑
+                </span>
+
+                <span>
+                    Autorizações
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-mural"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span>
+                    Mural da Turma
+                </span>
+
+            </button>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-perfil"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ♙
+                </span>
+
+                <span>
+                    Perfil
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="btn-nav-sair"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Sair
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- CONTEÚDO -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="teacher-name">
+                Ana Carolina Mendes
+            </div>
+
+
+            <div class="topbar-actions">
+
+
+                <button
+                    class="class-selector"
+                    type="button"
+                    id="btn-class-selector"
+                >
+
+                    <span class="status-dot"></span>
+
+                    <span id="class-label">
+                        Jardim II — Turma A
+                    </span>
+
+                    <span class="chevron">
+                       ⌄
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="notification-btn"
+                    type="button"
+                >
+
+                    ♧
+
+                    <span class="notification-badge">
+                        2
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="avatar"
+                    type="button"
+                >
+                    AC
+                </button>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- MENU TURMAS -->
+
+        <div
+            class="class-menu"
+            id="class-menu"
+            hidden
+        >
+
+            <button
+                type="button"
+                data-class="Jardim II — Turma A"
+            >
+                Jardim II — Turma A
+            </button>
+
+            <button
+                type="button"
+                data-class="Jardim II — Turma B"
+            >
+                Jardim II — Turma B
+            </button>
+
+            <button
+                type="button"
+                data-class="Jardim I — Turma A"
+            >
+                Jardim I — Turma A
+            </button>
+
+        </div>
+
+
+
+        <!-- PÁGINA -->
+
+        <section class="page">
+
+
+            <div class="notice-page-header">
+
+                <div>
+
+                    <h1>
+                        Avisos
+                    </h1>
+
+                    <p>
+                        Comunicação com os responsáveis
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn-primary"
+                    id="btn-novo-aviso"
+                    type="button"
+                >
+
+                    <span>
+                        +
+                    </span>
+
+                    Novo Aviso
+
+                </button>
+
+            </div>
+
+
+
+            <!-- FILTROS -->
+
+            <div class="notice-filters">
+
+                <button
+                    class="notice-filter active"
+                    data-type="todos"
+                    type="button"
+                >
+                    Todos
+                </button>
+
+                <button
+                    class="notice-filter"
+                    data-type="aviso"
+                    type="button"
+                >
+                    Avisos
+                </button>
+
+                <button
+                    class="notice-filter"
+                    data-type="comunicado"
+                    type="button"
+                >
+                    Comunicados
+                </button>
+
+                <button
+                    class="notice-filter"
+                    data-type="evento"
+                    type="button"
+                >
+                    Eventos
+                </button>
+
+                <button
+                    class="notice-filter"
+                    data-type="autorizacao"
+                    type="button"
+                >
+                    Autorizações
+                </button>
+
+            </div>
+
+
+
+            <!-- BUSCA -->
+
+            <div class="filter-area">
+
+                <div class="search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="input-busca-aviso"
+                        placeholder="Buscar aviso..."
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LISTA -->
+
+            <section
+                class="notice-list"
+                id="notice-list"
+            >
+            </section>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- MODAL NOVO AVISO -->
+
+<div
+    class="modal-backdrop"
+    id="modal-novo-aviso"
+    hidden
+>
+
+    <div class="modal">
+
+
+        <button
+            class="modal-close"
+            id="btn-fechar-novo-aviso"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <h2>
+            Novo aviso
+        </h2>
+
+
+        <form
+            id="form-novo-aviso"
+        >
+
+
+            <div class="form-group">
+
+                <label for="input-titulo-aviso">
+                    Título
+                </label>
+
+                <input
+                    type="text"
+                    id="input-titulo-aviso"
+                    placeholder="Digite o título do aviso"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="select-tipo-aviso">
+                    Tipo
+                </label>
+
+                <select
+                    id="select-tipo-aviso"
+                    required
+                >
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option value="aviso">
+                        Aviso
+                    </option>
+
+                    <option value="comunicado">
+                        Comunicado
+                    </option>
+
+                    <option value="evento">
+                        Evento
+                    </option>
+
+                    <option value="autorizacao">
+                        Autorização
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="input-mensagem-aviso">
+                    Mensagem
+                </label>
+
+                <textarea
+                    id="input-mensagem-aviso"
+                    placeholder="Digite o conteúdo do aviso..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-secondary"
+                    id="btn-cancelar-aviso"
+                    type="button"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    class="btn-primary"
+                    type="submit"
+                >
+                    Publicar aviso
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- MODAL DETALHES -->
+
+<div
+    class="modal-backdrop"
+    id="modal-detalhes-aviso"
+    hidden
+>
+
+    <div class="modal">
+
+
+        <button
+            class="modal-close"
+            id="btn-fechar-detalhes-aviso"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div id="notice-detail-content">
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="btn-secondary"
+                id="btn-fechar-detalhes"
+                type="button"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+
+<script src="../components/avisos.js"></script>
+
+</body>
+
+</html>
