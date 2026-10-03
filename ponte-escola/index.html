@@ -1,14 +1,576 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PonteEscola</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        PonteEscola — Início
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="./components/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./components/layout.css"
+    >
+
 </head>
 
+
 <body>
-    <script>
-        window.location.href = "pages/pglinicial.html";
-    </script>
+
+<div class="app-shell">
+
+
+    <!-- =========================
+         MENU LATERAL
+    ========================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                PE
+            </div>
+
+            <div>
+
+                <strong>
+                    PonteEscola
+                </strong>
+
+                <span>
+                    Comunicação escolar
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav
+            class="main-nav"
+            aria-label="Navegação principal"
+        >
+
+
+            <a
+                class="nav-item active"
+                href="./index.html"
+            >
+
+                <span>⌂</span>
+
+                Início
+
+            </a>
+
+
+            <a
+                class="nav-item"
+                href="./pages/atividades.html"
+            >
+
+                <span>✓</span>
+
+                Atividades
+
+            </a>
+
+
+            <a
+                class="nav-item"
+                href="./pages/avisos.html"
+            >
+
+                <span>➤</span>
+
+                Avisos
+
+            </a>
+
+
+            <a
+                class="nav-item"
+                href="#"
+            >
+
+                <span>△</span>
+
+                Ocorrências
+
+            </a>
+
+
+            <a
+                class="nav-item"
+                href="#"
+            >
+
+                <span>☑</span>
+
+                Autorizações
+
+            </a>
+
+
+            <a
+                class="nav-item"
+                href="#"
+            >
+
+                <span>▣</span>
+
+                Mural da Turma
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <button
+                class="nav-item nav-button"
+                id="profileBtn"
+            >
+
+                <span>♙</span>
+
+                Perfil
+
+            </button>
+
+
+            <button
+                class="nav-item nav-button"
+                id="logoutBtn"
+            >
+
+                <span>↪</span>
+
+                Sair
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+
+            <div>
+
+                <p class="eyebrow">
+                    Área do professor
+                </p>
+
+                <h1>
+                    Ana Carolina Mendes
+                </h1>
+
+            </div>
+
+
+            <div class="class-area">
+
+
+                <button
+                    class="class-selector"
+                >
+
+                    Jardim II — Turma A
+
+                    <span>⌄</span>
+
+                </button>
+
+
+                <div class="class-meta">
+
+                    ♧ 22 alunos
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+        <section class="page-content">
+
+
+            <!-- =========================
+                 CABEÇALHO
+            ========================== -->
+
+            <div class="page-heading">
+
+
+                <div>
+
+                    <p class="eyebrow">
+                        Visão geral
+                    </p>
+
+
+                    <h2>
+                        Olá, Ana! 👋
+                    </h2>
+
+
+                    <p class="page-subtitle">
+
+                        Acompanhe a comunicação
+                        e as atividades da sua turma
+                        em um só lugar.
+
+                    </p>
+
+                </div>
+
+
+                <a
+                    class="primary-button"
+                    href="./pages/avisos.html"
+                >
+
+                    + Novo aviso
+
+                </a>
+
+
+            </div>
+
+
+            <!-- =========================
+                 ESTATÍSTICAS
+            ========================== -->
+
+            <section
+                class="stats-grid"
+                aria-label="Resumo da turma"
+            >
+
+
+                <article
+                    class="stat-card"
+                >
+
+                    <div
+                        class="stat-icon blue"
+                    >
+                        ◉
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Avisos ativos
+                        </span>
+
+                        <strong
+                            id="statAvisos"
+                        >
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="stat-card"
+                >
+
+                    <div
+                        class="stat-icon orange"
+                    >
+                        !
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Pendências
+                        </span>
+
+                        <strong>
+                            4
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="stat-card"
+                >
+
+                    <div
+                        class="stat-icon red"
+                    >
+                        △
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Ocorrências
+                        </span>
+
+                        <strong>
+                            2
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="stat-card"
+                >
+
+                    <div
+                        class="stat-icon green"
+                    >
+                        ✓
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Atividades
+                        </span>
+
+                        <strong>
+                            8
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+            <!-- =========================
+                 ÁREA INFERIOR
+            ========================== -->
+
+            <section class="home-grid">
+
+
+                <!-- AVISOS -->
+
+                <article
+                    class="panel panel-large"
+                >
+
+
+                    <div
+                        class="panel-header"
+                    >
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Comunicação
+                            </p>
+
+                            <h3>
+                                Últimos avisos
+                            </h3>
+
+                        </div>
+
+
+                        <a
+                            href="./pages/avisos.html"
+                        >
+
+                            Ver todos
+
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        id="homeNoticeList"
+                        class="notice-preview-list"
+                    ></div>
+
+
+                </article>
+
+
+                <!-- ACESSO RÁPIDO -->
+
+                <article
+                    class="panel"
+                >
+
+
+                    <div
+                        class="panel-header"
+                    >
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Hoje
+                            </p>
+
+                            <h3>
+                                Acesso rápido
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="quick-actions"
+                    >
+
+
+                        <a
+                            href="./pages/atividades.html"
+                            class="quick-action"
+                        >
+
+                            <span
+                                class="quick-icon blue"
+                            >
+                                ✓
+                            </span>
+
+
+                            <span>
+
+                                <strong>
+                                    Atividades
+                                </strong>
+
+                                <small>
+                                    Gerencie tarefas
+                                    da turma
+                                </small>
+
+                            </span>
+
+
+                            <b>
+                                ›
+                            </b>
+
+                        </a>
+
+
+                        <a
+                            href="./pages/avisos.html"
+                            class="quick-action"
+                        >
+
+                            <span
+                                class="quick-icon"
+                                style="
+                                    background:#f0eaff;
+                                    color:#7c3aed;
+                                "
+                            >
+                                ➤
+                            </span>
+
+
+                            <span>
+
+                                <strong>
+                                    Avisos
+                                </strong>
+
+                                <small>
+                                    Comunique os
+                                    responsáveis
+                                </small>
+
+                            </span>
+
+
+                            <b>
+                                ›
+                            </b>
+
+                        </a>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script
+    src="./components/app.js"
+></script>
+
+
 </body>
+
 </html>

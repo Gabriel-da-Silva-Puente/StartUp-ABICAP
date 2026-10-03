@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PonteEscola - Atividades</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="../components/global.css">
-    <link rel="stylesheet" href="../components/layout.css">
-    <link rel="stylesheet" href="../components/atividades.css">
+    <title>
+        PonteEscola — Atividades
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../components/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../components/layout.css"
+    >
+
 </head>
 
 
@@ -17,9 +32,7 @@
 <div class="app-shell">
 
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
+    <!-- MENU -->
 
     <aside class="sidebar">
 
@@ -29,115 +42,93 @@
                 PE
             </div>
 
-            <span>
-                PonteEscola
-            </span>
+            <div>
+
+                <strong>
+                    PonteEscola
+                </strong>
+
+                <span>
+                    Comunicação escolar
+                </span>
+
+            </div>
 
         </div>
 
 
         <nav class="main-nav">
 
-            <button
+            <a
                 class="nav-item"
-                id="btn-nav-inicio"
-                type="button"
+                href="../index.html"
             >
 
-                <span class="nav-icon">
-                    ▦
-                </span>
+                <span>⌂</span>
 
-                <span>
-                    Início
-                </span>
+                Início
 
-            </button>
+            </a>
 
 
-            <button
+            <a
                 class="nav-item active"
-                id="btn-nav-atividades"
-                type="button"
+                href="./atividades.html"
             >
 
-                <span class="nav-icon">
-                    ☑
-                </span>
+                <span>✓</span>
 
-                <span>
-                    Atividades
-                </span>
+                Atividades
 
-            </button>
+            </a>
 
 
-            <button
+            <a
                 class="nav-item"
-                id="btn-nav-avisos"
-                type="button"
+                href="./avisos.html"
             >
 
-                <span class="nav-icon">
-                    ➤
-                </span>
+                <span>➤</span>
 
-                <span>
-                    Avisos
-                </span>
+                Avisos
 
-            </button>
+            </a>
 
 
-            <button
+            <a
                 class="nav-item"
-                id="btn-nav-ocorrencias"
-                type="button"
+                href="#"
             >
 
-                <span class="nav-icon">
-                    △
-                </span>
+                <span>△</span>
 
-                <span>
-                    Ocorrências
-                </span>
+                Ocorrências
 
-            </button>
+            </a>
 
 
-            <button
+            <a
                 class="nav-item"
-                id="btn-nav-autorizacoes"
-                type="button"
+                href="#"
             >
 
-                <span class="nav-icon">
-                    ☑
-                </span>
+                <span>☑</span>
 
-                <span>
-                    Autorizações
-                </span>
+                Autorizações
 
-            </button>
+            </a>
 
 
-            <button
+            <a
                 class="nav-item"
-                id="btn-nav-mural"
-                type="button"
+                href="#"
             >
 
-                <span class="nav-icon">
-                    ▣
-                </span>
+                <span>▣</span>
 
-                <span>
-                    Mural da Turma
-                </span>
+                Mural da Turma
 
-            </button>
+            </a>
 
         </nav>
 
@@ -145,35 +136,25 @@
         <div class="sidebar-bottom">
 
             <button
-                class="nav-item"
-                id="btn-nav-perfil"
-                type="button"
+                class="nav-item nav-button"
+                id="profileBtn"
             >
 
-                <span class="nav-icon">
-                    ♙
-                </span>
+                <span>♙</span>
 
-                <span>
-                    Perfil
-                </span>
+                Perfil
 
             </button>
 
 
             <button
-                class="nav-item"
-                id="btn-nav-sair"
-                type="button"
+                class="nav-item nav-button"
+                id="logoutBtn"
             >
 
-                <span class="nav-icon">
-                    ↪
-                </span>
+                <span>↪</span>
 
-                <span>
-                    Sair
-                </span>
+                Sair
 
             </button>
 
@@ -182,266 +163,251 @@
     </aside>
 
 
-
-    <!-- =========================
-         CONTEÚDO
-    ========================== -->
+    <!-- CONTEÚDO -->
 
     <main class="main-content">
 
 
-        <!-- TOPBAR -->
-
         <header class="topbar">
 
-            <div class="teacher-name">
-                Ana Carolina Mendes
+            <div>
+
+                <p class="eyebrow">
+                    Área do professor
+                </p>
+
+                <h1>
+                    Ana Carolina Mendes
+                </h1>
+
             </div>
 
 
-            <div class="topbar-actions">
+            <div class="class-area">
 
                 <button
                     class="class-selector"
-                    type="button"
-                    id="btn-class-selector"
                 >
 
-                    <span class="status-dot"></span>
+                    Jardim II — Turma A
 
-                    <span id="class-label">
-                        Jardim II — Turma A
-                    </span>
-
-                    <span class="chevron">
-                       ⌄
-                    </span>
+                    <span>⌄</span>
 
                 </button>
 
 
-                <button
-                    class="notification-btn"
-                    type="button"
-                >
+                <div class="class-meta">
 
-                    ♧
+                    ♧ 22 alunos
 
-                    <span class="notification-badge">
-                        2
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="avatar"
-                    type="button"
-                >
-                    AC
-                </button>
+                </div>
 
             </div>
 
         </header>
 
 
-
-        <!-- MENU TURMAS -->
-
-        <div
-            class="class-menu"
-            id="class-menu"
-            hidden
-        >
-
-            <button
-                type="button"
-                data-class="Jardim II — Turma A"
-            >
-                Jardim II — Turma A
-            </button>
-
-            <button
-                type="button"
-                data-class="Jardim II — Turma B"
-            >
-                Jardim II — Turma B
-            </button>
-
-            <button
-                type="button"
-                data-class="Jardim I — Turma A"
-            >
-                Jardim I — Turma A
-            </button>
-
-        </div>
+        <section class="page-content">
 
 
+            <!-- TÍTULO -->
 
-        <!-- PÁGINA -->
-
-        <section class="page">
-
-
-            <div class="activity-page-header">
+            <div class="page-heading">
 
                 <div>
 
-                    <h1>
+                    <p class="eyebrow">
+                        Rotina escolar
+                    </p>
+
+                    <h2>
                         Atividades
-                    </h1>
+                    </h2>
 
-                    <p>
-                        <span id="activity-count">
-                            5
-                        </span>
+                    <p class="page-subtitle">
 
-                        atividades · Jardim II — Turma A
+                        Organize as tarefas,
+                        acompanhe prazos e veja
+                        o andamento da turma.
+
                     </p>
 
                 </div>
 
 
                 <button
-                    class="btn-primary"
-                    id="btn-nova-atividade"
-                    type="button"
+                    class="primary-button"
+                    id="btnNovaAtividade"
                 >
 
-                    <span>
-                        +
-                    </span>
-
-                    Nova Atividade
+                    + Nova atividade
 
                 </button>
 
             </div>
 
 
+            <!-- RESUMO -->
 
-            <!-- ESTATÍSTICAS -->
+            <section
+                class="activity-summary"
+            >
 
-            <section class="stats-grid">
+                <article
+                    class="summary-card"
+                >
 
-
-                <article class="stat-card">
-
-                    <div class="stat-icon stat-icon-green">
+                    <span
+                        class="summary-icon blue"
+                    >
                         ✓
-                    </div>
+                    </span>
 
                     <div>
 
-                        <strong id="stat-total">
-                            5
-                        </strong>
+                        <small>
+                            Total
+                        </small>
 
-                        <span>
-                            Total enviadas
-                        </span>
+                        <strong
+                            id="totalAtividades"
+                        >
+                            0
+                        </strong>
 
                     </div>
 
                 </article>
 
 
-                <article class="stat-card">
+                <article
+                    class="summary-card"
+                >
 
-                    <div class="stat-icon stat-icon-orange">
+                    <span
+                        class="summary-icon orange"
+                    >
                         ◷
-                    </div>
+                    </span>
 
                     <div>
 
-                        <strong id="stat-pending">
-                            4
-                        </strong>
+                        <small>
+                            Em andamento
+                        </small>
 
-                        <span>
-                            Aguardando leitura
-                        </span>
+                        <strong
+                            id="andamentoAtividades"
+                        >
+                            0
+                        </strong>
 
                     </div>
 
                 </article>
 
 
-                <article class="stat-card">
+                <article
+                    class="summary-card"
+                >
 
-                    <div class="stat-icon stat-icon-blue">
+                    <span
+                        class="summary-icon green"
+                    >
                         ✓
-                    </div>
+                    </span>
 
                     <div>
 
-                        <strong id="stat-confirmed">
-                            1
-                        </strong>
+                        <small>
+                            Concluídas
+                        </small>
 
-                        <span>
-                            Confirmadas
-                        </span>
+                        <strong
+                            id="concluidasAtividades"
+                        >
+                            0
+                        </strong>
 
                     </div>
 
                 </article>
-
 
             </section>
 
 
+            <!-- FILTROS -->
 
-            <!-- BUSCA -->
+            <div class="toolbar">
 
-            <div class="filter-area">
+                <div
+                    class="filter-tabs"
+                    id="activityFilters"
+                >
 
-                <div class="search-box">
-
-                    <span>
-                        ⌕
-                    </span>
-
-                    <input
-                        type="search"
-                        id="input-busca-atividade"
-                        placeholder="Buscar atividade..."
+                    <button
+                        class="filter-tab active"
+                        data-filter="Todas"
                     >
+
+                        Todas
+
+                    </button>
+
+
+                    <button
+                        class="filter-tab"
+                        data-filter="Pendente"
+                    >
+
+                        Pendentes
+
+                    </button>
+
+
+                    <button
+                        class="filter-tab"
+                        data-filter="Em andamento"
+                    >
+
+                        Em andamento
+
+                    </button>
+
+
+                    <button
+                        class="filter-tab"
+                        data-filter="Concluída"
+                    >
+
+                        Concluídas
+
+                    </button>
 
                 </div>
 
 
-                <select
-                    id="select-status-atividade"
-                >
+                <label class="search-box">
 
-                    <option value="todos">
-                        Todas
-                    </option>
+                    <span>⌕</span>
 
-                    <option value="aberta">
-                        Em andamento
-                    </option>
+                    <input
+                        id="inputBuscaAtividade"
+                        type="search"
+                        placeholder="Buscar atividade..."
+                    >
 
-                    <option value="encerrada">
-                        Prazo encerrado
-                    </option>
-
-                </select>
+                </label>
 
             </div>
 
 
-
-            <!-- LISTA -->
+            <!-- ATIVIDADES -->
 
             <section
-                class="activity-list"
-                id="activity-list"
-            >
-            </section>
+                class="activity-grid"
+                id="activityList"
+            ></section>
 
 
         </section>
@@ -451,104 +417,111 @@
 </div>
 
 
-
-<!-- =========================
-     MODAL NOVA ATIVIDADE
-========================== -->
+<!-- MODAL -->
 
 <div
     class="modal-backdrop"
-    id="modal-nova-atividade"
+    id="modalNovaAtividade"
     hidden
 >
 
-    <div class="modal">
+    <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+    >
 
         <button
             class="modal-close"
-            id="btn-fechar-nova-atividade"
+            id="activityModalClose"
+            aria-label="Fechar"
             type="button"
         >
+
             ×
+
         </button>
 
 
+        <p class="eyebrow">
+            Nova tarefa
+        </p>
+
+
         <h2>
-            Nova atividade
+            Criar atividade
         </h2>
 
 
         <form
-            id="form-nova-atividade"
+            id="formNovaAtividade"
         >
 
+            <label>
 
-            <div class="form-group">
-
-                <label for="input-titulo-atividade">
-                    Título
-                </label>
+                Título
 
                 <input
-                    type="text"
-                    id="input-titulo-atividade"
-                    placeholder="Ex.: Leitura em casa"
+                    id="atividadeTitulo"
                     required
+                    maxlength="90"
+                    placeholder="Ex.: Pintura com guache"
                 >
 
-            </div>
+            </label>
 
 
-            <div class="form-group">
+            <label>
 
-                <label for="input-descricao-atividade">
-                    Descrição
-                </label>
+                Descrição
 
                 <textarea
-                    id="input-descricao-atividade"
-                    placeholder="Digite as orientações da atividade..."
+                    id="atividadeDescricao"
                     required
+                    maxlength="240"
+                    rows="4"
+                    placeholder="Explique a atividade..."
                 ></textarea>
 
-            </div>
+            </label>
 
 
-            <div class="form-group">
+            <label>
 
-                <label for="input-prazo-atividade">
-                    Prazo
-                </label>
+                Data de entrega
 
                 <input
+                    id="atividadeData"
                     type="date"
-                    id="input-prazo-atividade"
                     required
                 >
 
-            </div>
+            </label>
 
 
             <div class="modal-actions">
 
                 <button
-                    class="btn-secondary"
-                    id="btn-cancelar-atividade"
                     type="button"
+                    class="secondary-button"
+                    id="activityModalCancel"
                 >
+
                     Cancelar
+
                 </button>
 
 
                 <button
-                    class="btn-primary"
                     type="submit"
+                    class="primary-button"
                 >
+
                     Criar atividade
+
                 </button>
 
             </div>
-
 
         </form>
 
@@ -557,59 +530,15 @@
 </div>
 
 
-
-<!-- =========================
-     MODAL DETALHES
-========================== -->
-
-<div
-    class="modal-backdrop"
-    id="modal-detalhes-atividade"
-    hidden
->
-
-    <div class="modal">
-
-        <button
-            class="modal-close"
-            id="btn-fechar-detalhes-atividade"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <div id="activity-detail-content">
-
-        </div>
-
-
-        <div class="modal-actions">
-
-            <button
-                class="btn-secondary"
-                id="btn-fechar-detalhes"
-                type="button"
-            >
-                Fechar
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
 <div
     class="toast"
     id="toast"
 ></div>
 
 
+<script src="../components/app.js"></script>
+<script src="../components/atividades.js"></script>
 
-<script src="../components/atividade.js"></script>
 
 </body>
 

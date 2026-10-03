@@ -1,947 +1,820 @@
-const activities = [
+/* PonteEscola - Página de Atividades */
 
-    {
-        id: 1,
-        title: "Semana da Ciência — trazer material reciclável",
-        description:
-            "Para a feira de ciências da próxima semana, cada aluno deve trazer pelo menos 2 itens recicláveis (garrafas PET, caixas ou tampinhas). Serão usados para montar os experimentos em sala.",
-        deadline: "26/09/2026",
-        date: "19/09/2026",
-        reads: 14,
-        total: 22,
-        status: "aberta"
-    },
+(function () {
 
-    {
-        id: 2,
-        title: "Leitura em casa — escolher livro favorito",
-        description:
-            "Peçam que a criança escolha seu livro favorito e leia em casa esta semana. Na sexta faremos uma roda de conversa onde cada um vai contar a história para os colegas.",
-        deadline: "25/09/2026",
-        date: "19/09/2026",
-        reads: 9,
-        total: 22,
-        status: "aberta"
-    },
-
-    {
-        id: 3,
-        title: "Atividade de Artes — levar avental",
-        description:
-            "Na próxima aula vamos pintar com tinta guache. Peçam que o aluno traga um avental ou roupa velha.",
-        deadline: "07/09/2026",
-        date: "07/09/2026",
-        reads: 21,
-        total: 22,
-        status: "encerrada"
-    },
-
-    {
-        id: 4,
-        title: "Projeto Meio Ambiente — coletar tampinhas",
-        description:
-            "Para o projeto de reciclagem pedimos que cada aluno traga 10 tampinhas de garrafa PET até sexta-feira.",
-        deadline: "05/09/2026",
-        date: "03/09/2026",
-        reads: 22,
-        total: 22,
-        status: "encerrada"
-    },
-
-    {
-        id: 5,
-        title: "Avaliação diagnóstica — leitura e escrita",
-        description:
-            "Na semana que vem teremos atividade de sondagem de leitura e escrita. Não é necessário estudar, apenas garantir que a criança venha descansada.",
-        deadline: "15/05/2026",
-        date: "15/05/2026",
-        reads: 20,
-        total: 22,
-        status: "encerrada"
-    }
-
-];
+    const key =
+        "ponteEscolaAtividades";
 
 
-/* =========================================
-   ELEMENTOS
-========================================= */
+    const defaults = [
 
-const activityList =
-    document.getElementById("activity-list");
+        {
+            id: "1",
+            title: "Pintura com guache",
+            description:
+                "Atividade artística com mistura de cores e exploração de diferentes pincéis.",
+            date: "18/09/2026",
+            status: "Em andamento"
+        },
 
-const searchInput =
-    document.getElementById(
-        "input-busca-atividade"
-    );
+        {
+            id: "2",
+            title: "Contação de histórias",
+            description:
+                "Leitura coletiva seguida de conversa sobre personagens e acontecimentos.",
+            date: "19/09/2026",
+            status: "Pendente"
+        },
 
-const statusSelect =
-    document.getElementById(
-        "select-status-atividade"
-    );
+        {
+            id: "3",
+            title: "Formas geométricas",
+            description:
+                "Identificação e montagem de figuras usando blocos e materiais da sala.",
+            date: "12/09/2026",
+            status: "Concluída"
+        },
 
-const modalNewActivity =
-    document.getElementById(
-        "modal-nova-atividade"
-    );
+        {
+            id: "4",
+            title: "Música e movimento",
+            description:
+                "Atividade corporal com ritmo, coordenação e participação em grupo.",
+            date: "22/09/2026",
+            status: "Pendente"
+        },
 
-const modalDetailActivity =
-    document.getElementById(
-        "modal-detalhes-atividade"
-    );
+        {
+            id: "5",
+            title: "Horta da turma",
+            description:
+                "Observação das plantas e registro das mudanças ao longo da semana.",
+            date: "24/09/2026",
+            status: "Em andamento"
+        },
 
-const formNewActivity =
-    document.getElementById(
-        "form-nova-atividade"
-    );
+        {
+            id: "6",
+            title: "Meu autorretrato",
+            description:
+                "Produção de autorretrato para o mural da turma.",
+            date: "10/09/2026",
+            status: "Concluída"
+        }
 
-const toast =
-    document.getElementById("toast");
-
-
-/* =========================================
-   NAVEGAÇÃO
-========================================= */
-
-function setupNavigation() {
-
-    const btnInicio =
-        document.getElementById(
-            "btn-nav-inicio"
-        );
-
-    const btnAtividades =
-        document.getElementById(
-            "btn-nav-atividades"
-        );
-
-    const btnAvisos =
-        document.getElementById(
-            "btn-nav-avisos"
-        );
-
-    const btnOcorrencias =
-        document.getElementById(
-            "btn-nav-ocorrencias"
-        );
-
-    const btnAutorizacoes =
-        document.getElementById(
-            "btn-nav-autorizacoes"
-        );
-
-    const btnMural =
-        document.getElementById(
-            "btn-nav-mural"
-        );
-
-    const btnPerfil =
-        document.getElementById(
-            "btn-nav-perfil"
-        );
-
-    const btnSair =
-        document.getElementById(
-            "btn-nav-sair"
-        );
+    ];
 
 
-    if (btnInicio) {
+    /* =========================
+       PEGAR ATIVIDADES
+    ========================= */
 
-        btnInicio.addEventListener(
-            "click",
-            () => {
+    function get() {
 
-                window.location.href =
-                    "pglinicial.html";
+        try {
 
-            }
-        );
-
-    }
-
-
-    if (btnAtividades) {
-
-        btnAtividades.addEventListener(
-            "click",
-            () => {
-
-                window.location.href =
-                    "atividades.html";
-
-            }
-        );
-
-    }
-
-
-    if (btnAvisos) {
-
-        btnAvisos.addEventListener(
-            "click",
-            () => {
-
-                window.location.href =
-                    "avisos.html";
-
-            }
-        );
-
-    }
-
-
-    if (btnOcorrencias) {
-
-        btnOcorrencias.addEventListener(
-            "click",
-            () => {
-
-                showToast(
-                    "Ocorrências ainda está em desenvolvimento."
+            const saved =
+                JSON.parse(
+                    localStorage.getItem(
+                        key
+                    )
                 );
 
-            }
-        );
 
-    }
+            if (
+                Array.isArray(saved)
+            ) {
 
-
-    if (btnAutorizacoes) {
-
-        btnAutorizacoes.addEventListener(
-            "click",
-            () => {
-
-                showToast(
-                    "Autorizações ainda está em desenvolvimento."
-                );
+                return saved;
 
             }
-        );
 
-    }
+        } catch (error) {
 
-
-    if (btnMural) {
-
-        btnMural.addEventListener(
-            "click",
-            () => {
-
-                showToast(
-                    "Mural da Turma ainda está em desenvolvimento."
-                );
-
-            }
-        );
-
-    }
-
-
-    if (btnPerfil) {
-
-        btnPerfil.addEventListener(
-            "click",
-            () => {
-
-                showToast(
-                    "Perfil ainda está em desenvolvimento."
-                );
-
-            }
-        );
-
-    }
-
-
-    if (btnSair) {
-
-        btnSair.addEventListener(
-            "click",
-            () => {
-
-                const sair =
-                    confirm(
-                        "Deseja realmente sair?"
-                    );
-
-                if (sair) {
-
-                    window.location.href =
-                        "pglinicial.html";
-
-                }
-
-            }
-        );
-
-    }
-
-}
-
-
-/* =========================================
-   TURMAS
-========================================= */
-
-const btnClassSelector =
-    document.getElementById(
-        "btn-class-selector"
-    );
-
-const classMenu =
-    document.getElementById(
-        "class-menu"
-    );
-
-const classLabel =
-    document.getElementById(
-        "class-label"
-    );
-
-
-if (btnClassSelector && classMenu) {
-
-    btnClassSelector.addEventListener(
-        "click",
-        () => {
-
-            classMenu.hidden =
-                !classMenu.hidden;
+            console.log(
+                "Erro ao carregar atividades:",
+                error
+            );
 
         }
-    );
-
-}
 
 
-document
-    .querySelectorAll(
-        "#class-menu button"
-    )
-    .forEach((button) => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                classLabel.textContent =
-                    button.dataset.class;
-
-                classMenu.hidden =
-                    true;
-
-            }
+        localStorage.setItem(
+            key,
+            JSON.stringify(defaults)
         );
 
-    });
 
+        return defaults;
 
-/* =========================================
-   RENDER
-========================================= */
-
-function renderActivities() {
-
-    if (!activityList) {
-        return;
     }
 
+
+    /* =========================
+       SALVAR
+    ========================= */
+
+    function save(items) {
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(items)
+        );
+
+    }
+
+
+    const list =
+        document.getElementById(
+            "activityList"
+        );
 
     const search =
-        searchInput
-            ? searchInput.value
-                .toLowerCase()
-                .trim()
-            : "";
+        document.getElementById(
+            "inputBuscaAtividade"
+        );
 
+    const filters =
+        document.getElementById(
+            "activityFilters"
+        );
 
-    const selectedStatus =
-        statusSelect
-            ? statusSelect.value
-            : "todos";
+    const modal =
+        document.getElementById(
+            "modalNovaAtividade"
+        );
 
-
-    const filtered =
-        activities.filter(
-            (activity) => {
-
-                const matchesSearch =
-                    activity.title
-                        .toLowerCase()
-                        .includes(search) ||
-
-                    activity.description
-                        .toLowerCase()
-                        .includes(search);
-
-
-                const matchesStatus =
-                    selectedStatus === "todos" ||
-                    activity.status === selectedStatus;
-
-
-                return (
-                    matchesSearch &&
-                    matchesStatus
-                );
-
-            }
+    const form =
+        document.getElementById(
+            "formNovaAtividade"
         );
 
 
-    if (filtered.length === 0) {
+    let activeFilter =
+        "Todas";
 
-        activityList.innerHTML = `
-            <div class="activity-empty">
-                Nenhuma atividade encontrada.
-            </div>
-        `;
 
-        return;
+    /* =========================
+       STATUS
+    ========================= */
+
+    function statusClass(
+        status
+    ) {
+
+        if (
+            status === "Concluída"
+        ) {
+
+            return "status-concluida";
+
+        }
+
+
+        if (
+            status === "Em andamento"
+        ) {
+
+            return "status-andamento";
+
+        }
+
+
+        return "status-pendente";
+
     }
 
 
-    activityList.innerHTML =
-        filtered
-            .map(
-                (activity) => {
+    /* =========================
+       RENDERIZAR
+    ========================= */
 
-                    const expired =
-                        activity.status ===
-                        "encerrada";
+    function render() {
 
-                    const confirmed =
-                        activity.reads ===
-                        activity.total;
+        const query =
+            (
+                search?.value ||
+                ""
+            )
+                .trim()
+                .toLowerCase();
 
+
+        const all =
+            get();
+
+
+        const items =
+            all.filter(
+                function (item) {
+
+                    const matchesFilter =
+                        activeFilter === "Todas" ||
+                        item.status === activeFilter;
+
+
+                    const text =
+                        `${item.title} ${item.description}`
+                            .toLowerCase();
+
+
+                    return (
+                        matchesFilter &&
+                        text.includes(query)
+                    );
+
+                }
+            );
+
+
+        /* CONTADORES */
+
+        document.getElementById(
+            "totalAtividades"
+        ).textContent =
+            all.length;
+
+
+        document.getElementById(
+            "andamentoAtividades"
+        ).textContent =
+            all.filter(
+                function (item) {
+
+                    return (
+                        item.status ===
+                        "Em andamento"
+                    );
+
+                }
+            ).length;
+
+
+        document.getElementById(
+            "concluidasAtividades"
+        ).textContent =
+            all.filter(
+                function (item) {
+
+                    return (
+                        item.status ===
+                        "Concluída"
+                    );
+
+                }
+            ).length;
+
+
+        /* NENHUM RESULTADO */
+
+        if (!items.length) {
+
+            list.innerHTML = `
+
+                <div
+                    class="empty-state"
+                    style="grid-column:1/-1"
+                >
+
+                    Nenhuma atividade
+                    encontrada.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        /* CARDS */
+
+        list.innerHTML =
+            items
+                .map(function (item) {
 
                     return `
 
                         <article
                             class="activity-card"
-                            data-activity-id="${activity.id}"
                         >
 
-                            <div class="activity-main">
+                            <div
+                                class="activity-top"
+                            >
 
-                                <div class="activity-tags">
+                                <span
+                                    class="
+                                        status-badge
+                                        ${statusClass(
+                                            item.status
+                                        )}
+                                    "
+                                >
 
-                                    <span class="tag tag-activity">
-                                        Atividade
-                                    </span>
+                                    ${window.escapeHtml(
+                                        item.status
+                                    )}
 
-                                    ${
-                                        expired
-                                            ? `
-                                                <span class="tag tag-expired">
-                                                    ⚠ Prazo encerrado
-                                                </span>
-                                            `
-                                            : `
-                                                <span class="activity-date">
-                                                    Prazo: ${activity.deadline}
-                                                </span>
-                                            `
-                                    }
-
-                                </div>
+                                </span>
 
 
-                                <h3 class="activity-title">
-                                    ${activity.title}
-                                </h3>
+                                <span
+                                    style="
+                                        color:#8b98aa;
+                                        font-size:12px;
+                                    "
+                                >
 
+                                    Jardim II
 
-                                <p class="activity-description">
-                                    ${activity.description}
-                                </p>
-
-
-                                <time class="activity-date">
-                                    ${activity.date}
-                                </time>
+                                </span>
 
                             </div>
 
 
+                            <h3>
+
+                                ${window.escapeHtml(
+                                    item.title
+                                )}
+
+                            </h3>
+
+
+                            <p>
+
+                                ${window.escapeHtml(
+                                    item.description
+                                )}
+
+                            </p>
+
+
                             <div
-                                class="
-                                    activity-meta
-                                    ${confirmed ? "confirmed" : ""}
-                                "
+                                class="activity-footer"
                             >
 
-                                <strong>
-                                    ${confirmed ? "✓" : "◷"}
-                                    ${activity.reads}/${activity.total}
-                                </strong>
-
                                 <span>
-                                    leituras
+                                    Entrega
                                 </span>
 
-                                <div class="activity-arrow">
-                                    ›
-                                </div>
+                                <strong>
+
+                                    ${window.escapeHtml(
+                                        item.date
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+
+                            <!-- BOTÃO EXCLUIR -->
+
+                            <div
+                                class="activity-actions"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="delete-button"
+                                    data-delete-activity="${item.id}"
+                                >
+
+                                    🗑 Excluir atividade
+
+                                </button>
 
                             </div>
 
                         </article>
+
                     `;
 
+                })
+                .join("");
+
+    }
+
+
+    /* =========================
+       EXCLUIR ATIVIDADE
+    ========================= */
+
+    if (list) {
+
+        list.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(
+                        "[data-delete-activity]"
+                    );
+
+
+                if (!button) {
+                    return;
                 }
-            )
-            .join("");
 
 
-    document
-        .querySelectorAll(
-            ".activity-card"
-        )
-        .forEach(
-            (card) => {
+                const id =
+                    button.dataset.deleteActivity;
 
-                card.addEventListener(
-                    "click",
-                    () => {
 
-                        openActivityDetails(
-                            Number(
-                                card.dataset
-                                    .activityId
-                            )
-                        );
+                const atividades =
+                    get();
 
-                    }
+
+                const atividade =
+                    atividades.find(
+                        function (item) {
+
+                            return (
+                                String(item.id) ===
+                                String(id)
+                            );
+
+                        }
+                    );
+
+
+                if (!atividade) {
+                    return;
+                }
+
+
+                const confirmar =
+                    window.confirm(
+                        `Tem certeza que deseja excluir a atividade "${atividade.title}"?`
+                    );
+
+
+                if (!confirmar) {
+                    return;
+                }
+
+
+                const novasAtividades =
+                    atividades.filter(
+                        function (item) {
+
+                            return (
+                                String(item.id) !==
+                                String(id)
+                            );
+
+                        }
+                    );
+
+
+                save(
+                    novasAtividades
+                );
+
+
+                render();
+
+
+                window.showToast(
+                    "Atividade excluída."
                 );
 
             }
         );
 
-}
-
-
-/* =========================================
-   DETALHES
-========================================= */
-
-function openActivityDetails(id) {
-
-    const activity =
-        activities.find(
-            (item) =>
-                item.id === id
-        );
-
-
-    if (!activity) {
-        return;
     }
 
 
-    const content =
+    /* =========================
+       ABRIR MODAL
+    ========================= */
+
+    function openModal() {
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.hidden = false;
+
+
+        const title =
+            document.getElementById(
+                "atividadeTitulo"
+            );
+
+
+        if (title) {
+
+            setTimeout(
+                function () {
+
+                    title.focus();
+
+                },
+                50
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       FECHAR MODAL
+    ========================= */
+
+    function closeModal() {
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.hidden = true;
+
+
+        if (form) {
+
+            form.reset();
+
+        }
+
+    }
+
+
+    /* =========================
+       NOVA ATIVIDADE
+    ========================= */
+
+    const newButton =
         document.getElementById(
-            "activity-detail-content"
+            "btnNovaAtividade"
         );
 
 
-    content.innerHTML = `
+    if (newButton) {
 
-        <h2>
-            ${activity.title}
-        </h2>
+        newButton.addEventListener(
+            "click",
+            openModal
+        );
 
-        <p>
-            ${activity.description}
-        </p>
-
-        <br>
-
-        <p>
-            <strong>Publicado em:</strong>
-            ${activity.date}
-        </p>
-
-        <p>
-            <strong>Prazo:</strong>
-            ${activity.deadline}
-        </p>
-
-        <p>
-            <strong>Leituras:</strong>
-            ${activity.reads}/${activity.total}
-        </p>
-
-    `;
+    }
 
 
-    modalDetailActivity.hidden =
-        false;
+    /* =========================
+       FECHAR MODAL
+    ========================= */
 
-}
-
-
-/* =========================================
-   NOVA ATIVIDADE
-========================================= */
-
-if (formNewActivity) {
-
-    formNewActivity.addEventListener(
-        "submit",
-        (event) => {
-
-            event.preventDefault();
+    const closeButton =
+        document.getElementById(
+            "activityModalClose"
+        );
 
 
-            const title =
-                document.getElementById(
-                    "input-titulo-atividade"
-                ).value.trim();
+    if (closeButton) {
+
+        closeButton.addEventListener(
+            "click",
+            closeModal
+        );
+
+    }
 
 
-            const description =
-                document.getElementById(
-                    "input-descricao-atividade"
-                ).value.trim();
+    const cancelButton =
+        document.getElementById(
+            "activityModalCancel"
+        );
 
 
-            const deadline =
-                document.getElementById(
-                    "input-prazo-atividade"
-                ).value;
+    if (cancelButton) {
 
+        cancelButton.addEventListener(
+            "click",
+            closeModal
+        );
+
+    }
+
+
+    if (modal) {
+
+        modal.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
 
             if (
-                !title ||
-                !description ||
-                !deadline
+                event.key === "Escape" &&
+                modal &&
+                !modal.hidden
             ) {
 
-                return;
+                closeModal();
 
             }
 
+        }
+    );
 
-            const date =
-                new Date()
-                    .toLocaleDateString(
+
+    /* =========================
+       BUSCA
+    ========================= */
+
+    if (search) {
+
+        search.addEventListener(
+            "input",
+            render
+        );
+
+    }
+
+
+    /* =========================
+       FILTROS
+    ========================= */
+
+    if (filters) {
+
+        filters.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(
+                        "[data-filter]"
+                    );
+
+
+                if (!button) {
+                    return;
+                }
+
+
+                activeFilter =
+                    button.dataset.filter;
+
+
+                filters
+                    .querySelectorAll(
+                        ".filter-tab"
+                    )
+                    .forEach(
+                        function (item) {
+
+                            item.classList.toggle(
+                                "active",
+                                item === button
+                            );
+
+                        }
+                    );
+
+
+                render();
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       CRIAR ATIVIDADE
+    ========================= */
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const titulo =
+                    document
+                        .getElementById(
+                            "atividadeTitulo"
+                        )
+                        .value
+                        .trim();
+
+
+                const descricao =
+                    document
+                        .getElementById(
+                            "atividadeDescricao"
+                        )
+                        .value
+                        .trim();
+
+
+                const rawDate =
+                    document
+                        .getElementById(
+                            "atividadeData"
+                        )
+                        .value;
+
+
+                if (
+                    !titulo ||
+                    !descricao ||
+                    !rawDate
+                ) {
+
+                    window.showToast(
+                        "Preencha todos os campos."
+                    );
+
+                    return;
+
+                }
+
+
+                const date =
+                    new Date(
+                        `${rawDate}T00:00:00`
+                    ).toLocaleDateString(
                         "pt-BR"
                     );
 
 
-            const formattedDeadline =
-                deadline
-                    .split("-")
-                    .reverse()
-                    .join("/");
+                const items =
+                    get();
 
 
-            activities.unshift({
+                items.unshift({
 
-                id: Date.now(),
+                    id:
+                        String(
+                            Date.now()
+                        ),
 
-                title,
+                    title:
+                        titulo,
 
-                description,
+                    description:
+                        descricao,
 
-                deadline:
-                    formattedDeadline,
+                    date:
+                        date,
 
-                date,
+                    status:
+                        "Pendente"
 
-                reads: 0,
+                });
 
-                total: 22,
 
-                status: "aberta"
+                save(items);
 
-            });
 
+                closeModal();
 
-            formNewActivity.reset();
 
+                render();
 
-            modalNewActivity.hidden =
-                true;
 
-
-            renderActivities();
-
-            updateStatistics();
-
-
-            showToast(
-                "Atividade criada com sucesso!"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   ESTATÍSTICAS
-========================================= */
-
-function updateStatistics() {
-
-    const total =
-        document.getElementById(
-            "stat-total"
-        );
-
-    const pending =
-        document.getElementById(
-            "stat-pending"
-        );
-
-    const confirmed =
-        document.getElementById(
-            "stat-confirmed"
-        );
-
-    const count =
-        document.getElementById(
-            "activity-count"
-        );
-
-
-    if (total) {
-
-        total.textContent =
-            activities.length;
-
-    }
-
-
-    if (count) {
-
-        count.textContent =
-            activities.length;
-
-    }
-
-
-    if (pending) {
-
-        pending.textContent =
-            activities.filter(
-                (item) =>
-                    item.reads <
-                    item.total
-            ).length;
-
-    }
-
-
-    if (confirmed) {
-
-        confirmed.textContent =
-            activities.filter(
-                (item) =>
-                    item.reads ===
-                    item.total
-            ).length;
-
-    }
-
-}
-
-
-/* =========================================
-   FECHAMENTO DOS MODAIS
-========================================= */
-
-document
-    .getElementById(
-        "btn-fechar-nova-atividade"
-    )
-    ?.addEventListener(
-        "click",
-        () => {
-
-            modalNewActivity.hidden =
-                true;
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "btn-cancelar-atividade"
-    )
-    ?.addEventListener(
-        "click",
-        () => {
-
-            modalNewActivity.hidden =
-                true;
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "btn-fechar-detalhes-atividade"
-    )
-    ?.addEventListener(
-        "click",
-        () => {
-
-            modalDetailActivity.hidden =
-                true;
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "btn-fechar-detalhes"
-    )
-    ?.addEventListener(
-        "click",
-        () => {
-
-            modalDetailActivity.hidden =
-                true;
-
-        }
-    );
-
-
-/* =========================================
-   CLIQUE FORA
-========================================= */
-
-modalNewActivity?.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target ===
-            modalNewActivity
-        ) {
-
-            modalNewActivity.hidden =
-                true;
-
-        }
-
-    }
-);
-
-
-modalDetailActivity?.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target ===
-            modalDetailActivity
-        ) {
-
-            modalDetailActivity.hidden =
-                true;
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   ESC
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (event.key === "Escape") {
-
-            if (modalNewActivity) {
-
-                modalNewActivity.hidden =
-                    true;
+                window.showToast(
+                    "Atividade criada e salva."
+                );
 
             }
-
-            if (modalDetailActivity) {
-
-                modalDetailActivity.hidden =
-                    true;
-
-            }
-
-        }
+        );
 
     }
-);
 
 
-/* =========================================
-   BUSCA
-========================================= */
+    /* =========================
+       INICIAR
+    ========================= */
 
-searchInput?.addEventListener(
-    "input",
-    renderActivities
-);
+    render();
 
-
-statusSelect?.addEventListener(
-    "change",
-    renderActivities
-);
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function showToast(message) {
-
-    if (!toast) {
-        return;
-    }
-
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    setTimeout(
-        () => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        2500
-    );
-
-}
-
-
-/* =========================================
-   INICIALIZAÇÃO
-========================================= */
-
-setupNavigation();
-
-renderActivities();
-
-updateStatistics();
+})();
