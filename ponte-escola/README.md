@@ -31,3 +31,7 @@ Guarda documentos do projeto.
 - AC1.md
 - roteiro-teste.md
 - backlog.md
+
+### icones
+
+- https://lucide.dev/icons/

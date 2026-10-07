@@ -1,10 +1,7 @@
-# Sistema
 .DS_Store
 Thumbs.db
 
-# Editores
 .vscode/
 .idea/
 
-# Node (se usar depois)
 node_modules/

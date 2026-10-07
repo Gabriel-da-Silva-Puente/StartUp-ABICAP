@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Início</title>
+
+    <link rel="stylesheet" href="/styles/global.css">
+
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <p class="sobrescrito">Visão geral</p>
+                    <h2>Olá, Ana! 👋</h2>
+                    <p class="subtitulo-pagina">
+                        Acompanhe a comunicação e as atividades da sua turma em um só lugar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ESTATÍSTICAS -->
+            <section class="grade-estatisticas" aria-label="Resumo da turma">
+
+                <a class="card-estatistica" href="">
+                    <div class="icone-estatistica azul">◉</div>
+                    <div>
+                        <span>Avisos ativos</span>
+                        <strong id="stat-avisos">0</strong>
+                    </div>
+                </a>
+
+                <a class="card-estatistica" href="">
+                    <div class="icone-estatistica laranja">!</div>
+                    <div>
+                        <span>Pendências</span>
+                        <strong id="stat-pendencias">0</strong>
+                    </div>
+                </a>
+
+                <a class="card-estatistica" href="">
+                    <div class="icone-estatistica vermelho">△</div>
+                    <div>
+                        <span>Ocorrências</span>
+                        <strong id="stat-ocorrencias">0</strong>
+                    </div>
+                </a>
+
+                <a class="card-estatistica" href="">
+                    <div class="icone-estatistica verde">✓</div>
+                    <div>
+                        <span>Atividades</span>
+                        <strong id="stat-atividades">0</strong>
+                    </div>
+                </a>
+
+            </section>
+
+            <!-- ÁREA INFERIOR -->
+            <section class="grade-home">
+
+                <!-- AVISOS -->
+                <article class="painel painel-grande">
+                    <div class="cabecalho-painel">
+                        <div>
+                            <p class="sobrescrito">Comunicação</p>
+                            <h3>Últimos avisos</h3>
+                        </div>
+                        <a href="./paginas/avisos.html">Ver todos</a>
+                        <div >
+
+                        </div>
+                    </div>
+
+                    <div id="lista-avisos-home" class="lista-previa-avisos"></div>
+                </article>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="./componentes/barra-lateral.js"></script>
+<script src="./componentes/barra-topo.js"></script>
+<script src="./componentes/utilitarios.js"></script>
+<script src="./servicos/avisos.servico.js"></script>
+<script src="./scripts/home.js"></script>
+
+<script>
+    renderizarBarraLateral("inicio");
+    renderizarBarraTopo("Ana Carolina Mendes", "Jardim II — Turma A", 22);
+</script>
+
+</body>
+
+</html>
