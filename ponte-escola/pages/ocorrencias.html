@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Início</title>
+
+    <link rel="stylesheet" href="/styles/global.css">
+
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Ocorrências</h2>
+                    <p id="subtitulo-ocorrencias-data" class="subtitulo-pagina">
+                        Acompanhe as ocorrencias da sua turma em um só lugar.
+                    </p>
+                </div>
+                <button id="btn-adicionar-ocorrencia" class="btn-adicionar-ocorrencia"> Adicionar Ocorrência </button>
+                
+            </div>
+
+            <!-- AREA DE OCORRENCIAS -->
+            <section class="grade-ocorrencias">
+
+                <div class="area-pesquisa-ocorrencias">
+
+                    <div class="campo-pesquisa">
+                        <span class="icone-busca">⌕</span>
+                        <input type="text" id="busca-ocorrencias" placeholder="Buscar por aluno...">
+                    </div>
+
+                    <span class="icone-filtro">▼</span>
+
+
+                    <!-- FILTROS OCORRENCIAS -->
+                    <div class="chips-filtro" id="chips-filtro">
+                        <button class="chip ativo" data-filtro="todos">Todos</button>
+                        <button class="chip" data-filtro="comportamental">Comportamental</button>
+                        <button class="chip" data-filtro="saude">Saúde</button>
+                        <button class="chip" data-filtro="acidente">Acidente</button>
+                        <button class="chip" data-filtro="alimentacao">Alimentação</button>
+                        <button class="chip" data-filtro="outro">Outro</button>
+                    </div>
+
+
+                </div>
+
+                <!-- LISTA DE OCORRENCIAS -->
+                <div class="lista-ocorrencias" id="lista-ocorrencias"></div>
+
+
+            </section>
+
+
+        </section> 
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script>
+    /* 
+        Script renderizar barra lateral e topo
+    */
+</script>
+
+</body>
+
+</html>
