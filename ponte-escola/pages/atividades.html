@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Atividades</title>
+
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/atividades.css">
+
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Atividades</h2>
+                    <p id="subtitulo-atividades" class="subtitulo-pagina"></p>
+                </div>
+                <button id="btn-nova-atividade" class="btn-principal" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                    Nova Atividade
+                </button>
+            </div>
+
+            <section class="grade-resumo" aria-label="Resumo das atividades">
+                <div class="card-resumo verde">
+                    <strong id="stat-total">0</strong>
+                    <span>Total enviadas</span>
+                </div>
+                <div class="card-resumo laranja">
+                    <strong id="stat-aguardando">0</strong>
+                    <span>Aguardando leitura</span>
+                </div>
+                <div class="card-resumo azul">
+                    <strong id="stat-confirmadas">0</strong>
+                    <span>Confirmadas</span>
+                </div>
+            </section>
+
+            <div class="barra-ferramentas">
+                <div class="campo-pesquisa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input type="search" id="busca-atividades" placeholder="Buscar atividade..." aria-label="Buscar atividade">
+                </div>
+
+                <div class="filtros-atividades" id="filtros-atividades" role="group" aria-label="Filtrar por situação">
+                    <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+                    <button type="button" data-filtro="aguardando" aria-pressed="false">Aguardando</button>
+                    <button type="button" data-filtro="confirmadas" aria-pressed="false">Confirmadas</button>
+                </div>
+            </div>
+
+            <div class="lista-atividades" id="lista-atividades"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<dialog id="modal-atividade" class="modal" aria-labelledby="modal-titulo">
+    <form id="form-atividade" class="modal-form">
+        <h3 id="modal-titulo">Nova atividade</h3>
+
+        <label>Título
+            <input type="text" name="titulo" required maxlength="80" placeholder="Ex.: Trazer avental na quinta">
+        </label>
+
+        <label>Descrição
+            <textarea name="descricao" required rows="4" maxlength="400" placeholder="Explique o que os responsáveis precisam fazer"></textarea>
+        </label>
+
+        <label>Prazo
+            <input type="date" name="prazo" required>
+        </label>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Publicar atividade</button>
+        </div>
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../services/auth.service.js"></script>
+<script src="../services/atividade.service.js"></script>
+<script src="../components/layout.js"></script>
+<script>
+    const listaEl = document.getElementById('lista-atividades');
+    const buscaEl = document.getElementById('busca-atividades');
+    const filtrosEl = document.getElementById('filtros-atividades');
+    const modalEl = document.getElementById('modal-atividade');
+    const formEl = document.getElementById('form-atividade');
+    const avisoEl = document.getElementById('aviso-flutuante');
+
+    let filtro = 'todas';
+
+    const iconeRelogio = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+    const iconeSeta = '<svg class="item-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
+
+    function escapar(texto) {
+        const div = document.createElement('div');
+        div.textContent = texto;
+        return div.innerHTML;
+    }
+
+    function avisar(mensagem) {
+        avisoEl.textContent = mensagem;
+        avisoEl.classList.add('visivel');
+        setTimeout(() => avisoEl.classList.remove('visivel'), 2600);
+    }
+
+    function renderizarResumo(todas) {
+        const confirmadas = todas.filter(a => a.lidas === a.total).length;
+
+        document.getElementById('subtitulo-atividades').textContent =
+            `${todas.length} ${todas.length === 1 ? 'atividade' : 'atividades'} · Jardim II — Turma A`;
+        document.getElementById('stat-total').textContent = todas.length;
+        document.getElementById('stat-aguardando').textContent = todas.length - confirmadas;
+        document.getElementById('stat-confirmadas').textContent = confirmadas;
+    }
+
+    function renderizar() {
+        const todas = AtividadeService.listar();
+        const termo = buscaEl.value.trim().toLowerCase();
+
+        renderizarResumo(todas);
+
+        const exibidas = todas.filter(a => {
+            const completa = a.lidas === a.total;
+            if (filtro === 'aguardando' && completa) return false;
+            if (filtro === 'confirmadas' && !completa) return false;
+            return a.titulo.toLowerCase().includes(termo) || a.descricao.toLowerCase().includes(termo);
+        });
+
+        if (exibidas.length === 0) {
+            listaEl.innerHTML = '<p class="lista-vazia">Nenhuma atividade encontrada.</p>';
+            return;
+        }
+
+        listaEl.innerHTML = exibidas.map(a => {
+            const completa = a.lidas === a.total;
+            const pct = Math.round((a.lidas / a.total) * 100);
+            return `
+            <button type="button" class="item-atividade" aria-expanded="false">
+                <div class="item-corpo">
+                    <div class="item-meta">
+                        <span class="selo-atividade">Atividade</span>
+                        <span>Prazo: ${a.prazo}</span>
+                    </div>
+                    <h3 class="item-titulo">${escapar(a.titulo)}</h3>
+                    <p class="item-descricao">${escapar(a.descricao)}</p>
+                    <span class="item-data">${a.criadaEm}</span>
+                </div>
+                <div class="item-leituras ${completa ? 'completo' : ''}">
+                    <b>${iconeRelogio}${a.lidas}/${a.total}</b>
+                    <span>leituras</span>
+                    <span class="progresso" aria-hidden="true"><i style="width:${pct}%"></i></span>
+                </div>
+                ${iconeSeta}
+            </button>`;
+        }).join('');
+    }
+
+    buscaEl.addEventListener('input', renderizar);
+
+    filtrosEl.addEventListener('click', e => {
+        const botao = e.target.closest('button[data-filtro]');
+        if (!botao) return;
+        filtro = botao.dataset.filtro;
+        filtrosEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === botao));
+        renderizar();
+    });
+
+    listaEl.addEventListener('click', e => {
+        const item = e.target.closest('.item-atividade');
+        if (!item) return;
+        const aberta = item.getAttribute('aria-expanded') === 'true';
+        item.setAttribute('aria-expanded', String(!aberta));
+    });
+
+    document.getElementById('btn-nova-atividade').addEventListener('click', () => {
+        formEl.reset();
+        formEl.prazo.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+        modalEl.showModal();
+    });
+
+    document.getElementById('btn-cancelar').addEventListener('click', () => modalEl.close());
+
+    modalEl.addEventListener('click', e => {
+        if (e.target === modalEl) modalEl.close();
+    });
+
+    formEl.addEventListener('submit', e => {
+        e.preventDefault();
+        AtividadeService.criar({
+            titulo: formEl.titulo.value.trim(),
+            descricao: formEl.descricao.value.trim(),
+            prazo: formEl.prazo.value
+        });
+        modalEl.close();
+        renderizar();
+        avisar('Atividade publicada.');
+    });
+
+    renderizar();
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+.grade-estatisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.card-estatistica {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card-estatistica:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.card-estatistica span {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.card-estatistica strong {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.icone-estatistica {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.icone-estatistica.azul    { background: var(--color-primary-light); color: var(--color-primary); }
+.icone-estatistica.laranja { background: var(--color-warning-light); color: var(--color-warning); }
+.icone-estatistica.vermelho { background: var(--color-danger-light);  color: var(--color-danger); }
+.icone-estatistica.verde   { background: var(--color-success-light); color: var(--color-success); }
+
+.grade-home {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.painel {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+}
+
+.cabecalho-painel {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cabecalho-painel a {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sobrescrito {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.lista-previa-avisos > * + * {
+  border-top: 1px solid var(--color-border);
+}
+
+.lista-previa-avisos > * {
+  padding: 0.9rem 0;
+}
+
+.selo-aviso {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}

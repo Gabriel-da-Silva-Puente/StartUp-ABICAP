@@ -1,0 +1,341 @@
+.grade-resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-resumo {
+  position: relative;
+  padding: 1.35rem 1rem 1.15rem;
+  text-align: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.card-resumo::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--acento);
+}
+
+.card-resumo.verde   { --acento: var(--color-success); }
+.card-resumo.laranja { --acento: var(--color-warning); }
+.card-resumo.azul    { --acento: var(--color-primary); }
+
+.card-resumo strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--acento);
+}
+
+.card-resumo span {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.barra-ferramentas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.barra-ferramentas .campo-pesquisa {
+  flex: 1 1 280px;
+  margin-bottom: 0;
+}
+
+.filtros-atividades {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: #EAEEF4;
+  border-radius: var(--radius-md);
+}
+
+.filtros-atividades button {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background var(--transition), color var(--transition);
+}
+
+.filtros-atividades button:hover {
+  color: var(--color-primary);
+}
+
+.filtros-atividades button[aria-pressed="true"] {
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.lista-atividades {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.item-atividade {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.35rem 1.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition);
+}
+
+.item-atividade:last-child {
+  border-bottom: none;
+}
+
+.item-atividade::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--color-success);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.item-atividade:hover {
+  background: #F9FAFC;
+}
+
+.item-atividade:hover::before,
+.item-atividade[aria-expanded="true"]::before {
+  opacity: 1;
+}
+
+.item-corpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.selo-atividade {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-success-light);
+  color: var(--color-success);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.item-titulo {
+  margin-bottom: 0.25rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.item-descricao {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+.item-atividade[aria-expanded="true"] .item-descricao {
+  display: block;
+}
+
+.item-data {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+}
+
+.item-leituras {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  min-width: 84px;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.item-leituras b {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--color-warning);
+}
+
+.item-leituras.completo b {
+  color: var(--color-success);
+}
+
+.item-leituras svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.progresso {
+  width: 84px;
+  height: 6px;
+  margin-top: 0.45rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.progresso i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-warning);
+}
+
+.item-leituras.completo .progresso i {
+  background: var(--color-success);
+}
+
+.item-seta {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  color: #CBD2DC;
+  transition: transform var(--transition), color var(--transition);
+}
+
+.item-atividade:hover .item-seta {
+  color: var(--color-primary);
+}
+
+.item-atividade[aria-expanded="true"] .item-seta {
+  transform: rotate(90deg);
+  color: var(--color-primary);
+}
+
+.lista-vazia {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.modal {
+  margin: auto;
+  width: min(520px, calc(100% - 2rem));
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(16, 24, 40, 0.25);
+}
+
+.modal::backdrop {
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.75rem;
+}
+
+.modal-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.modal-form input,
+.modal-form textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  resize: vertical;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn-secundario {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+.btn-secundario:hover {
+  background: var(--color-bg);
+}
+
+@media (max-width: 640px) {
+  .grade-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .filtros-atividades {
+    width: 100%;
+  }
+
+  .filtros-atividades button {
+    flex: 1;
+    padding-inline: 0.5rem;
+  }
+
+  .item-atividade {
+    padding: 1.1rem 1rem;
+  }
+
+  .item-leituras {
+    min-width: 0;
+  }
+
+  .progresso {
+    display: none;
+  }
+}

@@ -1,0 +1,124 @@
+.btn-adicionar-ocorrencia {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #2a6cc2, var(--color-primary));
+  color: var(--color-white);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.btn-adicionar-ocorrencia::before {
+  content: '+';
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.btn-adicionar-ocorrencia:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+
+.btn-adicionar-ocorrencia:active {
+  transform: translateY(0);
+}
+
+.icone-busca {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-text-faint);
+}
+
+.area-pesquisa-ocorrencias {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.area-pesquisa-ocorrencias .campo-pesquisa {
+  flex: 1 1 280px;
+  margin-bottom: 0;
+}
+
+.icone-filtro {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
+.chips-filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1 1 100%;
+}
+
+.chip {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.chip.ativo {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.lista-ocorrencias {
+  display: grid;
+  gap: 1rem;
+}
+
+.item-ocorrencia {
+  position: relative;
+  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.item-ocorrencia::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: var(--color-danger);
+}
+
+.item-ocorrencia.saude::before        { background: var(--color-success); }
+.item-ocorrencia.acidente::before     { background: var(--color-danger); }
+.item-ocorrencia.alimentacao::before  { background: var(--color-warning); }
+.item-ocorrencia.comportamental::before { background: var(--color-primary); }
+.item-ocorrencia.outro::before        { background: var(--color-text-faint); }
+
+.selo-ocorrencia {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
