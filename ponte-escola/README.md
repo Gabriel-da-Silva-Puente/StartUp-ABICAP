@@ -6,7 +6,8 @@ Guarda os arquivos HTML das telas internas.
 - announcements-list.html
 
 ### components/
-Guarda os pedaços de código que se repetem em várias telas.
+Guarda os pedaços de código que se repetem em várias telas e css genéricos.
+- global.css
 - header.js
 - sidebar.js
 - modal.js
@@ -17,9 +18,8 @@ Guarda a lógica de dados do sistema.
 - aviso.service.js
 
 ### styles/
-Guarda os arquivos CSS.
-- main.css
-- components.css
+Guarda os arquivos CSS das pages.
+- inicio.css
 
 ### assets/
 Guarda arquivos estáticos (imagens, ícones, fontes).

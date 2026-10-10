@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PonteEscola — Início</title>
 
-    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
     <link rel="stylesheet" href="../styles/inicio.css">
 
 </head>
@@ -35,8 +37,10 @@
             <!-- CARDS ESTATISTICAS -->
             <section class="grade-estatisticas" aria-label="Resumo da turma">
 
-                <a class="card-estatistica" href="">
-                    <div class="icone-estatistica azul">◉</div>
+                <a class="card-estatistica" href="/pages/inicio.html">
+                    <div class="circulo-icone" id="circulo-avisos">
+                    <img src="/assets/icons/megaphone.svg" alt="Avisos" class="icone-estatistica-avisos">
+                    </div>
                     <div>
                         <span>Avisos ativos</span>
                         <strong id="stat-avisos">0</strong>
@@ -44,7 +48,9 @@
                 </a>
 
                 <a class="card-estatistica" href="">
-                    <div class="icone-estatistica laranja">!</div>
+                    <div class="circulo-icone">
+                        <img src="/assets/icons/clock.svg" alt="Pendencias" class="icone-estatistica-pendencias">
+                    </div>
                     <div>
                         <span>Pendências</span>
                         <strong id="stat-pendencias">0</strong>
@@ -52,7 +58,9 @@
                 </a>
 
                 <a class="card-estatistica" href="">
-                    <div class="icone-estatistica vermelho">△</div>
+                    <div class="circulo-icone">
+                    <img src="/assets/icons/triangle-alert.svg" alt="Ocorrencias" class="icone-estatistica-ocorrencias">
+                    </div>
                     <div>
                         <span>Ocorrências</span>
                         <strong id="stat-ocorrencias">0</strong>
@@ -60,7 +68,9 @@
                 </a>
 
                 <a class="card-estatistica" href="">
-                    <div class="icone-estatistica verde">✓</div>
+                    <div class="circulo-icone">
+                    <img src="/assets/icons/clipboard-list.svg" alt="Atividades" class="icone-estatistica-atividades">
+                    </div>
                     <div>
                         <span>Atividades</span>
                         <strong id="stat-atividades">0</strong>
@@ -93,10 +103,11 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
-<script src="../services/auth.service.js"></script>
-<script src="../services/atividade.service.js"></script>
-<script src="../components/layout.js"></script>
+<script src="/components/sidebar.js"></script>
+<script src="/components/topbar.js"></script>
 <script>
+    renderizarBarraLateral("inicio", "/");
+    renderizarBarraTopo("/");
     document.getElementById('stat-atividades').textContent = AtividadeService.listar().length;
 </script>
 

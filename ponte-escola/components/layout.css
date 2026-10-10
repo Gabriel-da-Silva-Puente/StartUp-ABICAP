@@ -1,0 +1,353 @@
+/* ================================================================
+   ESTRUTURA PRINCIPAL
+================================================================ */
+
+.estrutura-app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.conteudo-principal {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Esconde quando vazio */
+.barra-lateral:empty,
+.barra-topo:empty {
+  display: none;
+}
+
+/* ================================================================
+   BARRA LATERAL
+================================================================ */
+
+.barra-lateral {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 1.5rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Itens do menu --- */
+
+.barra-lateral a,
+.barra-lateral button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-md);
+  color: inherit;
+  font-size: 0.9375rem;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+}
+
+.barra-lateral a:hover,
+.barra-lateral button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.barra-lateral a.ativo,
+.barra-lateral .ativo {
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* --- Marca (topo da sidebar) --- */
+
+.lateral-marca {
+  padding: 0.25rem 0.9rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+/* --- Menu --- */
+
+.lateral-menu {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* --- Rodapé (perfil / sair) --- */
+
+.lateral-rodape {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Ícones --- */
+
+.lateral-icone {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(7491%) hue-rotate(353deg) brightness(100%) contrast(105%);
+}
+
+.barra-lateral a.ativo .lateral-icone,
+.barra-lateral .ativo .lateral-icone {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(1858%) hue-rotate(206deg) brightness(94%) contrast(96%);
+}
+
+/* ================================================================
+   BARRA TOPO
+================================================================ */
+
+.barra-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Lado esquerdo (nome) --- */
+
+.topo-esquerda {
+  min-width: 0;
+}
+
+.topo-sobrescrito {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.topo-nome {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* --- Lado direito (turma, notificação, avatar) --- */
+
+.topo-direita {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* --- Seletor de turma --- */
+
+.topo-turma-seletor {
+  position: relative;
+}
+
+.topo-turma-botao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition);
+}
+
+.topo-turma-botao:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.topo-turma-seta {
+  transition: transform var(--transition);
+}
+
+.topo-turma-seletor.aberto .topo-turma-seta {
+  transform: rotate(180deg);
+}
+
+/* Menu dropdown do seletor */
+.topo-turma-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 240px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  z-index: 50;
+}
+
+.topo-turma-opcao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  text-align: left;
+  color: var(--color-text);
+  transition: background var(--transition), color var(--transition);
+}
+
+.topo-turma-opcao:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.topo-turma-alunos {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* --- Notificações --- */
+
+.topo-notificacao {
+  position: relative;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+}
+
+.topo-notificacao:hover {
+  background: var(--color-bg);
+}
+
+.topo-icone {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.topo-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-danger);
+  color: var(--color-white);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Avatar --- */
+
+.topo-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition);
+}
+
+.topo-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* ================================================================
+   CONTEÚDO DA PÁGINA
+================================================================ */
+
+.conteudo-pagina {
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* --- Cabeçalho da página --- */
+
+.cabecalho-pagina {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.cabecalho-pagina h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitulo-pagina {
+  margin-top: 0.15rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   RESPONSIVO
+================================================================ */
+
+/* --- Tablet: sidebar vai pra cima --- */
+
+@media (max-width: 860px) {
+  .estrutura-app {
+    flex-direction: column;
+  }
+
+  .barra-lateral {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* --- Mobile: ajustes de topo e conteúdo --- */
+
+@media (max-width: 640px) {
+  .topo-sobrescrito {
+    display: none;
+  }
+
+  .topo-nome {
+    font-size: 0.875rem;
+  }
+
+  .topo-turma-botao {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .conteudo-pagina {
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  .cabecalho-pagina {
+    flex-direction: column;
+  }
+}

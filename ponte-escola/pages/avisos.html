@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Início</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/avisos.css">
+
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal"> 
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina"> 
+
+            
+
+        </section> 
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="/components/sidebar.js"></script>
+<script src="/components/topbar.js"></script>
+<script>
+    renderizarBarraLateral("avisos", "/");
+    renderizarBarraTopo("/");
+    document.getElementById('stat-atividades').textContent = AtividadeService.listar().length;
+</script>
+
+</body>
+
+</html>

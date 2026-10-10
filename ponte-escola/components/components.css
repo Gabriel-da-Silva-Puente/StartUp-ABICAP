@@ -1,0 +1,122 @@
+/* BOTÃO PRINCIPAL */
+.btn-principal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  transition: filter var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-principal:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-principal:active {
+  transform: translateY(0);
+}
+
+.btn-principal svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* CAMPO DE PESQUISA */
+.campo-pesquisa {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.campo-pesquisa:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.campo-pesquisa svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  color: var(--color-text-faint);
+}
+
+.campo-pesquisa input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.875rem 0;
+}
+
+.campo-pesquisa input::placeholder {
+  color: var(--color-text-faint);
+}
+
+/* AVISO FLUTUANTE (TOAST) */
+.aviso-flutuante {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 100;
+  max-width: 360px;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--color-text);
+  color: var(--color-white);
+  font-size: 0.9375rem;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.aviso-flutuante:empty {
+  display: none;
+}
+
+.aviso-flutuante.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CHIPS DE FILTRO */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.chip.ativo {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}

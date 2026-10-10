@@ -19,7 +19,7 @@
 }
 
 .card-estatistica:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadow-lg);
   color: var(--color-text);
   text-decoration: none;
@@ -49,10 +49,29 @@
   font-weight: 700;
 }
 
-.icone-estatistica.azul    { background: var(--color-primary-light); color: var(--color-primary); }
-.icone-estatistica.laranja { background: var(--color-warning-light); color: var(--color-warning); }
-.icone-estatistica.vermelho { background: var(--color-danger-light);  color: var(--color-danger); }
-.icone-estatistica.verde   { background: var(--color-success-light); color: var(--color-success); }
+.circulo-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;           
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+}
+
+.icone-estatistica-avisos {
+  filter: invert(48%) sepia(89%) saturate(2000%) hue-rotate(200deg) brightness(95%) contrast(90%);
+}
+.icone-estatistica-atividades {
+  filter: invert(39%) sepia(87%) saturate(2285%) hue-rotate(111deg) brightness(104%) contrast(69%);
+}
+.icone-estatistica-ocorrencias {
+  filter: invert(32%) sepia(61%) saturate(3772%) hue-rotate(335deg) brightness(89%) contrast(93%);
+}
+.icone-estatistica-pendencias {
+  filter: invert(55%) sepia(16%) saturate(4105%) hue-rotate(0deg) brightness(105%) contrast(106%);
+}
+
 
 .grade-home {
   display: grid;
