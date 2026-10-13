@@ -23,9 +23,65 @@
 
         <header class="barra-topo"></header>
 
-        <section class="conteudo-pagina"> 
-
+        <section class="conteudo-pagina">
             
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Avisos</h2>
+                    <p id="subtitulo-avisos-turma" class="subtitulo-pagina">
+                        0 avisos · Jardim II — Turma A
+                    </p>
+                </div>
+
+                <button id="btn-novo-aviso" class="btn-principal" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                    Adicionar Aviso
+                </button>
+            </div>
+
+            <!-- CARDS ESTATISTICAS -->
+            <section class="grade-estatisticas" aria-label="Resumo avisos">
+
+                <div class="card-estatistica">
+                    <strong id="stat-total-avisos">0</strong>
+                    <p>Total enviados</p>
+                </div>
+
+                <div class="card-estatistica">
+                    <strong id="stat-aguardando">0</strong>
+                    <p>Aguardando leitura</p>
+                </div>
+
+                <div class="card-estatistica">
+                    <strong id="stat-confirmados">0</strong>
+                    <p>Confirmados</p>
+                </div>
+
+            </section>
+
+            <!-- AREA DE AVISOS -->
+            <section class="grade-avisos">
+
+                <div class="barra-ferramentas">
+                    <div class="campo-pesquisa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        <input type="search" id="busca-avisos" placeholder="Buscar avisos..." aria-label="Buscar avisos">
+                    </div>
+
+                    <div class="filtros-avisos"id="filtros-avisos">
+
+                        <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+
+                        <button type="button" data-filtro="comunicado" aria-pressed="false">Comunicado</button>
+
+                        <button type="button" data-filtro="evento" aria-pressed="false">Evento</button>
+
+                    </div>
+                </div>
+
+                <div class="lista-avisos" id="lista-avisos"></div>
+
+            </section>
 
         </section> 
 
@@ -40,7 +96,6 @@
 <script>
     renderizarBarraLateral("avisos", "/");
     renderizarBarraTopo("/");
-    document.getElementById('stat-atividades').textContent = AtividadeService.listar().length;
 </script>
 
 </body>

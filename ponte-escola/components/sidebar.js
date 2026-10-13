@@ -33,7 +33,7 @@ function renderizarBarraLateral(paginaAtual, prefixo = "") {
                 <span>Autorizações</span>
             </a>
 
-            <a href="${prefixo}pages/mural.html" class="${paginaAtual === "mural" ? "ativo" : ""}">
+            <a href="${prefixo}pages/muraldaturma.html" class="${paginaAtual === "mural" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/image.svg" alt="" class="lateral-icone">
                 <span>Mural da Turma</span>
             </a>

@@ -28,7 +28,9 @@
             <div class="cabecalho-pagina">
                 <div>
                     <h2>Atividades</h2>
-                    <p id="subtitulo-atividades" class="subtitulo-pagina"></p>
+                    <p id="subtitulo-atividades-turma" class="subtitulo-pagina">
+                        0 atividades · Jardim II — Turma A
+                    </p>
                 </div>
                 <button id="btn-nova-atividade" class="btn-principal" type="button">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
@@ -39,15 +41,15 @@
             <section class="grade-resumo" aria-label="Resumo das atividades">
                 <div class="card-resumo verde">
                     <strong id="stat-total">0</strong>
-                    <span>Total enviadas</span>
+                    <p>Total enviadas</p>
                 </div>
                 <div class="card-resumo laranja">
                     <strong id="stat-aguardando">0</strong>
-                    <span>Aguardando leitura</span>
+                    <p>Aguardando leitura</p>
                 </div>
                 <div class="card-resumo azul">
                     <strong id="stat-confirmadas">0</strong>
-                    <span>Confirmadas</span>
+                    <p>Confirmadas</p>
                 </div>
             </section>
 
@@ -97,7 +99,13 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
 <script>
+
+    renderizarBarraLateral("atividades", "../");
+    renderizarBarraTopo("../");
+
     const listaEl = document.getElementById('lista-atividades');
     const buscaEl = document.getElementById('busca-atividades');
     const filtrosEl = document.getElementById('filtros-atividades');

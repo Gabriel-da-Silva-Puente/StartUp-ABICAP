@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PonteEscola — Início</title>
+    <title>PonteEscola — Ocorrências</title>
 
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
     <link rel="stylesheet" href="../components/components.css">
-    <link rel="stylesheet" href="../styles/ocorrencias.css">
-
+    <link rel="stylesheet" href="/styles/ocorrencias.css">
 </head>
 
 <body>
@@ -29,47 +28,47 @@
                 <div>
                     <h2>Ocorrências</h2>
                     <p id="subtitulo-ocorrencias-data" class="subtitulo-pagina">
-                        Acompanhe as ocorrencias da sua turma em um só lugar.
+                        0 registros · Jardim II — Turma A
                     </p>
                 </div>
-                <button id="btn-adicionar-ocorrencia" class="btn-adicionar-ocorrencia"> Adicionar Ocorrência </button>
-                
+
+                <button id="btn-adicionar-ocorrencia" class="btn-principal btn-perigo" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="M12 5v14"/>
+                    </svg>
+                    Adicionar Ocorrência
+                </button>
             </div>
 
-            <!-- AREA DE OCORRENCIAS -->
+            <!-- ÁREA DE OCORRÊNCIAS -->
             <section class="grade-ocorrencias">
 
-                <div class="area-pesquisa-ocorrencias">
+                <div class="barra-ferramentas">
 
                     <div class="campo-pesquisa">
-                        <span class="icone-busca">⌕</span>
-                        <input type="text" id="busca-ocorrencias" placeholder="Buscar por aluno...">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.3-4.3"/>
+                        </svg>
+                        <input type="search" id="busca-ocorrencias" placeholder="Buscar por aluno..." aria-label="Buscar ocorrências">
                     </div>
 
-                    <span class="icone-filtro">▼</span>
-
-
-                    <!-- FILTROS OCORRENCIAS -->
-                    <div class="chips-filtro" id="chips-filtro">
-                        <button class="chip ativo" data-filtro="todos">Todos</button>
-                        <button class="chip" data-filtro="comportamental">Comportamental</button>
-                        <button class="chip" data-filtro="saude">Saúde</button>
-                        <button class="chip" data-filtro="acidente">Acidente</button>
-                        <button class="chip" data-filtro="alimentacao">Alimentação</button>
-                        <button class="chip" data-filtro="outro">Outro</button>
+                    <div class="filtros-ocorrencias" id="filtros-ocorrencias">
+                        <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+                        <button type="button" data-filtro="comportamental" aria-pressed="false">Comportamental</button>
+                        <button type="button" data-filtro="saude" aria-pressed="false">Saúde</button>
+                        <button type="button" data-filtro="acidente" aria-pressed="false">Acidente</button>
+                        <button type="button" data-filtro="alimentacao" aria-pressed="false">Alimentação</button>
+                        <button type="button" data-filtro="outro" aria-pressed="false">Outro</button>
                     </div>
-
 
                 </div>
 
-                <!-- LISTA DE OCORRENCIAS -->
                 <div class="lista-ocorrencias" id="lista-ocorrencias"></div>
-
 
             </section>
 
-
-        </section> 
+        </section>
 
     </main>
 
@@ -77,9 +76,13 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
-<script src="../services/auth.service.js"></script>
-<script src="../services/atividade.service.js"></script>
-<script src="../components/layout.js"></script>
+
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
+<script>
+    renderizarBarraLateral("ocorrencias", "../");
+    renderizarBarraTopo("../");
+</script>
 
 </body>
 

@@ -1,43 +1,6 @@
-.btn-adicionar-ocorrencia {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-md);
-  background: linear-gradient(180deg, #2a6cc2, var(--color-primary));
-  color: var(--color-white);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: var(--shadow-md);
-  transition: filter var(--transition), transform var(--transition);
-}
+/* --- Barra de ferramentas (busca + filtros) --- */
 
-.btn-adicionar-ocorrencia::before {
-  content: '+';
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.btn-adicionar-ocorrencia:hover {
-  filter: brightness(0.96);
-  transform: translateY(-1px);
-}
-
-.btn-adicionar-ocorrencia:active {
-  transform: translateY(0);
-}
-
-.icone-busca {
-  flex-shrink: 0;
-  font-size: 1.25rem;
-  line-height: 1;
-  color: var(--color-text-faint);
-}
-
-.area-pesquisa-ocorrencias {
+.barra-ferramentas {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -45,80 +8,158 @@
   margin-bottom: 1.5rem;
 }
 
-.area-pesquisa-ocorrencias .campo-pesquisa {
+.barra-ferramentas .campo-pesquisa {
   flex: 1 1 280px;
   margin-bottom: 0;
 }
 
-.icone-filtro {
-  font-size: 0.75rem;
-  color: var(--color-text-faint);
-}
+/* --- Filtros --- */
 
-.chips-filtro {
+.filtros-ocorrencias {
   display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: #EAEEF4;
+  border-radius: var(--radius-md);
   flex-wrap: wrap;
-  gap: 0.5rem;
-  flex: 1 1 100%;
 }
 
-.chip {
-  padding: 0.4rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-white);
-  color: var(--color-text-muted);
+.filtros-ocorrencias button {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 500;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  color: var(--color-text-muted);
+  transition: background var(--transition), color var(--transition);
 }
 
-.chip:hover {
-  border-color: var(--color-primary);
+.filtros-ocorrencias button:hover {
   color: var(--color-primary);
 }
 
-.chip.ativo {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
+.filtros-ocorrencias button[aria-pressed="true"] {
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
 }
 
+/* --- Lista de ocorrências --- */
+
 .lista-ocorrencias {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
-.item-ocorrencia {
-  position: relative;
-  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+/* --- Card de ocorrência --- */
+
+.card-ocorrencia {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  overflow: hidden;
+  transition: box-shadow var(--transition);
 }
 
-.item-ocorrencia::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 5px;
-  background: var(--color-danger);
+.card-ocorrencia:hover {
+  box-shadow: var(--shadow-lg);
 }
 
-.item-ocorrencia.saude::before        { background: var(--color-success); }
-.item-ocorrencia.acidente::before     { background: var(--color-danger); }
-.item-ocorrencia.alimentacao::before  { background: var(--color-warning); }
-.item-ocorrencia.comportamental::before { background: var(--color-primary); }
-.item-ocorrencia.outro::before        { background: var(--color-text-faint); }
+/* Lado esquerdo (info) */
+.card-ocorrencia-info {
+  flex: 1;
+  min-width: 0;
+}
 
-.selo-ocorrencia {
-  display: inline-block;
-  padding: 0.1rem 0.7rem;
-  border-radius: var(--radius-pill);
-  background: var(--color-danger-light);
-  color: var(--color-danger);
-  font-size: 0.8125rem;
+.card-ocorrencia-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-ocorrencia-aluno {
+  font-size: 1rem;
   font-weight: 600;
+  color: var(--color-text);
+}
+
+.card-ocorrencia-tipo {
+  padding: 0.15rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Cores por tipo */
+.tipo-comportamental { background: #F3E8FF; color: #7C3AED; }
+.tipo-saude          { background: #FDECEE; color: var(--color-danger); }
+.tipo-acidente       { background: #FFF3E0; color: var(--color-warning); }
+.tipo-alimentacao    { background: #E6F6EA; color: var(--color-success); }
+.tipo-outro          { background: #F3F4F6; color: var(--color-text-muted); }
+
+.card-ocorrencia-descricao {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.card-ocorrencia-data {
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+}
+
+/* Lado direito (status) */
+.card-ocorrencia-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-notificado   { background: #EBF2FC; color: var(--color-primary); }
+.status-resolvido    { background: #E6F6EA; color: var(--color-success); }
+.status-acompanhando { background: #FFF3E0; color: var(--color-warning); }
+
+.status-leitura {
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+}
+
+/* --- Responsivo --- */
+
+@media (max-width: 640px) {
+  .filtros-ocorrencias {
+    width: 100%;
+  }
+
+  .filtros-ocorrencias button {
+    flex: 1;
+    padding-inline: 0.5rem;
+  }
+
+  .card-ocorrencia {
+    flex-direction: column;
+  }
+
+  .card-ocorrencia-status {
+    align-items: flex-start;
+    flex-direction: row;
+  }
 }
