@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Perfil</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/perfil.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Meu Perfil</h2>
+                    <p class="subtitulo-pagina">
+                        Gerencie suas informações e preferências
+                    </p>
+                </div>
+            </div>
+
+            <!-- LAYOUT DO PERFIL -->
+            <div class="perfil-layout">
+
+                <!-- COLUNA ESQUERDA: AVATAR -->
+                <aside class="perfil-card">
+
+                    <div class="perfil-avatar">
+                        <span>AC</span>
+                    </div>
+
+                    <button class="btn-secundario perfil-trocar-foto" type="button">
+                        Alterar foto
+                    </button>
+
+                    <div class="perfil-info">
+                        <p class="perfil-nome">Ana Carolina Mendes</p>
+                        <p class="perfil-funcao">Professora</p>
+                    </div>
+
+                </aside>
+
+                <!-- COLUNA DIREITA: SEÇÕES -->
+                <div class="perfil-conteudo">
+
+                    <!-- SEÇÃO: DADOS PESSOAIS -->
+                    <section class="perfil-secao">
+                        <h3 class="perfil-secao-titulo">Dados pessoais</h3>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-nome-exibicao">Nome de exibição</label>
+                            <input
+                                type="text"
+                                id="perfil-nome-exibicao"
+                                value="Ana Carolina Mendes"
+                                maxlength="60"
+                            >
+                        </div>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-email">E-mail</label>
+                            <input
+                                type="email"
+                                id="perfil-email"
+                                value="ana.carolina@escola.com.br"
+                                maxlength="80"
+                            >
+                        </div>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-telefone">Telefone</label>
+                            <input
+                                type="tel"
+                                id="perfil-telefone"
+                                value="(15) 99999-0000"
+                                maxlength="20"
+                            >
+                        </div>
+                    </section>
+
+                    <!-- SEÇÃO: PREFERÊNCIAS -->
+                    <section class="perfil-secao">
+                        <h3 class="perfil-secao-titulo">Preferências</h3>
+
+                        <div class="perfil-preferencia">
+                            <div>
+                                <p class="perfil-preferencia-titulo">Receber notificações</p>
+                                <p class="perfil-preferencia-descricao">
+                                    Alertas de novos avisos e ocorrências
+                                </p>
+                            </div>
+                            <button
+                                class="perfil-toggle ativo"
+                                id="perfil-toggle-notificacoes"
+                                type="button"
+                                aria-pressed="true"
+                            >
+                                <span></span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- SEÇÃO: SEGURANÇA -->
+                    <section class="perfil-secao">
+                        <h3 class="perfil-secao-titulo">Segurança</h3>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-senha-atual">Senha atual</label>
+                            <input
+                                type="password"
+                                id="perfil-senha-atual"
+                                placeholder="••••••••"
+                            >
+                        </div>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-senha-nova">Nova senha</label>
+                            <input
+                                type="password"
+                                id="perfil-senha-nova"
+                                placeholder="Mínimo 6 caracteres"
+                            >
+                        </div>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-senha-confirmar">Confirmar nova senha</label>
+                            <input
+                                type="password"
+                                id="perfil-senha-confirmar"
+                                placeholder="Repita a nova senha"
+                            >
+                        </div>
+                    </section>
+
+                    <!-- BOTÕES DE AÇÃO -->
+                    <div class="perfil-acoes">
+                        <button class="btn-secundario" type="button" id="btn-cancelar">
+                            Cancelar
+                        </button>
+                        <button class="btn-principal" type="button" id="btn-salvar-perfil">
+                            Salvar alterações
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
+<script>
+    renderizarBarraLateral("perfil", "../");
+    renderizarBarraTopo("../");
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+/* --- Grade de posts --- */
+
+.grade-posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* --- Card de post --- */
+
+.card-post {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+}
+
+.card-post:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-post img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+
+.card-post-corpo {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.card-post-autor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-post-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.card-post-nome {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.card-post-data {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  margin: 0;
+}
+
+.card-post-legenda {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.card-post-acoes {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+
+@media (max-width: 900px) {
+  .grade-posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grade-posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* JS do post: 
+<div class="card-post">
+    <img src="foto.jpg" alt="Publicação">
+    <div class="card-post-corpo">
+        <div class="card-post-autor">
+            <div class="card-post-avatar">AC</div>
+            <div>
+                <p class="card-post-nome">Profa. Ana Carolina</p>
+                <p class="card-post-data">12/09/2026</p>
+            </div>
+        </div>
+        <p class="card-post-legenda">Atividade de arte com folhas do jardim!</p>
+        <div class="card-post-acoes">
+            <span>♡ 18</span>
+            <span>💬 2</span>
+        </div>
+    </div>
+</div> */

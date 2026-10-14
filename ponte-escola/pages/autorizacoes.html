@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Autorizações</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/autorizacoes.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Autorização Digital</h2>
+                    <p id="subtitulo-autorizacoes-turma" class="subtitulo-pagina">
+                        Gerencie as autorizações de passeios e eventos · Jardim II — Turma A
+                    </p>
+                </div>
+            </div>
+
+            <!-- MENU AUTORIZACOES -->
+
+            <div class="autorizacoes-layout">
+
+                <div class="autorizacoes-lista" id="autorizacoes-lista"></div>
+
+                <div class="autorizacao-detalhe" id="autorizacao-detalhe"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../components/utilitarios.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
+<script>
+    renderizarBarraLateral("autorizacoes", "../");
+    renderizarBarraTopo("../");
+</script>
+
+</body>
+
+</html>

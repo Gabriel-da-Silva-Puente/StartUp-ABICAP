@@ -1,0 +1,305 @@
+.autorizacoes-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ================================================================
+   LISTA DE PASSEIOS (esquerda)
+================================================================ */
+
+.autorizacoes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Card de passeio na lista */
+.card-passeio {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.card-passeio:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-passeio.ativo {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+/* Topo do card (título + status) */
+.card-passeio-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-passeio-titulo {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Status */
+.status-passeio {
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.status-passeio.aberto    { background: #E6F6EA; color: var(--color-success); }
+.status-passeio.encerrado { background: #F3F4F6; color: var(--color-text-muted); }
+
+/* Data */
+.card-passeio-data {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* Estatísticas do card */
+.card-passeio-stats {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.stat-ok      { color: var(--color-success); }
+.stat-no      { color: var(--color-danger); }
+.stat-pendente { color: var(--color-warning); }
+
+/* ================================================================
+   DETALHE (direita)
+================================================================ */
+
+.autorizacao-detalhe {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Estado vazio */
+.detalhe-vazio {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Cabeçalho do detalhe */
+.detalhe-cabecalho {
+  margin-bottom: 1.25rem;
+}
+
+.detalhe-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.detalhe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.detalhe-descricao {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Cards de estatística (3 colunas) */
+.detalhe-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.stat-card.verde   { background: #E6F6EA; color: var(--color-success); }
+.stat-card.vermelho { background: #FDECEE; color: var(--color-danger); }
+.stat-card.laranja  { background: #FFF3E0; color: var(--color-warning); }
+
+.stat-card strong {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card span {
+  font-size: 0.8125rem;
+  opacity: 0.9;
+}
+
+/* Barra de progresso */
+.barra-progresso {
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.barra-progresso .verde    { background: var(--color-success); }
+.barra-progresso .vermelho { background: var(--color-danger); }
+
+.progresso-legenda {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+/* Lista de pais */
+.detalhe-pais-titulo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.lista-pais {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.linha-pai {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+
+.linha-pai-nome {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.status-pai {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-pai.autorizado { background: #E6F6EA; color: var(--color-success); }
+.status-pai.recusado   { background: #FDECEE; color: var(--color-danger); }
+.status-pai.pendente   { background: #FFF3E0; color: var(--color-warning); }
+
+
+
+@media (max-width: 900px) {
+  .autorizacoes-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .detalhe-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* O JS carrega na aba da esquerda:
+<div class="card-passeio ativo" data-id="1">
+    <div class="card-passeio-topo">
+        <p class="card-passeio-titulo">Passeio ao Zoológico de Sorocaba</p>
+        <span class="status-passeio aberto">Aberto</span>
+    </div>
+    <p class="card-passeio-data">📅 15/10/2026</p>
+    <div class="card-passeio-stats">
+        <span class="stat-ok">14 ✓</span>
+        <span class="stat-no">2 ✕</span>
+        <span class="stat-pendente">6 pendente</span>
+    </div>
+</div>
+
+
+Na aba da direita:
+<div class="detalhe-cabecalho">
+    <h3 class="detalhe-titulo">Passeio ao Zoológico de Sorocaba</h3>
+    <div class="detalhe-meta">
+        <span>📅 15/10/2026</span>
+        <span>👥 22 alunos</span>
+        <span>📍 Sorocaba, SP</span>
+    </div>
+</div>
+
+<p class="detalhe-descricao">Visita educativa ao Zoológico Municipal. Saída às 8h...</p>
+
+<div class="detalhe-stats">
+    <div class="stat-card verde">
+        <strong>14</strong>
+        <span>Autorizados</span>
+    </div>
+    <div class="stat-card vermelho">
+        <strong>2</strong>
+        <span>Recusados</span>
+    </div>
+    <div class="stat-card laranja">
+        <strong>6</strong>
+        <span>Pendentes</span>
+    </div>
+</div>
+
+<div class="barra-progresso">
+    <div class="verde" style="width: 64%"></div>
+    <div class="vermelho" style="width: 9%"></div>
+</div>
+<p class="progresso-legenda">64% autorizado</p>
+
+<h4 class="detalhe-pais-titulo">Resposta dos pais</h4>
+<div class="lista-pais">
+    <div class="linha-pai">
+        <span class="linha-pai-nome">Beatriz Ferreira</span>
+        <span class="status-pai autorizado">Autorizado</span>
+    </div>
+    <div class="linha-pai">
+        <span class="linha-pai-nome">Marcos Andrade</span>
+        <span class="status-pai autorizado">Autorizado</span>
+    </div>
+    <div class="linha-pai">
+        <span class="linha-pai-nome">Pedro Nascimento</span>
+        <span class="status-pai recusado">Recusado</span>
+    </div>
+    <div class="linha-pai">
+        <span class="linha-pai-nome">Sofia Melo</span>
+        <span class="status-pai pendente">Pendente</span>
+    </div>
+</div> */

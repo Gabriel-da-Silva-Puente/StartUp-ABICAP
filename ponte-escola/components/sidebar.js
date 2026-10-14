@@ -33,7 +33,7 @@ function renderizarBarraLateral(paginaAtual, prefixo = "") {
                 <span>Autorizações</span>
             </a>
 
-            <a href="${prefixo}pages/muraldaturma.html" class="${paginaAtual === "mural" ? "ativo" : ""}">
+            <a href="${prefixo}pages/muralDaTurma.html" class="${paginaAtual === "muraldaturma" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/image.svg" alt="" class="lateral-icone">
                 <span>Mural da Turma</span>
             </a>
@@ -41,10 +41,10 @@ function renderizarBarraLateral(paginaAtual, prefixo = "") {
         </nav>
 
         <div class="lateral-rodape">
-            <button id="btn-perfil">
+            <a href="${prefixo}pages/perfil.html" class="${paginaAtual === "perfil" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/users.svg" alt="" class="lateral-icone">
                 <span>Perfil</span>
-            </button>
+            </a>
             <button id="btn-sair" onclick="window.location.href='/index.html'">
                 <img src="${prefixo}assets/icons/log-out.svg" alt="" class="lateral-icone">
                 <span>Sair</span>

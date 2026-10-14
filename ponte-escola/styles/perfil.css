@@ -1,0 +1,178 @@
+.perfil-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* --- Card do avatar (esquerda) --- */
+
+.perfil-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.perfil-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+}
+
+.perfil-trocar-foto {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.perfil-info {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.25rem;
+}
+
+.perfil-nome {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.perfil-funcao {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* --- Conteúdo (direita) --- */
+
+.perfil-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* --- Seção --- */
+
+.perfil-secao {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.perfil-secao-titulo {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+/* --- Campo --- */
+
+.perfil-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.perfil-campo:last-child {
+  margin-bottom: 0;
+}
+
+.perfil-campo label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.perfil-campo input {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.perfil-campo input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* --- Preferência (toggle) --- */
+
+.perfil-preferencia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.perfil-preferencia-titulo {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+
+.perfil-preferencia-descricao {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.perfil-toggle {
+  width: 48px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: #D1D5DB;
+  position: relative;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.perfil-toggle span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-white);
+  border-radius: 50%;
+  transition: transform var(--transition);
+}
+
+.perfil-toggle.ativo {
+  background: var(--color-primary);
+}
+
+.perfil-toggle.ativo span {
+  transform: translateX(22px);
+}
+
+/* --- Ações --- */
+
+.perfil-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* --- Responsivo --- */
+
+@media (max-width: 860px) {
+  .perfil-layout {
+    grid-template-columns: 1fr;
+  }
+}

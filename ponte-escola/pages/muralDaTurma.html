@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
     <link rel="stylesheet" href="../components/components.css">
-    <link rel="stylesheet" href="../styles/NOME_DA_PAGINA.css">
+    <link rel="stylesheet" href="../styles/muraldaturma.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                         Jardim II — Turma A · Compartilhe momentos com os pais
                     </p>
                 </div>
-                <button id="btn-acao-principal" class="btn-principal" type="button">
+                <button id="btn-principal" class="btn-principal" type="button">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M5 12h14"/><path d="M12 5v14"/>
                     </svg>
@@ -39,7 +39,8 @@
                 </button>
             </div>
 
-            <!-- CONTEÚDO ESPECÍFICO DA PÁGINA -->
+            <!-- GRADE DE POSTS -->
+            <div class="grade-posts" id="grade-posts"></div>
 
         </section>
 
@@ -49,11 +50,10 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
-<script src="../componentes/utilitarios.js"></script>
-<script src="../componentes/barra-lateral.js"></script>
-<script src="../componentes/barra-topo.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
 <script>
-    renderizarBarraLateral("Mural da Turma", "../");
+    renderizarBarraLateral("muraldaturma", "../");
     renderizarBarraTopo("../");
 </script>
 

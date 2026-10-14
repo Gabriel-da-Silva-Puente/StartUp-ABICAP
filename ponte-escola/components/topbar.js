@@ -53,9 +53,9 @@ function renderizarBarraTopo(prefixo = "") {
                 <span class="topo-badge">3</span>
             </button>
 
-            <button class="topo-avatar" id="btn-perfil-topo">
+            <a href="${prefixo}pages/perfil.html" class="topo-avatar" id="btn-perfil-topo">
                 ${usuario.iniciais || "AC"}
-            </button>
+            </a>
 
         </div>
     `;
