@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Cardápio</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-cardapio.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Cardápio da Merenda</h2>
+                    <p id="subtitulo-cardapio" class="subtitulo-pagina">
+                        Semana de 14/10 a 18/10
+                    </p>
+                </div>
+
+                <button id="btn-editar-cardapio" class="btn-principal" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    </svg>
+                    Editar Cardápio
+                </button>
+            </div>
+
+            <!-- CARDÁPIO DA SEMANA -->
+            <div class="cardapio-semana" id="cardapio-semana">
+
+                <!-- SEGUNDA -->
+                <article class="card-dia">
+                    <header class="card-dia-cabecalho">
+                        <h3>Segunda-feira</h3>
+                        <span class="card-dia-data">14/10</span>
+                    </header>
+                    <div class="card-dia-refeicoes">
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Café da manhã</span>
+                            <p class="refeicao-descricao">Pão com manteiga, leite e fruta</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Almoço</span>
+                            <p class="refeicao-descricao">Arroz, feijão, frango grelhado e salada</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Lanche da tarde</span>
+                            <p class="refeicao-descricao">Iogurte e biscoito integral</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- TERÇA -->
+                <article class="card-dia">
+                    <header class="card-dia-cabecalho">
+                        <h3>Terça-feira</h3>
+                        <span class="card-dia-data">15/10</span>
+                    </header>
+                    <div class="card-dia-refeicoes">
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Café da manhã</span>
+                            <p class="refeicao-descricao">Vitamina de banana e torrada</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Almoço</span>
+                            <p class="refeicao-descricao">Macarrão com molho de tomate e carne moída</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Lanche da tarde</span>
+                            <p class="refeicao-descricao">Suco natural e bolo caseiro</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- QUARTA -->
+                <article class="card-dia">
+                    <header class="card-dia-cabecalho">
+                        <h3>Quarta-feira</h3>
+                        <span class="card-dia-data">16/10</span>
+                    </header>
+                    <div class="card-dia-refeicoes">
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Café da manhã</span>
+                            <p class="refeicao-descricao">Cereal com leite e fruta</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Almoço</span>
+                            <p class="refeicao-descricao">Arroz, lentilha, peixe assado e legumes</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Lanche da tarde</span>
+                            <p class="refeicao-descricao">Pão de queijo e chá</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- QUINTA -->
+                <article class="card-dia">
+                    <header class="card-dia-cabecalho">
+                        <h3>Quinta-feira</h3>
+                        <span class="card-dia-data">17/10</span>
+                    </header>
+                    <div class="card-dia-refeicoes">
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Café da manhã</span>
+                            <p class="refeicao-descricao">Pão integral com requeijão e suco</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Almoço</span>
+                            <p class="refeicao-descricao">Arroz, feijão, carne cozida e purê de batata</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Lanche da tarde</span>
+                            <p class="refeicao-descricao">Fruta da estação e biscoito</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SEXTA -->
+                <article class="card-dia">
+                    <header class="card-dia-cabecalho">
+                        <h3>Sexta-feira</h3>
+                        <span class="card-dia-data">18/10</span>
+                    </header>
+                    <div class="card-dia-refeicoes">
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Café da manhã</span>
+                            <p class="refeicao-descricao">Mingau de aveia e fruta</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Almoço</span>
+                            <p class="refeicao-descricao">Arroz, feijão, omelete e salada verde</p>
+                        </div>
+                        <div class="refeicao">
+                            <span class="refeicao-titulo">Lanche da tarde</span>
+                            <p class="refeicao-descricao">Pipoca e suco de laranja</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL — EDITAR CARDÁPIO -->
+<dialog id="modal-cardapio" class="modal">
+    <form id="form-cardapio" class="modal-form">
+
+        <h3>Editar Cardápio</h3>
+
+        <label>
+            Semana (data de início)
+            <input type="date" id="semana-inicio" required>
+        </label>
+
+        <!-- SEGUNDA -->
+        <fieldset class="campo-dia">
+            <legend>Segunda-feira</legend>
+            <label>
+                Café da manhã
+                <input type="text" id="seg-cafe" maxlength="100">
+            </label>
+            <label>
+                Almoço
+                <input type="text" id="seg-almoco" maxlength="100">
+            </label>
+            <label>
+                Lanche da tarde
+                <input type="text" id="seg-lanche" maxlength="100">
+            </label>
+        </fieldset>
+
+        <!-- TERÇA -->
+        <fieldset class="campo-dia">
+            <legend>Terça-feira</legend>
+            <label>
+                Café da manhã
+                <input type="text" id="ter-cafe" maxlength="100">
+            </label>
+            <label>
+                Almoço
+                <input type="text" id="ter-almoco" maxlength="100">
+            </label>
+            <label>
+                Lanche da tarde
+                <input type="text" id="ter-lanche" maxlength="100">
+            </label>
+        </fieldset>
+
+        <!-- QUARTA -->
+        <fieldset class="campo-dia">
+            <legend>Quarta-feira</legend>
+            <label>
+                Café da manhã
+                <input type="text" id="qua-cafe" maxlength="100">
+            </label>
+            <label>
+                Almoço
+                <input type="text" id="qua-almoco" maxlength="100">
+            </label>
+            <label>
+                Lanche da tarde
+                <input type="text" id="qua-lanche" maxlength="100">
+            </label>
+        </fieldset>
+
+        <!-- QUINTA -->
+        <fieldset class="campo-dia">
+            <legend>Quinta-feira</legend>
+            <label>
+                Café da manhã
+                <input type="text" id="qui-cafe" maxlength="100">
+            </label>
+            <label>
+                Almoço
+                <input type="text" id="qui-almoco" maxlength="100">
+            </label>
+            <label>
+                Lanche da tarde
+                <input type="text" id="qui-lanche" maxlength="100">
+            </label>
+        </fieldset>
+
+        <!-- SEXTA -->
+        <fieldset class="campo-dia">
+            <legend>Sexta-feira</legend>
+            <label>
+                Café da manhã
+                <input type="text" id="sex-cafe" maxlength="100">
+            </label>
+            <label>
+                Almoço
+                <input type="text" id="sex-almoco" maxlength="100">
+            </label>
+            <label>
+                Lanche da tarde
+                <input type="text" id="sex-lanche" maxlength="100">
+            </label>
+        </fieldset>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Salvar Cardápio</button>
+        </div>
+
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+<script>
+    renderizarBarraLateralAdministrador("administrador-cardapio", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+
+</html>

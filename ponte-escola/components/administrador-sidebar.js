@@ -8,14 +8,14 @@ function renderizarBarraLateralAdministrador(paginaAtual, prefixo = "") {
 
         <nav class="lateral-menu">
 
-            <a href="${prefixo}pages/administrador.html" class="${paginaAtual === "administrador" ? "ativo" : ""}">
+            <a href="${prefixo}pages/administrador-inicio.html" class="${paginaAtual === "administrador" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/home.svg" alt="" class="lateral-icone">
-                <span>Turmas</span>
+                <span>Inicio</span>
             </a>
 
-            <a href="${prefixo}pages/administrador-professores.html" class="${paginaAtual === "administrador-professores" ? "ativo" : ""}">
+            <a href="${prefixo}pages/administrador-turmas.html" class="${paginaAtual === "administrador-turmas" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/users.svg" alt="" class="lateral-icone">
-                <span>Professores</span>
+                <span>Turmas</span>
             </a>
 
             <a href="${prefixo}pages/administrador-avisos.html" class="${paginaAtual === "administrador-avisos" ? "ativo" : ""}">
@@ -33,10 +33,6 @@ function renderizarBarraLateralAdministrador(paginaAtual, prefixo = "") {
                 <span>Autorizações</span>
             </a>
 
-            <a href="${prefixo}pages/administrador-mural.html" class="${paginaAtual === "administrador-mural" ? "ativo" : ""}">
-                <img src="${prefixo}assets/icons/image.svg" alt="" class="lateral-icone">
-                <span>Mural da Turma</span>
-            </a>
 
             <a href="${prefixo}pages/administrador-mensagens.html" class="${paginaAtual === "administrador-mensagens" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/mail.svg" alt="" class="lateral-icone">
@@ -53,14 +49,14 @@ function renderizarBarraLateralAdministrador(paginaAtual, prefixo = "") {
                 <span>Calendário</span>
             </a>
 
-            <a href="${prefixo}pages/administrador-duvidas.html" class="${paginaAtual === "administrador-duvidas" ? "ativo" : ""}">
-                <img src="${prefixo}assets/icons/circle-question-mark.svg" alt="" class="lateral-icone">
-                <span>Central de Dúvidas</span>
-            </a>
-
             <a href="${prefixo}pages/administrador-indicadores.html" class="${paginaAtual === "administrador-indicadores" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/chart-line.svg" alt="" class="lateral-icone">
                 <span>Indicadores</span>
+            </a>
+
+            <a href="${prefixo}pages/administrador-duvidas.html" class="${paginaAtual === "administrador-duvidas" ? "ativo" : ""}">
+                <img src="${prefixo}assets/icons/circle-question-mark.svg" alt="" class="lateral-icone">
+                <span>Central de Dúvidas</span>
             </a>
 
         </nav>

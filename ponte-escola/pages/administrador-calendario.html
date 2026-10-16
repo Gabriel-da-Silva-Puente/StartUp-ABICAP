@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Calendário</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-calendario.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Calendário Escolar</h2>
+                    <p class="subtitulo-pagina">
+                        Eventos e datas importantes
+                    </p>
+                </div>
+
+                <button id="btn-novo-evento" class="btn-principal" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="M12 5v14"/>
+                    </svg>
+                    Novo Evento
+                </button>
+            </div>
+
+            <!-- LAYOUT: SIDEBAR + CALENDÁRIO -->
+            <div class="calendario-layout">
+
+                <!-- COLUNA ESQUERDA -->
+                <aside class="calendario-sidebar">
+
+                    <div class="sidebar-mes">
+                        <p class="sidebar-mes-label">Mês atual</p>
+                        <p class="sidebar-mes-nome">Outubro 2026</p>
+                    </div>
+
+                    <div class="sidebar-dia-selecionado">
+                        <p class="sidebar-dia-label">Dia selecionado</p>
+                        <p class="sidebar-dia-numero">15/10/2026</p>
+                    </div>
+
+                    <div class="sidebar-eventos">
+                        <p class="sidebar-eventos-titulo">Eventos do dia</p>
+
+                        <div class="lista-eventos-dia" id="lista-eventos-dia">
+                            <p class="lista-vazia">Nenhum evento neste dia.</p>
+                        </div>
+                    </div>
+
+                </aside>
+
+                <!-- CALENDÁRIO -->
+                <div class="calendario-principal">
+
+                    <!-- CABEÇALHO DO MÊS -->
+                    <div class="calendario-cabecalho">
+                        <button class="btn-mes" id="btn-mes-anterior" aria-label="Mês anterior">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+
+                        <h3 class="calendario-mes-atual" id="calendario-mes-atual">Outubro 2026</h3>
+
+                        <button class="btn-mes" id="btn-mes-proximo" aria-label="Próximo mês">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- DIAS DA SEMANA -->
+                    <div class="calendario-dias-semana">
+                        <span>Seg</span>
+                        <span>Ter</span>
+                        <span>Qua</span>
+                        <span>Qui</span>
+                        <span>Sex</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+                    </div>
+
+                    <!-- GRADE DE DIAS -->
+                    <div class="calendario-grade" id="calendario-grade"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL — NOVO/EDITAR EVENTO -->
+<dialog id="modal-evento" class="modal">
+    <form id="form-evento" class="modal-form">
+
+        <h3 id="modal-evento-titulo">Novo Evento</h3>
+
+        <label>
+            Título do evento
+            <input type="text" id="evento-titulo" required maxlength="100" placeholder="Ex: Prova de Matemática">
+        </label>
+
+        <label>
+            Descrição (opcional)
+            <textarea id="evento-descricao" rows="3" maxlength="300" placeholder="Detalhes do evento..."></textarea>
+        </label>
+
+        <div class="linha-dupla">
+            <label>
+                Data
+                <input type="date" id="evento-data" required>
+            </label>
+
+            <label>
+                Tipo
+                <select id="evento-tipo" required>
+                    <option value="prova">📚 Prova</option>
+                    <option value="reuniao">👥 Reunião</option>
+                    <option value="evento">🎉 Evento</option>
+                    <option value="feriado">🏖 Feriado</option>
+                    <option value="atividade">✏️ Atividade</option>
+                    <option value="outro">📌 Outro</option>
+                </select>
+            </label>
+        </div>
+
+        <fieldset class="campo-turmas">
+            <legend>Turmas</legend>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jI-A">
+                Jardim I — Turma A
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jI-B">
+                Jardim I — Turma B
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jII-A">
+                Jardim II — Turma A
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jII-B">
+                Jardim II — Turma B
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="5A">
+                5º Ano — Turma A
+            </label>
+
+            <label class="checkbox-turma checkbox-todas">
+                <input type="checkbox" id="todas-turmas">
+                <strong>Todas as turmas</strong>
+            </label>
+        </fieldset>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Salvar Evento</button>
+        </div>
+
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+<script>
+    renderizarBarraLateralAdministrador("administrador-calendario", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+
+</html>

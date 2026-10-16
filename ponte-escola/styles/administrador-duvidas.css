@@ -1,0 +1,225 @@
+/* ================================================================
+   PÁGINA DE CENTRAL DE DÚVIDAS (ADMINISTRADOR)
+================================================================ */
+
+/* --- Cabeçalho de ações --- */
+
+.cabecalho-acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* --- Texto geral --- */
+
+.texto-geral {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.texto-geral p {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  white-space: pre-line;
+  margin: 0;
+}
+
+/* --- Cabeçalho dos tópicos --- */
+
+.topicos-cabecalho {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.topicos-cabecalho h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* --- Lista de tópicos --- */
+
+.lista-topicos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* --- Card de tópico --- */
+
+.card-topico {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+
+.card-topico:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-topico-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 1.5rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.card-topico-cabecalho:hover {
+  background: var(--color-bg);
+}
+
+.card-topico-titulo {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.card-topico-acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-acao {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+}
+
+.btn-acao svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-acao.editar {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.btn-acao.editar:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-acao.excluir {
+  color: var(--color-danger);
+  background: #FDECEE;
+}
+
+.btn-acao.excluir:hover {
+  background: var(--color-danger);
+  color: var(--color-white);
+}
+
+.card-topico-seta {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.card-topico.aberto .card-topico-seta {
+  transform: rotate(180deg);
+}
+
+.card-topico-conteudo {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.card-topico-conteudo p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  white-space: pre-line;
+  margin: 0;
+}
+
+/* ================================================================
+   MODAIS
+================================================================ */
+
+.modal {
+  margin: auto;
+  width: min(560px, calc(100% - 2rem));
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(16, 24, 40, 0.25);
+}
+
+.modal::backdrop {
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.75rem;
+}
+
+.modal-form h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.modal-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.modal-form input,
+.modal-form textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.modal-form textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}

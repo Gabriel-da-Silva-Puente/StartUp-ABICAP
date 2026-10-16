@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Ocorrências</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-ocorrencias.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Ocorrências</h2>
+                    <p id="subtitulo-ocorrencias-turma" class="subtitulo-pagina">
+                        0 registros · Todas as turmas
+                    </p>
+                </div>
+
+                <button id="btn-nova-ocorrencia" class="btn-principal btn-perigo" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="M12 5v14"/>
+                    </svg>
+                    Adicionar Ocorrência
+                </button>
+            </div>
+
+            <!-- ÁREA DE OCORRÊNCIAS -->
+            <section class="grade-ocorrencias">
+
+                <div class="barra-ferramentas">
+
+                    <div class="campo-pesquisa">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.3-4.3"/>
+                        </svg>
+                        <input type="search" id="busca-ocorrencias" placeholder="Buscar por aluno..." aria-label="Buscar ocorrências">
+                    </div>
+
+                    <select class="select-turma" id="filtro-turma" aria-label="Filtrar por turma">
+                        <option value="todas">Todas as turmas</option>
+                        <option value="jI-A">Jardim I — Turma A</option>
+                        <option value="jI-B">Jardim I — Turma B</option>
+                        <option value="jII-A">Jardim II — Turma A</option>
+                        <option value="jII-B">Jardim II — Turma B</option>
+                        <option value="5A">5º Ano — Turma A</option>
+                    </select>
+
+                    <div class="filtros-ocorrencias" id="filtros-ocorrencias">
+                        <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+                        <button type="button" data-filtro="disciplinar" aria-pressed="false">Disciplinar</button>
+                        <button type="button" data-filtro="comportamental" aria-pressed="false">Comportamental</button>
+                        <button type="button" data-filtro="saude" aria-pressed="false">Saúde</button>
+                        <button type="button" data-filtro="acidente" aria-pressed="false">Acidente</button>
+                        <button type="button" data-filtro="alimentacao" aria-pressed="false">Alimentação</button>
+                        <button type="button" data-filtro="outro" aria-pressed="false">Outro</button>
+                    </div>
+
+                </div>
+
+                <div class="lista-ocorrencias" id="lista-ocorrencias"></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL — NOVA OCORRÊNCIA -->
+<dialog id="modal-ocorrencia" class="modal">
+    <form id="form-ocorrencia" class="modal-form">
+
+        <h3>Nova Ocorrência</h3>
+
+        <label>
+            Tipo de ocorrência
+            <select id="tipo-ocorrencia" required>
+                <option value="">Selecione</option>
+                <option value="comportamental">Comportamental</option>
+                <option value="saude">Saúde</option>
+                <option value="acidente">Acidente</option>
+                <option value="alimentacao">Alimentação</option>
+                <option value="outro">Outro</option>
+                <option value="disciplinar">⚠ Ocorrência Disciplinar</option>
+            </select>
+        </label>
+
+        <label>
+            Nome do aluno
+            <input type="text" id="aluno" required maxlength="80" placeholder="Nome completo">
+        </label>
+
+        <label>
+            Turma
+            <select id="turma" required>
+                <option value="">Selecione</option>
+                <option value="jI-A">Jardim I — Turma A</option>
+                <option value="jI-B">Jardim I — Turma B</option>
+                <option value="jII-A">Jardim II — Turma A</option>
+                <option value="jII-B">Jardim II — Turma B</option>
+                <option value="5A">5º Ano — Turma A</option>
+            </select>
+        </label>
+
+        <label>
+            Descrição
+            <textarea id="descricao" required rows="4" maxlength="400" placeholder="Descreva a ocorrência com detalhes..."></textarea>
+        </label>
+
+        <!-- CAMPOS EXTRAS: SÓ DISCIPLINAR -->
+        <div id="campos-disciplinar" hidden>
+
+            <label>
+                Gravidade
+                <select id="gravidade">
+                    <option value="leve">Leve</option>
+                    <option value="media">Média</option>
+                    <option value="grave">Grave</option>
+                </select>
+            </label>
+
+            <label>
+                Providências tomadas
+                <textarea id="providencias" rows="3" maxlength="300" placeholder="Ex.: Conversa com os responsáveis, advertência..."></textarea>
+            </label>
+
+            <label class="campo-checkbox">
+                <input type="checkbox" id="acompanhamento">
+                Necessita acompanhamento contínuo
+            </label>
+
+        </div>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal btn-perigo">Registrar Ocorrência</button>
+        </div>
+
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+<script>
+    renderizarBarraLateralAdministrador("administrador-ocorrencias", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+
+</html>

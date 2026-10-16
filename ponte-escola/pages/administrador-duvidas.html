@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Central de Dúvidas</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-duvidas.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <!-- CABEÇALHO COM OS 2 BOTÕES -->
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Central de Dúvidas</h2>
+                    <p class="subtitulo-pagina">
+                        Informações gerais da escola para os pais
+                    </p>
+                </div>
+
+                <div class="cabecalho-acoes">
+                    <button id="btn-editar-geral" class="btn-secundario" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                        </svg>
+                        Editar Texto Geral
+                    </button>
+
+                    <button id="btn-novo-topico" class="btn-principal" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14"/><path d="M12 5v14"/>
+                        </svg>
+                        Novo Tópico
+                    </button>
+                </div>
+            </div>
+
+            <!-- TEXTO GERAL -->
+            <section class="texto-geral">
+                <p id="texto-geral-conteudo">
+                    Bem-vindo à Central de Dúvidas do PonteEscola.
+
+Aqui você encontra informações gerais sobre a escola, como horários, regras, contatos e procedimentos.
+
+Se não encontrar o que procura, entre em contato com a secretaria.
+                </p>
+            </section>
+
+            <!-- TÓPICOS -->
+            <div class="topicos-cabecalho">
+                <h3>Tópicos</h3>
+            </div>
+
+            <div class="lista-topicos" id="lista-topicos"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAIS (iguais) -->
+
+<dialog id="modal-texto-geral" class="modal">
+    <form id="form-texto-geral" class="modal-form">
+        <h3>Editar Texto Geral</h3>
+
+        <label>
+            Texto de apresentação
+            <textarea id="texto-geral-input" rows="10" maxlength="2000" placeholder="Escreva aqui o texto de apresentação..."></textarea>
+        </label>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar-geral" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Salvar</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="modal-topico" class="modal">
+    <form id="form-topico" class="modal-form">
+        <h3 id="modal-topico-titulo">Novo Tópico</h3>
+
+        <label>
+            Título do tópico
+            <input type="text" id="topico-titulo" required maxlength="80" placeholder="Ex: Recesso escolar">
+        </label>
+
+        <label>
+            Conteúdo
+            <textarea id="topico-conteudo" required rows="6" maxlength="1000" placeholder="Escreva aqui as informações..."></textarea>
+        </label>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar-topico" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Salvar Tópico</button>
+        </div>
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../components/utilitarios.js"></script>
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+<script src="../scripts/administrador-duvidas.js"></script>
+<script>
+    renderizarBarraLateralAdministrador("administrador-duvidas", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+
+</html>

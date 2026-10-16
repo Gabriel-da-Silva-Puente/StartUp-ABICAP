@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
     <link rel="stylesheet" href="../components/components.css">
-    <link rel="stylesheet" href="../styles/administrador.css">
+    <link rel="stylesheet" href="/styles/administrador-inicio.css">
 </head>
 
 <body>
@@ -24,7 +24,120 @@
 
         <section class="conteudo-pagina">
 
-            <!--  -->
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Olá, Ricardo Nunes! 👋</h2>
+                    <p id="subtitulo-inicio-data" class="subtitulo-pagina">
+                        Admininstre tudo em um só lugar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CARDS DE RESUMO -->
+            <section class="grade-resumo">
+
+                <div class="card-resumo azul">
+                    <strong id="stat-alunos">0</strong>
+                    <span>Alunos</span>
+                </div>
+
+                <div class="card-resumo azul">
+                    <strong id="stat-avisos">0</strong>
+                    <span>Avisos ativos</span>
+                </div>
+
+                <div class="card-resumo vermelho">
+                    <strong id="stat-ocorrencias">0</strong>
+                    <span>Ocorrências abertas</span>
+                </div>
+
+                <div class="card-resumo verde">
+                    <strong id="stat-turmas">0</strong>
+                    <span>Turmas</span>
+                </div>
+
+            </section>
+
+            <!-- ÁREA INFERIOR -->
+            <section class="grade-home">
+
+                <!-- OCORRÊNCIAS RECENTES -->
+                <article class="painel">
+                    <div class="cabecalho-painel">
+                        <div>
+                            <p class="sobrescrito">Últimos registros</p>
+                            <h3>Ocorrências recentes</h3>
+                        </div>
+                        <a href="../pages/administrador-ocorrencias.html">Ver todas</a>
+                    </div>
+
+                    <div class="lista-ocorrencias-resumo" id="lista-ocorrencias-resumo"></div>
+                </article>
+
+                <!-- PRECISA DE ATENÇÃO -->
+                <article class="painel">
+                    <div class="cabecalho-painel">
+                        <div>
+                            <p class="sobrescrito">Pendências</p>
+                            <h3>Precisa de atenção</h3>
+                        </div>
+                    </div>
+
+                    <div class="lista-pendencias">
+
+                        <a href="../pages/administrador-ocorrencias.html" class="linha-pendencia">
+                            <div class="linha-pendencia-icone vermelho">!</div>
+                            <div class="linha-pendencia-info">
+                                <p class="linha-pendencia-titulo">3 ocorrências abertas</p>
+                                <p class="linha-pendencia-desc">Precisam de acompanhamento</p>
+                            </div>
+                        </a>
+
+                        <a href="../pages/administrador-mensagens.html" class="linha-pendencia">
+                            <div class="linha-pendencia-icone azul">✉</div>
+                            <div class="linha-pendencia-info">
+                                <p class="linha-pendencia-titulo">5 mensagens não lidas</p>
+                                <p class="linha-pendencia-desc">De pais e responsáveis</p>
+                            </div>
+                        </a>
+
+                        <a href="../pages/administrador-autorizacoes.html" class="linha-pendencia">
+                            <div class="linha-pendencia-icone laranja">✓</div>
+                            <div class="linha-pendencia-info">
+                                <p class="linha-pendencia-titulo">12 autorizações pendentes</p>
+                                <p class="linha-pendencia-desc">Aguardando resposta dos pais</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ACESSO RÁPIDO -->
+            <section class="grade-acesso-rapido">
+
+                <a href="../pages/administrador-avisos.html" class="card-acesso">
+                    <img src="../assets/icons/megaphone.svg" alt="">
+                    <span>Avisos</span>
+                </a>
+
+                <a href="../pages/administrador-ocorrencias.html" class="card-acesso">
+                    <img src="../assets/icons/triangle-alert.svg" alt="">
+                    <span>Ocorrências</span>
+                </a>
+
+                <a href="../pages/administrador-mensagens.html" class="card-acesso">
+                    <img src="../assets/icons/mail.svg" alt="">
+                    <span>Mensagens</span>
+                </a>
+
+                <a href="../pages/administrador-autorizacoes.html" class="card-acesso">
+                    <img src="../assets/icons/file-check.svg" alt="">
+                    <span>Autorizações</span>
+                </a>
+
+            </section>
 
         </section>
 

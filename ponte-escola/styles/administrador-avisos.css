@@ -1,0 +1,165 @@
+/* ================================================================
+   PÁGINA DE AVISOS (ADMINISTRADOR)
+================================================================ */
+
+/* --- Cards de estatística --- */
+
+.grade-estatisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.card-estatistica {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-estatistica strong {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.card-estatistica p {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* --- Barra de ferramentas --- */
+
+.barra-ferramentas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.barra-ferramentas .campo-pesquisa {
+  flex: 1 1 280px;
+  margin-bottom: 0;
+}
+
+/* Select de turma (novo) */
+.select-turma {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.select-turma:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* --- Filtros de tipo --- */
+
+.filtros-avisos {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: #EAEEF4;
+  border-radius: var(--radius-md);
+}
+
+.filtros-avisos button {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background var(--transition), color var(--transition);
+}
+
+.filtros-avisos button:hover {
+  color: var(--color-primary);
+}
+
+.filtros-avisos button[aria-pressed="true"] {
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Lista de avisos --- */
+
+.lista-avisos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* --- Card de aviso individual --- */
+
+.card-aviso {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+}
+
+.card-aviso:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-aviso h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-aviso p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.card-aviso span {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
+
+@media (max-width: 640px) {
+  .grade-estatisticas {
+    grid-template-columns: 1fr;
+  }
+
+  .barra-ferramentas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .select-turma {
+    width: 100%;
+  }
+
+  .filtros-avisos {
+    width: 100%;
+  }
+
+  .filtros-avisos button {
+    flex: 1;
+    padding-inline: 0.5rem;
+  }
+}

@@ -1,0 +1,320 @@
+/* --- Barra de ferramentas --- */
+
+.barra-ferramentas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.barra-ferramentas .campo-pesquisa {
+  flex: 1 1 280px;
+  margin-bottom: 0;
+}
+
+.select-turma {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: border-color var(--transition);
+  flex-shrink: 0;
+}
+
+.select-turma:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* --- Filtros de tipo --- */
+
+.filtros-ocorrencias {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  background: #EAEEF4;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.filtros-ocorrencias button {
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.filtros-ocorrencias button:hover {
+  color: var(--color-primary);
+}
+
+.filtros-ocorrencias button[aria-pressed="true"] {
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Lista de ocorrências --- */
+
+.lista-ocorrencias {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* --- Card de ocorrência comum --- */
+
+.card-ocorrencia {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+}
+
+.card-ocorrencia:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-ocorrencia-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-ocorrencia-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-ocorrencia-aluno {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.card-ocorrencia-turma {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.card-ocorrencia-tipo {
+  padding: 0.15rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tipo-comportamental { background: #F3E8FF; color: #7C3AED; }
+.tipo-saude          { background: #FDECEE; color: var(--color-danger); }
+.tipo-acidente       { background: #FFF3E0; color: var(--color-warning); }
+.tipo-alimentacao    { background: #E6F6EA; color: var(--color-success); }
+.tipo-outro          { background: #F3F4F6; color: var(--color-text-muted); }
+
+.card-ocorrencia-descricao {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.card-ocorrencia-data {
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+}
+
+.card-ocorrencia-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-notificado   { background: #EBF2FC; color: var(--color-primary); }
+.status-resolvido    { background: #E6F6EA; color: var(--color-success); }
+.status-acompanhando { background: #FFF3E0; color: var(--color-warning); }
+
+.status-leitura {
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+}
+
+/* CARD DISCIPLINAR  */
+
+.card-ocorrencia.disciplinar {
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border-color: #FCA5A5;
+  background: #FFF5F5;
+}
+
+.card-ocorrencia-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: #FDECEE;
+  color: var(--color-danger);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #FCA5A5;
+}
+
+.card-ocorrencia-banner svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.card-ocorrencia-corpo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+/*  MODAL */
+
+.modal {
+  margin: auto;
+  width: min(520px, calc(100% - 2rem));
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(16, 24, 40, 0.25);
+}
+
+.modal::backdrop {
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.75rem;
+}
+
+.modal-form h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.modal-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.modal-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Checkbox (acompanhamento) */
+.campo-checkbox {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem !important;
+  cursor: pointer;
+}
+
+.campo-checkbox input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+
+@media (max-width: 640px) {
+  .barra-ferramentas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .select-turma {
+    width: 100%;
+  }
+
+  .filtros-ocorrencias {
+    width: 100%;
+  }
+
+  .filtros-ocorrencias button {
+    flex: 1;
+    padding-inline: 0.4rem;
+  }
+
+  .card-ocorrencia,
+  .card-ocorrencia-corpo {
+    flex-direction: column;
+  }
+
+  .card-ocorrencia-status {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}

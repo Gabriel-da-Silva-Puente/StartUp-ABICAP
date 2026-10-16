@@ -29,6 +29,24 @@
   height: 1.1rem;
 }
 
+.btn-perigo {
+  background: linear-gradient(var(--color-danger));
+}
+
+.btn-perigo:hover {
+  background: linear-gradient(var(--color-danger));
+  filter: brightness(0.95);
+}
+
+/* Ícones dentro de botões */
+.btn-principal svg,
+.btn-secundario svg,
+.btn-perigo svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
 /* CAMPO DE PESQUISA */
 .campo-pesquisa {
   display: flex;

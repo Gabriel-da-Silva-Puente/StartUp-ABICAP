@@ -3,7 +3,14 @@ function renderizarBarraTopoAdministrador(prefixo = "") {
     const topbar = document.querySelector(".barra-topo");
     if (!topbar) return;
 
-    const usuario = UsuariosServico.usuarioAtual();
+    const usuario = {
+        id: 1,
+        nome: "Ricardo Nunes",
+        iniciais: "RN",
+        perfil: "administrador"
+    };
+
+    // const usuario = UsuariosServico.usuarioAtual();
 
     topbar.innerHTML = `
         <div class="topo-esquerda">

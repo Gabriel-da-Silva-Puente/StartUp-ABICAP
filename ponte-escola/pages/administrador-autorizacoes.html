@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Autorizações</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-autorizacoes.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Autorizações</h2>
+                    <p id="subtitulo-autorizacoes" class="subtitulo-pagina">
+                        Gerencie as autorizações de passeios e eventos
+                    </p>
+                </div>
+
+                <button id="btn-nova-autorizacao" class="btn-principal" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="M12 5v14"/>
+                    </svg>
+                    Nova Autorização
+                </button>
+            </div>
+
+            <!-- LAYOUT: LISTA (esquerda) + DETALHE (direita) -->
+            <div class="autorizacoes-layout">
+
+                <div class="autorizacoes-lista" id="autorizacoes-lista"></div>
+
+                <div class="autorizacao-detalhe" id="autorizacao-detalhe">
+                    <div class="detalhe-vazio">
+                        <p>Selecione uma autorização para ver os detalhes</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL — NOVA AUTORIZAÇÃO -->
+<dialog id="modal-autorizacao" class="modal">
+    <form id="form-autorizacao" class="modal-form">
+
+        <h3>Nova Autorização</h3>
+
+        <label>
+            Nome do evento
+            <input type="text" id="evento-nome" required maxlength="80" placeholder="Ex: Passeio ao Zoológico">
+        </label>
+
+        <label>
+            Descrição
+            <textarea id="evento-descricao" required rows="3" maxlength="400" placeholder="Detalhes do evento, horários, instruções..."></textarea>
+        </label>
+
+        <div class="linha-dupla">
+            <label>
+                Data do evento
+                <input type="date" id="evento-data" required>
+            </label>
+
+            <label>
+                Prazo de resposta
+                <input type="date" id="evento-prazo" required>
+            </label>
+        </div>
+
+        <label>
+            Local
+            <input type="text" id="evento-local" maxlength="100" placeholder="Ex: Zoológico Municipal, Sorocaba">
+        </label>
+
+        <!-- TURMAS: múltipla escolha -->
+        <fieldset class="campo-turmas">
+            <legend>Turmas participantes</legend>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jI-A">
+                Jardim I — Turma A
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jI-B">
+                Jardim I — Turma B
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jII-A">
+                Jardim II — Turma A
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="jII-B">
+                Jardim II — Turma B
+            </label>
+
+            <label class="checkbox-turma">
+                <input type="checkbox" value="5A">
+                5º Ano — Turma A
+            </label>
+
+            <label class="checkbox-turma checkbox-todas">
+                <input type="checkbox" id="todas-turmas">
+                <strong>Todas as turmas</strong>
+            </label>
+        </fieldset>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Criar Autorização</button>
+        </div>
+
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+<script>
+    renderizarBarraLateralAdministrador("administrador-autorizacoes", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+
+</html>

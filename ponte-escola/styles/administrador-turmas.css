@@ -1,0 +1,147 @@
+/* ================================================================
+   PÁGINA DE TURMAS (ADMINISTRADOR)
+================================================================ */
+
+/* --- Lista de turmas --- */
+
+.lista-turmas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* --- Card de turma --- */
+
+.card-turma {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+
+.card-turma:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Avatar com iniciais da turma */
+.card-turma-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Informações da turma */
+.card-turma-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-turma-nome {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+
+.card-turma-professor {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Estatísticas da turma */
+.card-turma-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.card-turma-stat {
+  text-align: center;
+}
+
+.card-turma-stat strong {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}
+
+.card-turma-stat span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Alerta (ocorrências ou pendências) */
+.card-turma-alerta {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.card-turma-alerta.ocorrencia {
+  background: #FDECEE;
+  color: var(--color-danger);
+}
+
+.card-turma-alerta.pendencia {
+  background: #FFF3E0;
+  color: var(--color-warning);
+}
+
+/* --- Responsivo --- */
+
+@media (max-width: 860px) {
+  .card-turma {
+    flex-wrap: wrap;
+  }
+
+  .card-turma-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .barra-ferramentas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtros-turmas {
+    width: 100%;
+  }
+
+  .filtros-turmas button {
+    flex: 1;
+    padding-inline: 0.5rem;
+  }
+
+  .card-turma {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .card-turma-stats {
+    gap: 1rem;
+  }
+}

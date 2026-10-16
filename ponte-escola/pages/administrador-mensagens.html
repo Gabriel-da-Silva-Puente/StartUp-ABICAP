@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Mensagens</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-mensagens.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Mensagens</h2>
+                    <p id="subtitulo-mensagens" class="subtitulo-pagina">
+                        Conversas com os pais e responsáveis
+                    </p>
+                </div>
+
+                <button id="btn-nova-mensagem" class="btn-principal" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="M12 5v14"/>
+                    </svg>
+                    Nova Mensagem
+                </button>
+            </div>
+
+            <!-- FILTROS DE STATUS -->
+            <div class="filtros-mensagens" id="filtros-mensagens">
+                <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+                <button type="button" data-filtro="aberto" aria-pressed="false">Abertos</button>
+                <button type="button" data-filtro="andamento" aria-pressed="false">Em andamento</button>
+                <button type="button" data-filtro="resolvido" aria-pressed="false">Resolvidos</button>
+            </div>
+
+            <!-- LAYOUT: LISTA + CONVERSA -->
+            <div class="mensagens-layout">
+
+                <div class="mensagens-lista" id="mensagens-lista"></div>
+
+                <div class="mensagem-detalhe" id="mensagem-detalhe">
+                    <div class="detalhe-vazio">
+                        <p>Selecione uma conversa para ver os detalhes</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL — NOVA MENSAGEM -->
+<dialog id="modal-mensagem" class="modal">
+    <form id="form-mensagem" class="modal-form">
+
+        <h3>Nova Mensagem</h3>
+
+        <label>
+            Para (responsável)
+            <select id="destinatario" required>
+                <option value="">Selecione um responsável</option>
+                <option value="1">Carlos Silva (Sophia — Jd II-A)</option>
+                <option value="2">Márcia Andrade (Marcos — Jd II-A)</option>
+                <option value="3">Fernanda Melo (Sofia — Jd I-B)</option>
+                <option value="4">João Nascimento (Pedro — Jd II-A)</option>
+                <option value="5">Ricardo Andrade (Beatriz — Jd II-A)</option>
+            </select>
+        </label>
+
+        <label>
+            Assunto
+            <input type="text" id="assunto" required maxlength="100" placeholder="Ex: Sobre a reunião de pais">
+        </label>
+
+        <label>
+            Mensagem
+            <textarea id="mensagem" required rows="5" maxlength="500" placeholder="Escreva sua mensagem..."></textarea>
+        </label>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal">Enviar</button>
+        </div>
+
+    </form>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+<script>
+    renderizarBarraLateralAdministrador("administrador-mensagens", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+
+</html>
