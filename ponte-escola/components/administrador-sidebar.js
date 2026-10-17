@@ -49,10 +49,7 @@ function renderizarBarraLateralAdministrador(paginaAtual, prefixo = "") {
                 <span>Calendário</span>
             </a>
 
-            <a href="${prefixo}pages/administrador-indicadores.html" class="${paginaAtual === "administrador-indicadores" ? "ativo" : ""}">
-                <img src="${prefixo}assets/icons/chart-line.svg" alt="" class="lateral-icone">
-                <span>Indicadores</span>
-            </a>
+
 
             <a href="${prefixo}pages/administrador-duvidas.html" class="${paginaAtual === "administrador-duvidas" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/circle-question-mark.svg" alt="" class="lateral-icone">
