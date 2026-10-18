@@ -89,6 +89,79 @@
 
 </div>
 
+<dialog id="modal-aviso" class="modal">
+    <form id="form-aviso" class="modal-form">
+        
+        <!-- CABEÇALHO DO MODAL (Título + X) -->
+        <div class="modal-cabecalho">
+            <h3>Novo Aviso</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- CATEGORIA (Botões) -->
+        <div class="campo-grupo">
+            <label>Categoria</label>
+            <div class="botoes-categoria" id="botoes-categoria">
+                <button type="button" class="btn-categoria" data-valor="comunicado">Comunicado</button>
+                <button type="button" class="btn-categoria ativo" data-valor="evento">Evento</button>
+            </div>
+            <input type="hidden" id="aviso-tipo" value="evento">
+        </div>
+
+        <!-- TÍTULO -->
+        <div class="campo-grupo">
+            <label for="aviso-titulo">Título</label>
+            <input type="text" id="aviso-titulo" required maxlength="80" placeholder="Ex: Reunião de pais — outubro">
+        </div>
+
+        <!-- DESCRIÇÃO -->
+        <div class="campo-grupo">
+            <label for="aviso-mensagem">Descrição</label>
+            <textarea id="aviso-mensagem" required rows="4" maxlength="500" placeholder="Descreva os detalhes do aviso para os pais..."></textarea>
+        </div>
+
+        <!-- LINHA DUPLA (Turma + Data) -->
+        <div class="linha-dupla">
+            <div class="campo-grupo">
+                <label for="aviso-turma">Turma</label>
+                <select id="aviso-turma" required>
+                    <option value="jII-A">Jardim II — Turma A</option>
+                    <option value="jII-B">Jardim II — Turma B</option>
+                    <option value="jI-A">Jardim I — Turma A</option>
+                </select>
+            </div>
+            <div class="campo-grupo">
+                <label for="aviso-data">Data (opcional)</label>
+                <input type="date" id="aviso-data">
+            </div>
+        </div>
+
+        <!-- ANEXO -->
+        <div class="campo-grupo">
+            <label for="aviso-anexo">Anexo (opcional)</label>
+            <label class="campo-anexo" for="aviso-anexo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                </svg>
+                <span>Clique para selecionar um arquivo</span>
+                <input type="file" id="aviso-anexo" hidden>
+            </label>
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" id="btn-cancelar-aviso">Cancelar</button>
+            <button type="submit" class="btn-principal">Publicar Aviso</button>
+        </div>
+
+    </form>
+</dialog>
+
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
 <script src="/components/sidebar.js"></script>
@@ -97,6 +170,8 @@
     renderizarBarraLateral("avisos", "/");
     renderizarBarraTopo("/");
 </script>
+
+<script src="../scripts/avisos.js"></script>
 
 </body>
 
