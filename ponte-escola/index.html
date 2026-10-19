@@ -52,10 +52,27 @@
 
     </main>
 
-<script>
-    document.getElementById('stat-atividades').textContent = AtividadeService.listar().length;
-</script>
+    <script>
+        // PERSISTÊNCIA DE SESSÃO
+       
+
+        // 1. Professor
+        document.getElementById('btn-login-professor').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 4);
+            localStorage.setItem('usuarioLogadoTipo', 'professor');
+     
+        });
+
+        // 2. Admin
+        document.getElementById('btn-login-coordenador').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 1);
+            localStorage.setItem('usuarioLogadoTipo', 'admin');
+            // O onclick no HTML já faz o redirecionamento para a página.
+        });
+
+        // 3. RESPONSAVEL SERA ADICIONADO NO FUTURO
+        
+    </script>
 
 </body>
-
 </html>
