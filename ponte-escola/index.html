@@ -39,7 +39,7 @@
                     <p class="login-card-desc">Gestão pedagógica completa</p>
                 </button>
 
-                <button id="btn-login-pai-responsavel">
+                <button id="btn-login-pai-responsavel" onclick="window.location.href='./pages/responsavel-inicio.html'">
                     <img src="./assets/icons/users.svg" alt="Responsável">
                     <p class="login-card-titulo">Responsável</p>
                     <p class="login-card-desc">Acompanhe seu filho</p>
@@ -52,12 +52,7 @@
 
     </main>
 
-<<<<<<< HEAD
-=======
     <script>
-        // PERSISTÊNCIA DE SESSÃO
-       
-
         // 1. Professor
         document.getElementById('btn-login-professor').addEventListener('click', () => {
             localStorage.setItem('usuarioLogadoId', 4);
@@ -76,6 +71,5 @@
         
     </script>
 
->>>>>>> bc4d0d5ce5145dec40da3b9829a4dd929c520dc8
 </body>
 </html>
