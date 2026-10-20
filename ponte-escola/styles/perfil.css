@@ -5,8 +5,6 @@
   align-items: start;
 }
 
-/* --- Card do avatar (esquerda) --- */
-
 .perfil-card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -52,15 +50,11 @@
   margin: 0;
 }
 
-/* --- Conteúdo (direita) --- */
-
 .perfil-conteudo {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
-
-/* --- Seção --- */
 
 .perfil-secao {
   background: var(--color-white);
@@ -75,8 +69,6 @@
   font-weight: 600;
   margin-bottom: 1.25rem;
 }
-
-/* --- Campo --- */
 
 .perfil-campo {
   display: flex;
@@ -110,8 +102,6 @@
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px var(--color-primary-light);
 }
-
-/* --- Preferência (toggle) --- */
 
 .perfil-preferencia {
   display: flex;
@@ -161,15 +151,11 @@
   transform: translateX(22px);
 }
 
-/* --- Ações --- */
-
 .perfil-acoes {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
 }
-
-/* --- Responsivo --- */
 
 @media (max-width: 860px) {
   .perfil-layout {

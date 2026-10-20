@@ -34,12 +34,11 @@
                 </div>
             </div>
 
-            <!-- CARDS ESTATISTICAS -->
             <section class="grade-estatisticas" aria-label="Resumo da turma">
 
-                <a class="card-estatistica" href="/pages/inicio.html">
+                <a class="card-estatistica" href="avisos.html">
                     <div class="circulo-icone" id="circulo-avisos">
-                    <img src="/assets/icons/megaphone.svg" alt="Avisos" class="icone-estatistica-avisos">
+                    <img src="../assets/icons/megaphone.svg" alt="Avisos" class="icone-estatistica-avisos">
                     </div>
                     <div>
                         <span>Avisos ativos</span>
@@ -47,9 +46,9 @@
                     </div>
                 </a>
 
-                <a class="card-estatistica" href="">
+                <a class="card-estatistica" href="autorizacoes.html">
                     <div class="circulo-icone">
-                        <img src="/assets/icons/clock.svg" alt="Pendencias" class="icone-estatistica-pendencias">
+                        <img src="../assets/icons/clock.svg" alt="Pendencias" class="icone-estatistica-pendencias">
                     </div>
                     <div>
                         <span>Pendências</span>
@@ -57,9 +56,9 @@
                     </div>
                 </a>
 
-                <a class="card-estatistica" href="">
+                <a class="card-estatistica" href="ocorrencias.html">
                     <div class="circulo-icone">
-                    <img src="/assets/icons/triangle-alert.svg" alt="Ocorrencias" class="icone-estatistica-ocorrencias">
+                    <img src="../assets/icons/triangle-alert.svg" alt="Ocorrencias" class="icone-estatistica-ocorrencias">
                     </div>
                     <div>
                         <span>Ocorrências</span>
@@ -67,9 +66,9 @@
                     </div>
                 </a>
 
-                <a class="card-estatistica" href="">
+                <a class="card-estatistica" href="atividades.html">
                     <div class="circulo-icone">
-                    <img src="/assets/icons/clipboard-list.svg" alt="Atividades" class="icone-estatistica-atividades">
+                    <img src="../assets/icons/clipboard-list.svg" alt="Atividades" class="icone-estatistica-atividades">
                     </div>
                     <div>
                         <span>Atividades</span>
@@ -79,7 +78,6 @@
 
             </section>
 
-            <!-- AVISOS -->
             <section class="grade-home">
 
                 <article class="painel painel-grande">
@@ -88,7 +86,7 @@
                             <p class="sobrescrito">Comunicação</p>
                             <h3>Últimos avisos</h3>
                         </div>
-                        <a href="./pages/avisos.html">Ver todos</a>
+                        <a href="avisos.html">Ver todos</a>
                     </div>
                     <div id="lista-avisos-home" class="lista-previa-avisos"></div>
                 </article>
@@ -101,11 +99,12 @@
 
 </div>
 
-<script src="/components/sidebar.js"></script>
-<script src="/components/topbar.js"></script>
+<script src="../services/atividadeService.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
 <script>
-    renderizarBarraLateral("inicio", "/");
-    renderizarBarraTopo("/");
+    renderizarBarraLateral("inicio", "../");
+    renderizarBarraTopo("../");
     document.getElementById('stat-atividades').textContent = AtividadeService.listar().length;
 </script>
 

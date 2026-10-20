@@ -5,17 +5,12 @@
   align-items: start;
 }
 
-/* ================================================================
-   LISTA DE PASSEIOS (esquerda)
-================================================================ */
-
 .autorizacoes-lista {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-/* Card de passeio na lista */
 .card-passeio {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -35,7 +30,6 @@
   background: var(--color-primary-light);
 }
 
-/* Topo do card (título + status) */
 .card-passeio-topo {
   display: flex;
   align-items: flex-start;
@@ -52,7 +46,6 @@
   line-height: 1.3;
 }
 
-/* Status */
 .status-passeio {
   padding: 0.15rem 0.6rem;
   border-radius: var(--radius-pill);
@@ -64,14 +57,12 @@
 .status-passeio.aberto    { background: #E6F6EA; color: var(--color-success); }
 .status-passeio.encerrado { background: #F3F4F6; color: var(--color-text-muted); }
 
-/* Data */
 .card-passeio-data {
   font-size: 0.8125rem;
   color: var(--color-text-muted);
   margin-bottom: 0.5rem;
 }
 
-/* Estatísticas do card */
 .card-passeio-stats {
   display: flex;
   gap: 0.75rem;
@@ -83,10 +74,6 @@
 .stat-no      { color: var(--color-danger); }
 .stat-pendente { color: var(--color-warning); }
 
-/* ================================================================
-   DETALHE (direita)
-================================================================ */
-
 .autorizacao-detalhe {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -95,7 +82,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Estado vazio */
 .detalhe-vazio {
   padding: 3rem 1rem;
   text-align: center;
@@ -103,7 +89,6 @@
   font-size: 0.9375rem;
 }
 
-/* Cabeçalho do detalhe */
 .detalhe-cabecalho {
   margin-bottom: 1.25rem;
 }
@@ -130,7 +115,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Cards de estatística (3 colunas) */
 .detalhe-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -161,7 +145,6 @@
   opacity: 0.9;
 }
 
-/* Barra de progresso */
 .barra-progresso {
   height: 8px;
   background: #E5E7EB;
@@ -181,7 +164,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Lista de pais */
 .detalhe-pais-titulo {
   font-size: 1rem;
   font-weight: 600;
@@ -234,72 +216,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-/* O JS carrega na aba da esquerda:
-<div class="card-passeio ativo" data-id="1">
-    <div class="card-passeio-topo">
-        <p class="card-passeio-titulo">Passeio ao Zoológico de Sorocaba</p>
-        <span class="status-passeio aberto">Aberto</span>
-    </div>
-    <p class="card-passeio-data">📅 15/10/2026</p>
-    <div class="card-passeio-stats">
-        <span class="stat-ok">14 ✓</span>
-        <span class="stat-no">2 ✕</span>
-        <span class="stat-pendente">6 pendente</span>
-    </div>
-</div>
-
-
-Na aba da direita:
-<div class="detalhe-cabecalho">
-    <h3 class="detalhe-titulo">Passeio ao Zoológico de Sorocaba</h3>
-    <div class="detalhe-meta">
-        <span>📅 15/10/2026</span>
-        <span>👥 22 alunos</span>
-        <span>📍 Sorocaba, SP</span>
-    </div>
-</div>
-
-<p class="detalhe-descricao">Visita educativa ao Zoológico Municipal. Saída às 8h...</p>
-
-<div class="detalhe-stats">
-    <div class="stat-card verde">
-        <strong>14</strong>
-        <span>Autorizados</span>
-    </div>
-    <div class="stat-card vermelho">
-        <strong>2</strong>
-        <span>Recusados</span>
-    </div>
-    <div class="stat-card laranja">
-        <strong>6</strong>
-        <span>Pendentes</span>
-    </div>
-</div>
-
-<div class="barra-progresso">
-    <div class="verde" style="width: 64%"></div>
-    <div class="vermelho" style="width: 9%"></div>
-</div>
-<p class="progresso-legenda">64% autorizado</p>
-
-<h4 class="detalhe-pais-titulo">Resposta dos pais</h4>
-<div class="lista-pais">
-    <div class="linha-pai">
-        <span class="linha-pai-nome">Beatriz Ferreira</span>
-        <span class="status-pai autorizado">Autorizado</span>
-    </div>
-    <div class="linha-pai">
-        <span class="linha-pai-nome">Marcos Andrade</span>
-        <span class="status-pai autorizado">Autorizado</span>
-    </div>
-    <div class="linha-pai">
-        <span class="linha-pai-nome">Pedro Nascimento</span>
-        <span class="status-pai recusado">Recusado</span>
-    </div>
-    <div class="linha-pai">
-        <span class="linha-pai-nome">Sofia Melo</span>
-        <span class="status-pai pendente">Pendente</span>
-    </div>
-</div> */

@@ -1,13 +1,9 @@
-
-/* --- Layout: sidebar + calendário --- */
-
 .calendario-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 1.5rem;
   align-items: start;
 }
-
 
 .calendario-sidebar {
   background: var(--color-white);
@@ -20,7 +16,6 @@
   gap: 1.25rem;
 }
 
-/* Mês atual */
 .sidebar-mes {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border);
@@ -41,7 +36,6 @@
   color: var(--color-text);
 }
 
-/* Dia selecionado */
 .sidebar-dia-selecionado {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border);
@@ -62,7 +56,6 @@
   color: var(--color-primary);
 }
 
-/* Eventos do dia */
 .sidebar-eventos {
   flex: 1;
 }
@@ -88,7 +81,6 @@
   margin: 0;
 }
 
-/* Card de evento na sidebar */
 .card-evento-sidebar {
   padding: 0.65rem 0.85rem;
   border-radius: var(--radius-md);
@@ -102,12 +94,29 @@
   background: var(--color-primary-light);
 }
 
-.card-evento-sidebar.prova     { border-left-color: var(--color-danger); }
-.card-evento-sidebar.reuniao   { border-left-color: var(--color-primary); }
-.card-evento-sidebar.evento    { border-left-color: #7C3AED; }
-.card-evento-sidebar.feriado   { border-left-color: var(--color-success); }
-.card-evento-sidebar.atividade { border-left-color: var(--color-warning); }
-.card-evento-sidebar.outro     { border-left-color: var(--color-text-faint); }
+.card-evento-sidebar.prova {
+  border-left-color: var(--color-danger);
+}
+
+.card-evento-sidebar.reuniao {
+  border-left-color: var(--color-primary);
+}
+
+.card-evento-sidebar.evento {
+  border-left-color: #7C3AED;
+}
+
+.card-evento-sidebar.feriado {
+  border-left-color: var(--color-success);
+}
+
+.card-evento-sidebar.atividade {
+  border-left-color: var(--color-warning);
+}
+
+.card-evento-sidebar.outro {
+  border-left-color: var(--color-text-faint);
+}
 
 .card-evento-titulo {
   font-size: 0.8125rem;
@@ -121,7 +130,6 @@
   color: var(--color-text-muted);
 }
 
-
 .calendario-principal {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -130,7 +138,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Cabeçalho do mês */
 .calendario-cabecalho {
   display: flex;
   align-items: center;
@@ -169,7 +176,6 @@
   height: 18px;
 }
 
-/* Dias da semana */
 .calendario-dias-semana {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -187,14 +193,12 @@
   padding: 0.5rem 0;
 }
 
-/* Grade de dias */
 .calendario-grade {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
 }
 
-/* Dia */
 .dia {
   aspect-ratio: 1;
   display: flex;
@@ -218,14 +222,12 @@
   border-color: var(--color-primary);
 }
 
-/* Dia vazio (antes/depois do mês) */
 .dia.vazio {
   background: transparent;
   cursor: default;
   pointer-events: none;
 }
 
-/* Dia selecionado */
 .dia.selecionado {
   background: var(--color-primary);
   color: var(--color-white);
@@ -233,13 +235,11 @@
   font-weight: 700;
 }
 
-/* Dia hoje */
 .dia.hoje {
   border-color: var(--color-primary);
   font-weight: 700;
 }
 
-/* Dia com evento */
 .dia.com-evento::after {
   content: '';
   position: absolute;
@@ -254,14 +254,12 @@
   background: var(--color-white);
 }
 
-/* Múltiplos eventos */
 .dia.com-multiplos-eventos::after {
   content: '';
   width: 18px;
   height: 4px;
   border-radius: var(--radius-pill);
 }
-
 
 .modal {
   margin: auto;
@@ -329,7 +327,6 @@
   gap: 1rem;
 }
 
-/* Turmas */
 .campo-turmas {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -377,7 +374,6 @@
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
-
 
 @media (max-width: 900px) {
   .calendario-layout {

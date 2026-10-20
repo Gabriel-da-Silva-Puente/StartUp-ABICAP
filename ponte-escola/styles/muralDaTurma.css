@@ -1,12 +1,9 @@
-/* --- Grade de posts --- */
-
 .grade-posts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 
-/* --- Card de post --- */
 
 .card-post {
   background: var(--color-white);
@@ -93,25 +90,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-
-
-/* JS do post: 
-<div class="card-post">
-    <img src="foto.jpg" alt="Publicação">
-    <div class="card-post-corpo">
-        <div class="card-post-autor">
-            <div class="card-post-avatar">AC</div>
-            <div>
-                <p class="card-post-nome">Profa. Ana Carolina</p>
-                <p class="card-post-data">12/09/2026</p>
-            </div>
-        </div>
-        <p class="card-post-legenda">Atividade de arte com folhas do jardim!</p>
-        <div class="card-post-acoes">
-            <span>♡ 18</span>
-            <span>💬 2</span>
-        </div>
-    </div>
-</div> */

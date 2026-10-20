@@ -45,7 +45,7 @@ function renderizarBarraLateral(paginaAtual, prefixo = "") {
                 <img src="${prefixo}assets/icons/users.svg" alt="" class="lateral-icone">
                 <span>Perfil</span>
             </a>
-            <button id="btn-sair" onclick="window.location.href='/index.html'">
+            <button id="btn-sair" onclick="window.location.href='${prefixo}index.html'">
                 <img src="${prefixo}assets/icons/log-out.svg" alt="" class="lateral-icone">
                 <span>Sair</span>
             </button>

@@ -1,12 +1,8 @@
-/* --- Grade de dias --- */
-
 .cardapio-semana {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
 }
-
-/* --- Card de dia --- */
 
 .card-dia {
   background: var(--color-white);
@@ -43,7 +39,6 @@
   font-weight: 500;
 }
 
-/* Refeições */
 .card-dia-refeicoes {
   padding: 1rem 1.25rem;
   display: flex;
@@ -76,8 +71,6 @@
   line-height: 1.4;
   margin: 0;
 }
-
-
 
 .modal {
   margin: auto;
@@ -138,7 +131,6 @@
   box-shadow: 0 0 0 3px var(--color-primary-light);
 }
 
-/* Fieldset por dia */
 .campo-dia {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -156,7 +148,6 @@
   letter-spacing: 0.05em;
 }
 
-/* Ações */
 .modal-acoes {
   display: flex;
   justify-content: flex-end;
@@ -167,7 +158,6 @@
   background: var(--color-white);
   padding-top: 0.75rem;
 }
-
 
 @media (max-width: 640px) {
   .cardapio-semana {

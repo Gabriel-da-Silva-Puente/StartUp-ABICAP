@@ -1,5 +1,3 @@
-/* --- Filtros de status --- */
-
 .filtros-mensagens {
   display: flex;
   gap: 0.25rem;
@@ -32,8 +30,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* --- Layout master-detail --- */
-
 .mensagens-layout {
   display: grid;
   grid-template-columns: 340px 1fr;
@@ -41,15 +37,12 @@
   align-items: start;
 }
 
-
-
 .mensagens-lista {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-/* Card de conversa */
 .card-conversa {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -73,7 +66,6 @@
   background: #F5F8FD;
 }
 
-/* Topo: nome + data */
 .card-conversa-topo {
   display: flex;
   align-items: center;
@@ -91,7 +83,6 @@
   gap: 0.4rem;
 }
 
-/* Bolinha de não lida */
 .card-conversa-bolinha {
   width: 8px;
   height: 8px;
@@ -106,7 +97,6 @@
   flex-shrink: 0;
 }
 
-/* Assunto */
 .card-conversa-assunto {
   font-size: 0.8125rem;
   font-weight: 500;
@@ -117,7 +107,6 @@
   white-space: nowrap;
 }
 
-/* Prévia */
 .card-conversa-previa {
   font-size: 0.75rem;
   color: var(--color-text-muted);
@@ -127,7 +116,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Status */
 .status-conversa {
   display: inline-block;
   padding: 0.15rem 0.6rem;
@@ -136,11 +124,20 @@
   font-weight: 600;
 }
 
-.status-conversa.aberto     { background: #FFF3E0; color: var(--color-warning); }
-.status-conversa.andamento  { background: #EBF2FC; color: var(--color-primary); }
-.status-conversa.resolvido  { background: #E6F6EA; color: var(--color-success); }
+.status-conversa.aberto {
+  background: #FFF3E0;
+  color: var(--color-warning);
+}
 
+.status-conversa.andamento {
+  background: #EBF2FC;
+  color: var(--color-primary);
+}
 
+.status-conversa.resolvido {
+  background: #E6F6EA;
+  color: var(--color-success);
+}
 
 .mensagem-detalhe {
   background: var(--color-white);
@@ -165,7 +162,6 @@
   flex: 1;
 }
 
-/* Cabeçalho da conversa */
 .conversa-cabecalho {
   padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--color-border);
@@ -210,7 +206,6 @@
   color: var(--color-text-muted);
 }
 
-/* Corpo (mensagens) */
 .conversa-corpo {
   flex: 1;
   overflow-y: auto;
@@ -220,7 +215,6 @@
   gap: 1rem;
 }
 
-/* Mensagem */
 .mensagem {
   display: flex;
   gap: 0.75rem;
@@ -236,7 +230,6 @@
   flex-direction: row-reverse;
 }
 
-/* Avatar */
 .mensagem-avatar {
   width: 36px;
   height: 36px;
@@ -259,7 +252,6 @@
   color: var(--color-white);
 }
 
-/* Bolha */
 .mensagem-bolha {
   border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
@@ -297,7 +289,6 @@
   opacity: 0.7;
 }
 
-/* Resolvido */
 .conversa-resolvida {
   text-align: center;
   padding: 0.75rem;
@@ -312,7 +303,6 @@
   font-weight: 600;
 }
 
-/* Rodapé (responder) */
 .conversa-rodape {
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--color-border);
@@ -352,10 +342,6 @@
 .btn-enviar:hover {
   background: var(--color-primary-dark);
 }
-
-/* ================================================================
-   MODAL — NOVA MENSAGEM
-================================================================ */
 
 .modal {
   margin: auto;
@@ -423,10 +409,6 @@
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
-
-/* ================================================================
-   RESPONSIVO
-================================================================ */
 
 @media (max-width: 900px) {
   .mensagens-layout {

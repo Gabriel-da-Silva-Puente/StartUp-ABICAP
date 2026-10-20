@@ -99,6 +99,7 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<script src="../services/atividadeService.js"></script>
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
 <script>
@@ -133,7 +134,7 @@
     function renderizarResumo(todas) {
         const confirmadas = todas.filter(a => a.lidas === a.total).length;
 
-        document.getElementById('subtitulo-atividades').textContent =
+        document.getElementById('subtitulo-atividades-turma').textContent =
             `${todas.length} ${todas.length === 1 ? 'atividade' : 'atividades'} · Jardim II — Turma A`;
         document.getElementById('stat-total').textContent = todas.length;
         document.getElementById('stat-aguardando').textContent = todas.length - confirmadas;

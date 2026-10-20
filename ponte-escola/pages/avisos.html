@@ -39,7 +39,6 @@
                 </button>
             </div>
 
-            <!-- CARDS ESTATISTICAS -->
             <section class="grade-estatisticas" aria-label="Resumo avisos">
 
                 <div class="card-estatistica">
@@ -59,7 +58,6 @@
 
             </section>
 
-            <!-- AREA DE AVISOS -->
             <section class="grade-avisos">
 
                 <div class="barra-ferramentas">
@@ -92,7 +90,6 @@
 <dialog id="modal-aviso" class="modal">
     <form id="form-aviso" class="modal-form">
         
-        <!-- CABEÇALHO DO MODAL (Título + X) -->
         <div class="modal-cabecalho">
             <h3>Novo Aviso</h3>
             <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
@@ -103,7 +100,6 @@
             </button>
         </div>
 
-        <!-- CATEGORIA (Botões) -->
         <div class="campo-grupo">
             <label>Categoria</label>
             <div class="botoes-categoria" id="botoes-categoria">
@@ -113,19 +109,16 @@
             <input type="hidden" id="aviso-tipo" value="evento">
         </div>
 
-        <!-- TÍTULO -->
         <div class="campo-grupo">
             <label for="aviso-titulo">Título</label>
             <input type="text" id="aviso-titulo" required maxlength="80" placeholder="Ex: Reunião de pais — outubro">
         </div>
 
-        <!-- DESCRIÇÃO -->
         <div class="campo-grupo">
             <label for="aviso-mensagem">Descrição</label>
             <textarea id="aviso-mensagem" required rows="4" maxlength="500" placeholder="Descreva os detalhes do aviso para os pais..."></textarea>
         </div>
 
-        <!-- LINHA DUPLA (Turma + Data) -->
         <div class="linha-dupla">
             <div class="campo-grupo">
                 <label for="aviso-turma">Turma</label>
@@ -141,7 +134,6 @@
             </div>
         </div>
 
-        <!-- ANEXO -->
         <div class="campo-grupo">
             <label for="aviso-anexo">Anexo (opcional)</label>
             <label class="campo-anexo" for="aviso-anexo">
@@ -153,7 +145,6 @@
             </label>
         </div>
 
-        <!-- AÇÕES -->
         <div class="modal-acoes">
             <button type="button" class="btn-secundario" id="btn-cancelar-aviso">Cancelar</button>
             <button type="submit" class="btn-principal">Publicar Aviso</button>
@@ -164,21 +155,15 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
-<!-- COMPONENTS -->
-
-<script src="/components/sidebar.js"></script>
-<script src="/components/topbar.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/topbar.js"></script>
 <script>
-    renderizarBarraLateral("avisos", "/");
-    renderizarBarraTopo("/");
+    renderizarBarraLateral("avisos", "../");
+    renderizarBarraTopo("../");
 </script>
-
-<!-- FUNCOES -->
 
 <script src="../scripts/avisos.js"></script>
 
-
-<!-- SUPABASE LINK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../services/supabase.js"></script>
 
