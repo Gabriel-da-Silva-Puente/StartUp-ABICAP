@@ -52,6 +52,30 @@
 
     </main>
 
-</body>
+<<<<<<< HEAD
+=======
+    <script>
+        // PERSISTÊNCIA DE SESSÃO
+       
 
+        // 1. Professor
+        document.getElementById('btn-login-professor').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 4);
+            localStorage.setItem('usuarioLogadoTipo', 'professor');
+     
+        });
+
+        // 2. Admin
+        document.getElementById('btn-login-coordenador').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 1);
+            localStorage.setItem('usuarioLogadoTipo', 'admin');
+            // O onclick no HTML já faz o redirecionamento para a página.
+        });
+
+        // 3. RESPONSAVEL SERA ADICIONADO NO FUTURO
+        
+    </script>
+
+>>>>>>> bc4d0d5ce5145dec40da3b9829a4dd929c520dc8
+</body>
 </html>
