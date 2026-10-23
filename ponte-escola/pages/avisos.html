@@ -155,17 +155,29 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/avisoService.js"></script>
+
+<!-- Services  -->
+<script src="../scripts/avisos.js"></script>
+
+
+<!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
+
+<!-- Inicialização da página -->
 <script>
     renderizarBarraLateral("avisos", "../");
     renderizarBarraTopo("../");
 </script>
-
-<script src="../scripts/avisos.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../services/supabase.js"></script>
 
 </body>
 

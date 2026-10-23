@@ -27,7 +27,7 @@
 
             <div class="cabecalho-pagina">
                 <div>
-                    <h2>Olá, Ana! 👋</h2>
+                    <h2 id="saudacao-inicio">Olá! 👋</h2>
                     <p id="subtitulo-inicio-data" class="subtitulo-pagina">
                         Acompanhe a comunicação e as atividades da sua turma em um só lugar.
                     </p>
@@ -99,7 +99,7 @@
 
 </div>
 
-<<!-- Supabase -->
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <!--  Arquivo que cria busca para o supabase 'banco'  -->
@@ -114,6 +114,7 @@
 <script src="../components/topbar.js"></script>
 
 <!-- Inicialização da página -->
+<script src="../scripts/inicio.js"></script>
 <script>
     renderizarBarraLateral("inicio", "../");
     renderizarBarraTopo("../");
