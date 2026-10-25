@@ -310,6 +310,23 @@
   border-top: 1px solid #E5E7EB;
 }
 
+/* MODAL */
+dialog {
+    margin: auto !important; 
+    position: fixed;         
+    top: 0; bottom: 0; 
+    left: 0; right: 0;
+    height: fit-content;     
+    max-height: 90vh;        
+    overflow-y: auto;        
+    z-index: 1000;
+}
+
+dialog::backdrop {
+    background: rgba(17, 24, 39, 0.45);
+    backdrop-filter: blur(2px);
+}
+
 /* Responsivo */
 @media (max-width: 600px) {
   .linha-dupla {

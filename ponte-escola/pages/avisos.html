@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PonteEscola — Início</title>
+    <title>PonteEscola — Avisos</title>
 
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
     <link rel="stylesheet" href="../components/components.css">
     <link rel="stylesheet" href="../styles/avisos.css">
-
 </head>
 
 <body>
@@ -40,22 +39,18 @@
             </div>
 
             <section class="grade-estatisticas" aria-label="Resumo avisos">
-
                 <div class="card-estatistica">
                     <strong id="stat-total-avisos">0</strong>
                     <p>Total enviados</p>
                 </div>
-
                 <div class="card-estatistica">
                     <strong id="stat-aguardando">0</strong>
                     <p>Aguardando leitura</p>
                 </div>
-
                 <div class="card-estatistica">
                     <strong id="stat-confirmados">0</strong>
                     <p>Confirmados</p>
                 </div>
-
             </section>
 
             <section class="grade-avisos">
@@ -66,14 +61,10 @@
                         <input type="search" id="busca-avisos" placeholder="Buscar avisos..." aria-label="Buscar avisos">
                     </div>
 
-                    <div class="filtros-avisos"id="filtros-avisos">
-
+                    <div class="filtros-avisos" id="filtros-avisos">
                         <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
-
                         <button type="button" data-filtro="comunicado" aria-pressed="false">Comunicado</button>
-
                         <button type="button" data-filtro="evento" aria-pressed="false">Evento</button>
-
                     </div>
                 </div>
 
@@ -87,6 +78,7 @@
 
 </div>
 
+<!-- MODAL DE CRIAR AVISO -->
 <dialog id="modal-aviso" class="modal">
     <form id="form-aviso" class="modal-form">
         
@@ -123,9 +115,7 @@
             <div class="campo-grupo">
                 <label for="aviso-turma">Turma</label>
                 <select id="aviso-turma" required>
-                    <option value="jII-A">Jardim II — Turma A</option>
-                    <option value="jII-B">Jardim II — Turma B</option>
-                    <option value="jI-A">Jardim I — Turma A</option>
+                    <option value="">Carregando turmas...</option>
                 </select>
             </div>
             <div class="campo-grupo">
@@ -153,32 +143,69 @@
     </form>
 </dialog>
 
+<!-- MODAL DE DETALHES DO AVISO -->
+<dialog id="modal-detalhe-aviso" class="modal-detalhe">
+    <div class="detalhe-header">
+        <div class="detalhe-header-info">
+            <span id="detalhe-tipo" class="badge-tipo badge-comunicado" style="width: fit-content;">Comunicado</span>
+            <h2 id="detalhe-titulo">Título do Aviso</h2>
+            <div class="detalhe-meta">
+                <span>📅 <span id="detalhe-data">10/09/2026</span></span>
+                <span>👥 <span id="detalhe-turma">Jardim II — Turma A</span></span>
+            </div>
+        </div>
+        <button type="button" class="modal-fechar" id="btn-fechar-detalhe" aria-label="Fechar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="detalhe-body">
+        <p id="detalhe-descricao">Descrição do aviso...</p>
+    </div>
+
+    <div class="detalhe-footer">
+        <h4>Confirmações de leitura</h4>
+        
+        <div class="progresso-container">
+            <div class="barra-fundo">
+                <div id="detalhe-barra" class="barra-preenchida" style="width: 0%;"></div>
+            </div>
+            <div id="detalhe-status-texto" class="progresso-texto">
+                0/0 <span>⏱</span>
+            </div>
+        </div>
+        
+        <span id="detalhe-faltam" class="detalhe-faltam">Carregando...</span>
+
+        <button type="button" id="btn-ver-todos" class="btn-fechar-detalhe">Fechar detalhes</button>
+    </div>
+</dialog>
+
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<!-- Services -->
 <script src="../services/supabase.js"></script>
-
-<!-- Services  -->
 <script src="../services/administradorService.js"></script>
 <script src="../services/avisoService.js"></script>
-
-<!-- Services  -->
-<script src="../scripts/avisos.js"></script>
-
 
 <!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
 
-<!-- Inicialização da página -->
+<!-- Scripts da Página -->
+<script src="../scripts/avisos.js"></script>
+
+<!-- Inicialização -->
 <script>
     renderizarBarraLateral("avisos", "../");
     renderizarBarraTopo("../");
 </script>
 
 </body>
-
 </html>

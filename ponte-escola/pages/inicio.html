@@ -108,17 +108,19 @@
 <!-- Services  -->
 <script src="../services/administradorService.js"></script>
 <script src="../services/atividadeService.js"></script>
+<script src="../services/inicioService.js"></script> <!-- NOVO SERVICE AQUI -->
 
 <!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
 
-<!-- Inicialização da página -->
+<!-- Scripts-->
 <script src="../scripts/inicio.js"></script>
+
+<!-- Inicialização da página -->
 <script>
     renderizarBarraLateral("inicio", "../");
     renderizarBarraTopo("../");
-    document.getElementById('stat-atividades').textContent = AtividadeService.listar().length;
 </script>
 
 </body>
