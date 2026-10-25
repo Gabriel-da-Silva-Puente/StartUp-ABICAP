@@ -95,10 +95,10 @@
         <div class="campo-grupo">
             <label>Categoria</label>
             <div class="botoes-categoria" id="botoes-categoria">
-                <button type="button" class="btn-categoria" data-valor="comunicado">Comunicado</button>
-                <button type="button" class="btn-categoria ativo" data-valor="evento">Evento</button>
+                <button type="button" class="btn-categoria ativo" data-valor="comunicado">Comunicado</button>
+                <button type="button" class="btn-categoria" data-valor="evento">Evento</button>
             </div>
-            <input type="hidden" id="aviso-tipo" value="evento">
+            <input type="hidden" id="aviso-tipo" value="comunicado">
         </div>
 
         <div class="campo-grupo">
@@ -118,8 +118,8 @@
                     <option value="">Carregando turmas...</option>
                 </select>
             </div>
-            <div class="campo-grupo">
-                <label for="aviso-data">Data (opcional)</label>
+            <div class="campo-grupo" id="campo-data-evento">
+                <label for="aviso-data">Data do Evento</label>
                 <input type="date" id="aviso-data">
             </div>
         </div>
@@ -150,7 +150,7 @@
             <span id="detalhe-tipo" class="badge-tipo badge-comunicado" style="width: fit-content;">Comunicado</span>
             <h2 id="detalhe-titulo">Título do Aviso</h2>
             <div class="detalhe-meta">
-                <span>📅 <span id="detalhe-data">10/09/2026</span></span>
+                <span id="detalhe-data">Data do Aviso</span>
                 <span>👥 <span id="detalhe-turma">Jardim II — Turma A</span></span>
             </div>
         </div>

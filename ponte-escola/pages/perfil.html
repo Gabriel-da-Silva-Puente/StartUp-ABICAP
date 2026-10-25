@@ -37,17 +37,17 @@
 
                 <aside class="perfil-card">
 
-                    <div class="perfil-avatar">
-                        <span>AC</span>
+                    <div class="perfil-avatar" id="perfil-avatar-iniciais">
+                        <span>...</span>
                     </div>
 
-                    <button class="btn-secundario perfil-trocar-foto" type="button">
+                    <button class="btn-secundario perfil-trocar-foto" type="button" disabled>
                         Alterar foto
                     </button>
 
                     <div class="perfil-info">
-                        <p class="perfil-nome">Ana Carolina Mendes</p>
-                        <p class="perfil-funcao">Professora</p>
+                        <p class="perfil-nome" id="perfil-nome-visual">Carregando...</p>
+                        <p class="perfil-funcao" id="perfil-tipo-visual">...</p>
                     </div>
 
                 </aside>
@@ -62,8 +62,8 @@
                             <input
                                 type="text"
                                 id="perfil-nome-exibicao"
-                                value="Ana Carolina Mendes"
                                 maxlength="60"
+                                placeholder="Seu nome completo"
                             >
                         </div>
 
@@ -72,8 +72,8 @@
                             <input
                                 type="email"
                                 id="perfil-email"
-                                value="ana.carolina@escola.com.br"
                                 maxlength="80"
+                                placeholder="seu@email.com"
                             >
                         </div>
 
@@ -82,60 +82,8 @@
                             <input
                                 type="tel"
                                 id="perfil-telefone"
-                                value="(15) 99999-0000"
                                 maxlength="20"
-                            >
-                        </div>
-                    </section>
-
-                    <section class="perfil-secao">
-                        <h3 class="perfil-secao-titulo">Preferências</h3>
-
-                        <div class="perfil-preferencia">
-                            <div>
-                                <p class="perfil-preferencia-titulo">Receber notificações</p>
-                                <p class="perfil-preferencia-descricao">
-                                    Alertas de novos avisos e ocorrências
-                                </p>
-                            </div>
-                            <button
-                                class="perfil-toggle ativo"
-                                id="perfil-toggle-notificacoes"
-                                type="button"
-                                aria-pressed="true"
-                            >
-                                <span></span>
-                            </button>
-                        </div>
-                    </section>
-
-                    <section class="perfil-secao">
-                        <h3 class="perfil-secao-titulo">Segurança</h3>
-
-                        <div class="perfil-campo">
-                            <label for="perfil-senha-atual">Senha atual</label>
-                            <input
-                                type="password"
-                                id="perfil-senha-atual"
-                                placeholder="••••••••"
-                            >
-                        </div>
-
-                        <div class="perfil-campo">
-                            <label for="perfil-senha-nova">Nova senha</label>
-                            <input
-                                type="password"
-                                id="perfil-senha-nova"
-                                placeholder="Mínimo 6 caracteres"
-                            >
-                        </div>
-
-                        <div class="perfil-campo">
-                            <label for="perfil-senha-confirmar">Confirmar nova senha</label>
-                            <input
-                                type="password"
-                                id="perfil-senha-confirmar"
-                                placeholder="Repita a nova senha"
+                                placeholder="(00) 00000-0000"
                             >
                         </div>
                     </section>
@@ -161,13 +109,27 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/administradorService.js"></script>
+
+<!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
+
+<!-- Scripts-->
+<script src="../scripts/perfil.js"></script>
+
+<!-- Inicialização da página -->
 <script>
     renderizarBarraLateral("perfil", "../");
     renderizarBarraTopo("../");
 </script>
 
 </body>
-
 </html>

@@ -52,6 +52,18 @@ const MuralService = {
         if (error) throw error;
     },
 
+    // DESFAZER LIKE NO POST
+    async descurtirPost(postId, curtidasAtuais) {
+        const novasCurtidas = Math.max(0, curtidasAtuais - 1); 
+        
+        const { error } = await banco
+            .from('mural_posts')
+            .update({ curtidas: novasCurtidas })
+            .eq('id', postId);
+
+        if (error) throw error;
+    },
+
     // ADICIONAR COMENTÁRIO
     async comentar(postId, autorNome, texto) {
         const { error } = await banco
@@ -61,15 +73,30 @@ const MuralService = {
         if (error) throw error;
     },
 
-        // DESFAZER LIKE NO POST
-    async descurtirPost(postId, curtidasAtuais) {
-        const novasCurtidas = Math.max(0, curtidasAtuais - 1); 
-        
+    // EDITAR LEGENDA DO POST
+    async editarPost(postId, novaLegenda) {
         const { error } = await banco
             .from('mural_posts')
-            .update({ curtidas: novasCurtidas })
+            .update({ legenda: novaLegenda })
             .eq('id', postId);
+        if (error) throw error;
+    },
 
+    // EXCLUIR POST
+    async excluirPost(postId) {
+        const { error } = await banco
+            .from('mural_posts')
+            .delete()
+            .eq('id', postId);
+        if (error) throw error;
+    },
+
+    // EXCLUIR COMENTÁRIO
+    async excluirComentario(comentarioId) {
+        const { error } = await banco
+            .from('mural_comentarios')
+            .delete()
+            .eq('id', comentarioId);
         if (error) throw error;
     }
 };

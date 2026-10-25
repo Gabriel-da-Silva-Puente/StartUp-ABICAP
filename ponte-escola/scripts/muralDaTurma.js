@@ -11,20 +11,16 @@
     let arquivoSelecionado = null;
 
     const turmaNome = localStorage.getItem('turmaVisualizadaNome') || "Sua Turma";
+    const autorIdLogado = localStorage.getItem('usuarioLogadoId');
+
     if (subtitulo) subtitulo.textContent = `${turmaNome} · Compartilhe momentos com os pais`;
 
     const formatarData = (dataString) => {
         return new Date(dataString).toLocaleDateString('pt-BR');
     };
 
-    // FUNÇÃO PARA PEGAR A LISTA DE POSTS CURTIDOS
-    const getPostsCurtidos = () => {
-        return JSON.parse(localStorage.getItem('postsCurtidos') || '[]');
-    };
-
-    const jaCurtiu = (postId) => {
-        return getPostsCurtidos().includes(postId);
-    };
+    const getPostsCurtidos = () => JSON.parse(localStorage.getItem('postsCurtidos') || '[]');
+    const jaCurtiu = (postId) => getPostsCurtidos().includes(postId);
 
     async function carregarPosts() {
         const turmaId = localStorage.getItem('turmaVisualizadaId');
@@ -45,6 +41,26 @@
                 const curtido = jaCurtiu(post.id);
                 const iconeCoracao = curtido ? '❤️' : '♡';
 
+                // VERIFICA SE É O DONO DO POST
+                const ehDonoDoPost = String(post.autor_id) === String(autorIdLogado);
+
+                // MENU DE OPÇÕES DO POST
+                const menuPost = ehDonoDoPost 
+                    ? `<div class="menu-container">
+                        <button class="btn-opcoes" onclick="toggleMenu(this)">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                        </button>
+                        <div class="menu-dropdown">
+                            <button onclick="editarLegendaPost(${post.id}, '${post.legenda.replace(/'/g, "\\'")}')">
+                                ✏️ Editar
+                            </button>
+                            <button class="excluir" onclick="excluirPostMural(${post.id})">
+                                🗑️ Excluir Post
+                            </button>
+                        </div>
+                       </div>` 
+                    : "";
+
                 return `
                     <div class="card-post">
                         <img src="${post.imagem_url}" alt="Foto da turma">
@@ -53,11 +69,14 @@
                                 <div class="card-post-avatar">${iniciaisAutor}</div>
                                 <div>
                                     <p class="card-post-nome">${nomeAutor}</p>
-                                    <p class="card-post-data">${dataPost}</p>
                                 </div>
+                                ${menuPost}
                             </div>
                             <p class="card-post-legenda">${post.legenda}</p>
                             
+                            <!-- DATA DISCRETA -->
+                            <span class="card-post-data-post">Publicado em ${dataPost}</span>
+
                             <div class="card-post-acoes">
                                 <button onclick="alternarCurtida(${post.id}, ${post.curtidas})" class="btn-acao-post ${curtido ? 'curtido' : ''}">
                                     ${iconeCoracao} ${post.curtidas}
@@ -67,13 +86,15 @@
                                 </button>
                             </div>
 
-                            <!-- CAIXA DE COMENTÁRIOS (Abre para baixo) -->
                             <div class="comentarios-box" id="comentarios-${post.id}" style="display: none;">
                                 <div class="lista-comentarios">
                                     ${post.mural_comentarios.length === 0 ? '<p style="font-size:0.8125rem; color:#888; text-align:center;">Nenhum comentário ainda.</p>' : ''}
                                     ${post.mural_comentarios.map(c => `
-                                        <div class="comentario">
-                                            <strong>${c.autor_nome}:</strong> ${c.texto}
+                                        <div class="comentario" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                            <div>
+                                                <strong>${c.autor_nome}:</strong> ${c.texto}
+                                            </div>
+                                            <button class="btn-excluir-comentario" onclick="excluirComentarioMural(${c.id})" title="Excluir">✕</button>
                                         </div>
                                     `).join("")}
                                 </div>
@@ -93,7 +114,7 @@
         }
     }
 
-    // --- FUNÇÃO DE CURTIR / DESCURTIR ---
+    // --- FUNÇÕES GLOBAIS ---
     window.alternarCurtida = async function (id, curtidasAtuais) {
         let curtidos = getPostsCurtidos();
         const jaCurtido = curtidos.includes(id);
@@ -106,22 +127,15 @@
                 await MuralService.curtirPost(id, curtidasAtuais);
                 curtidos.push(id);
             }
-            
             localStorage.setItem('postsCurtidos', JSON.stringify(curtidos));
             carregarPosts(); 
-
-        } catch (e) { 
-            console.error("Erro ao curtir/descurtir:", e); 
-        }
+        } catch (e) { console.error(e); }
     };
 
-    // --- FUNÇÃO DE ABRIR/FECHAR COMENTÁRIOS ---
     window.toggleComentarios = function (id) {
         const box = document.getElementById(`comentarios-${id}`);
         const estaAberto = box.style.display === "block";
-
         document.querySelectorAll('.comentarios-box').forEach(b => b.style.display = "none");
-
         if (!estaAberto) {
             box.style.display = "block";
             document.getElementById(`input-comentario-${id}`)?.focus();
@@ -140,7 +154,64 @@
         } catch (e) { console.error(e); }
     };
 
-    // LÓGICA DO MODAL DE PUBLICAR
+    // --- LÓGICA DO MENU DE OPÇÕES ---
+    window.toggleMenu = function(botao) {
+        const menu = botao.nextElementSibling;
+        document.querySelectorAll('.menu-dropdown').forEach(m => {
+            if (m !== menu) m.classList.remove('aberto');
+        });
+        menu.classList.toggle('aberto');
+    }
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.menu-container')) {
+            document.querySelectorAll('.menu-dropdown').forEach(m => m.classList.remove('aberto'));
+        }
+    });
+
+    // --- CRUD: EDITAR POST ---
+    window.editarLegendaPost = async function(id, legendaAtual) {
+        document.querySelectorAll('.menu-dropdown').forEach(m => m.classList.remove('aberto'));
+        
+        const novaLegenda = prompt("Edite a legenda do post:", legendaAtual);
+        if (novaLegenda === null || novaLegenda.trim() === "" || novaLegenda === legendaAtual) return;
+
+        try {
+            await MuralService.editarPost(id, novaLegenda);
+            carregarPosts();
+        } catch (e) {
+            console.error(e);
+            alert("Erro ao editar legenda.");
+        }
+    };
+
+    // --- CRUD: EXCLUIR POST ---
+    window.excluirPostMural = async function(id) {
+        document.querySelectorAll('.menu-dropdown').forEach(m => m.classList.remove('aberto'));
+        if (!confirm("Excluir esta publicação? Os comentários também serão apagados.")) return;
+
+        try {
+            await MuralService.excluirPost(id);
+            carregarPosts();
+        } catch (e) {
+            console.error(e);
+            alert("Erro ao excluir post.");
+        }
+    };
+
+    // --- CRUD: EXCLUIR COMENTÁRIO ---
+    window.excluirComentarioMural = async function(id) {
+        if (!confirm("Excluir este comentário?")) return;
+        try {
+            await MuralService.excluirComentario(id);
+            carregarPosts();
+        } catch (e) {
+            console.error(e);
+            alert("Erro ao excluir comentário.");
+        }
+    };
+
+    // --- LÓGICA DO MODAL DE PUBLICAR ---
     btnPrincipal?.addEventListener("click", () => modalPublicar.showModal());
     btnFecharModal?.addEventListener("click", () => modalPublicar.close());
 

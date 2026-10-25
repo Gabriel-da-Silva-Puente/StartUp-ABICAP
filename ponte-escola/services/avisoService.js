@@ -1,4 +1,34 @@
 const AvisosService = {
+
+
+    // EXCLUIR AVISO
+    async excluir(id) {
+        const { error } = await banco
+            .from('avisos')
+            .delete()
+            .eq('id', id);
+
+        if (error) throw error;
+    },
+
+
+    // ATUALIZAR AVISO EXISTENTE
+    async atualizar(id, titulo, descricao, tipo, turmaId, dataEvento) {
+        const { data, error } = await banco
+            .from('avisos')
+            .update({
+                titulo: titulo,
+                descricao: descricao,
+                tipo: tipo,
+                turma_id: turmaId,
+                data_evento: dataEvento ? dataEvento : null
+            })
+            .eq('id', id)
+            .select();
+
+        if (error) throw error;
+        return data;
+    },
     
     // BUSCAR TURMAS DO PROFESSOR 
     async buscarTurmasDoProfessor(professorId) {

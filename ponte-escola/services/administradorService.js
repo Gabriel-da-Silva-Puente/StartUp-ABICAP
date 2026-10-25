@@ -16,7 +16,17 @@ const AdministradorService = {
 
     if (error) throw error;
     return data;
-}
+},
+
+    async atualizarPerfil(id, nome, email, telefone) {
+        const { data, error } = await banco
+            .from('administrador')
+            .update({ nome, email, telefone })
+            .eq('id', id)
+            .select();
+        if (error) throw error;
+        return data;
+    }
 };
 
 window.AdministradorService = AdministradorService;
