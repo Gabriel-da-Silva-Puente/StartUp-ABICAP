@@ -1,61 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PonteEscola — Mural da Turma</title>
-
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
     <link rel="stylesheet" href="../components/components.css">
     <link rel="stylesheet" href="../styles/muralDaTurma.css">
 </head>
-
 <body>
-
 <div class="estrutura-app">
-
     <aside class="barra-lateral"></aside>
-
     <main class="conteudo-principal">
-
         <header class="barra-topo"></header>
-
         <section class="conteudo-pagina">
-
             <div class="cabecalho-pagina">
                 <div>
                     <h2>Mural da Turma</h2>
-                    <p id="subtitulo-mural-da-turma" class="subtitulo-pagina">
-                        Jardim II — Turma A · Compartilhe momentos com os pais
-                    </p>
+                    <p id="subtitulo-mural-da-turma" class="subtitulo-pagina">Carregando...</p>
                 </div>
                 <button id="btn-principal" class="btn-principal" type="button">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M5 12h14"/><path d="M12 5v14"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                     Publicar
                 </button>
             </div>
-
-            <div class="grade-posts" id="grade-posts"></div>
-
+            
+            <!-- MUDOU AQUI: Agora é um feed em coluna -->
+            <div class="feed-posts" id="feed-posts"></div>
+            
         </section>
-
     </main>
-
 </div>
+
+<!-- MODAL DE PUBLICAR -->
+<dialog id="modal-publicar" class="modal">
+    <form id="form-publicar" class="modal-form">
+        <div class="modal-cabecalho">
+            <h3>Nova Publicação</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="campo-grupo">
+            <label>Foto</label>
+            <label class="campo-anexo" for="input-foto" id="label-foto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span id="texto-foto">Clique para selecionar uma imagem</span>
+                <input type="file" id="input-foto" accept="image/*" required hidden>
+            </label>
+        </div>
+
+        <div class="campo-grupo">
+            <label for="input-legenda">Legenda</label>
+            <textarea id="input-legenda" required rows="3" placeholder="Escreva uma legenda para a foto..."></textarea>
+        </div>
+        
+        <div class="modal-acoes">
+            <button type="submit" id="btn-salvar-post" class="btn-principal">Publicar</button>
+        </div>
+    </form>
+</dialog>
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/muralService.js"></script>
+
+<!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/muralDaTurma.js"></script>
+
 <script>
     renderizarBarraLateral("muraldaturma", "../");
     renderizarBarraTopo("../");
 </script>
-
 </body>
-
 </html>
