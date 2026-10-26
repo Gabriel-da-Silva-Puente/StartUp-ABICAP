@@ -41,10 +41,9 @@
             </div>
 
             <div class="filtros-mensagens" id="filtros-mensagens">
-                <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
-                <button type="button" data-filtro="aberto" aria-pressed="false">Abertos</button>
-                <button type="button" data-filtro="andamento" aria-pressed="false">Em andamento</button>
-                <button type="button" data-filtro="resolvido" aria-pressed="false">Resolvidos</button>
+                <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+                <button type="button" data-filtro="nao-respondidas" aria-pressed="false">Não Respondidas</button>
+                <button type="button" data-filtro="respondidas" aria-pressed="false">Respondidas</button>
             </div>
 
             <div class="mensagens-layout">
@@ -53,7 +52,8 @@
 
                 <div class="mensagem-detalhe" id="mensagem-detalhe">
                     <div class="detalhe-vazio">
-                        <p>Selecione uma conversa para ver os detalhes</p>
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#CCC" stroke-width="1"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <p>Selecione uma mensagem para ler</p>
                     </div>
                 </div>
 
@@ -67,18 +67,26 @@
 
 <dialog id="modal-mensagem" class="modal">
     <form id="form-mensagem" class="modal-form">
-
-        <h3>Nova Mensagem</h3>
+        <div class="modal-cabecalho">
+            <h3>Nova Mensagem</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
 
         <label>
-            Para (responsável)
-            <select id="destinatario" required>
-                <option value="">Selecione um responsável</option>
-                <option value="1">Carlos Silva (Sophia — Jd II-A)</option>
-                <option value="2">Márcia Andrade (Marcos — Jd II-A)</option>
-                <option value="3">Fernanda Melo (Sofia — Jd I-B)</option>
-                <option value="4">João Nascimento (Pedro — Jd II-A)</option>
-                <option value="5">Ricardo Andrade (Beatriz — Jd II-A)</option>
+            Turma do aluno
+            <select id="modal-turma" required>
+                <option value="">Selecione a turma...</option>
+            </select>
+        </label>
+
+        <label>
+            Aluno (Responsável)
+            <select id="modal-aluno" required disabled>
+                <option value="">Selecione a turma primeiro...</option>
             </select>
         </label>
 
@@ -96,19 +104,30 @@
             <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
             <button type="submit" class="btn-principal">Enviar</button>
         </div>
-
     </form>
 </dialog>
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/mensagensService.js"></script>
+
+<!-- Componentes -->
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Scripts -->
+<script src="../scripts/mensagensAdmin.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-mensagens", "../");
     renderizarBarraTopoAdministrador("../");
 </script>
 
 </body>
-
 </html>

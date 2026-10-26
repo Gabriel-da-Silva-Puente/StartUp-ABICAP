@@ -15,13 +15,9 @@
 <body>
 
 <div class="estrutura-app">
-
     <aside class="barra-lateral"></aside>
-
     <main class="conteudo-principal">
-
         <header class="barra-topo"></header>
-
         <section class="conteudo-pagina">
 
             <div class="cabecalho-pagina">
@@ -41,9 +37,7 @@
             </div>
 
             <section class="grade-ocorrencias">
-
                 <div class="barra-ferramentas">
-
                     <div class="campo-pesquisa">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <circle cx="11" cy="11" r="8"/>
@@ -54,11 +48,6 @@
 
                     <select class="select-turma" id="filtro-turma" aria-label="Filtrar por turma">
                         <option value="todas">Todas as turmas</option>
-                        <option value="jI-A">Jardim I — Turma A</option>
-                        <option value="jI-B">Jardim I — Turma B</option>
-                        <option value="jII-A">Jardim II — Turma A</option>
-                        <option value="jII-B">Jardim II — Turma B</option>
-                        <option value="5A">5º Ano — Turma A</option>
                     </select>
 
                     <div class="filtros-ocorrencias" id="filtros-ocorrencias">
@@ -70,99 +59,143 @@
                         <button type="button" data-filtro="alimentacao" aria-pressed="false">Alimentação</button>
                         <button type="button" data-filtro="outro" aria-pressed="false">Outro</button>
                     </div>
-
                 </div>
 
                 <div class="lista-ocorrencias" id="lista-ocorrencias"></div>
-
             </section>
 
         </section>
-
     </main>
-
 </div>
 
+<!-- MODAL DE CRIAR / EDITAR OCORRÊNCIA -->
 <dialog id="modal-ocorrencia" class="modal">
     <form id="form-ocorrencia" class="modal-form">
+        <div class="modal-cabecalho">
+            <h3 id="modal-ocorrencia-titulo">Nova Ocorrência</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
 
-        <h3>Nova Ocorrência</h3>
+        <div class="campo-grupo">
+            <label>Tipo de ocorrência</label>
+            <div class="botoes-categoria" id="botoes-tipo-ocorrencia">
+                <button type="button" class="btn-categoria" data-valor="comportamental">Comportamental</button>
+                <button type="button" class="btn-categoria" data-valor="saude">Saúde</button>
+                <button type="button" class="btn-categoria" data-valor="acidente">Acidente</button>
+                <button type="button" class="btn-categoria" data-valor="alimentacao">Alimentação</button>
+                <button type="button" class="btn-categoria" data-valor="outro">Outro</button>
+                <button type="button" class="btn-categoria" data-valor="disciplinar" style="color: var(--color-danger); border-color: var(--color-danger);">⚠ Disciplinar</button>
+            </div>
+            <input type="hidden" id="ocorrencia-tipo" value="comportamental">
+        </div>
 
-        <label>
-            Tipo de ocorrência
-            <select id="tipo-ocorrencia" required>
-                <option value="">Selecione</option>
-                <option value="comportamental">Comportamental</option>
-                <option value="saude">Saúde</option>
-                <option value="acidente">Acidente</option>
-                <option value="alimentacao">Alimentação</option>
-                <option value="outro">Outro</option>
-                <option value="disciplinar">⚠ Ocorrência Disciplinar</option>
+        <div class="campo-grupo">
+            <label for="ocorrencia-turma">Turma</label>
+            <select id="ocorrencia-turma" required>
+                <option value="">Selecione a turma...</option>
             </select>
-        </label>
+        </div>
 
-        <label>
-            Nome do aluno
-            <input type="text" id="aluno" required maxlength="80" placeholder="Nome completo">
-        </label>
-
-        <label>
-            Turma
-            <select id="turma" required>
-                <option value="">Selecione</option>
-                <option value="jI-A">Jardim I — Turma A</option>
-                <option value="jI-B">Jardim I — Turma B</option>
-                <option value="jII-A">Jardim II — Turma A</option>
-                <option value="jII-B">Jardim II — Turma B</option>
-                <option value="5A">5º Ano — Turma A</option>
+        <div class="campo-grupo">
+            <label for="ocorrencia-aluno">Nome do aluno</label>
+            <select id="ocorrencia-aluno" required>
+                <option value="">Selecione a turma primeiro...</option>
             </select>
-        </label>
+        </div>
 
-        <label>
-            Descrição
-            <textarea id="descricao" required rows="4" maxlength="400" placeholder="Descreva a ocorrência com detalhes..."></textarea>
-        </label>
+        <div class="campo-grupo">
+            <label for="ocorrencia-descricao">Descrição</label>
+            <textarea id="ocorrencia-descricao" required rows="4" maxlength="400" placeholder="Descreva a ocorrência com detalhes..."></textarea>
+        </div>
 
-        <div id="campos-disciplinar" hidden>
-
-            <label>
-                Gravidade
-                <select id="gravidade">
+        <div id="campos-disciplinar" hidden style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="campo-grupo">
+                <label for="ocorrencia-gravidade">Gravidade</label>
+                <select id="ocorrencia-gravidade">
                     <option value="leve">Leve</option>
                     <option value="media">Média</option>
                     <option value="grave">Grave</option>
                 </select>
-            </label>
-
-            <label>
-                Providências tomadas
-                <textarea id="providencias" rows="3" maxlength="300" placeholder="Ex.: Conversa com os responsáveis, advertência..."></textarea>
-            </label>
-
+            </div>
+            <div class="campo-grupo">
+                <label for="ocorrencia-providencia">Providências tomadas</label>
+                <textarea id="ocorrencia-providencia" rows="3" maxlength="300" placeholder="Ex.: Conversa com os responsáveis, advertência..."></textarea>
+            </div>
             <label class="campo-checkbox">
-                <input type="checkbox" id="acompanhamento">
+                <input type="checkbox" id="ocorrencia-acompanhamento">
                 Necessita acompanhamento contínuo
             </label>
-
         </div>
 
         <div class="modal-acoes">
-            <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+            <button type="button" id="btn-cancelar-ocorrencia" class="btn-secundario">Cancelar</button>
             <button type="submit" class="btn-principal btn-perigo">Registrar Ocorrência</button>
         </div>
-
     </form>
+</dialog>
+
+<!-- MODAL DE DETALHES DA OCORRÊNCIA -->
+<dialog id="modal-detalhe-ocorrencia" class="modal-detalhe">
+    <div class="detalhe-header">
+        <div class="detalhe-header-info">
+            <span id="detalhe-tipo" class="card-ocorrencia-tipo tipo-comportamental" style="width: fit-content;">Comportamental</span>
+            <h2 id="detalhe-aluno">Nome do Aluno</h2>
+            <div class="detalhe-meta">
+                <span>🏫 <span id="detalhe-turma">Turma</span></span>
+                <span>📅 <span id="detalhe-data">Data</span></span>
+            </div>
+        </div>
+        <button type="button" class="modal-fechar" id="btn-fechar-detalhe" aria-label="Fechar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="detalhe-body">
+        <p class="sobrescrito">Descrição</p>
+        <p id="detalhe-descricao" style="font-size: 0.9375rem; line-height: 1.5; margin-bottom: 1.5rem; white-space: pre-wrap;">Descrição completa...</p>
+
+        <div id="detalhe-campos-disciplinar" style="display: none; border-top: 1px solid #eee; padding-top: 1rem;">
+            <p class="sobrescrito">Gravidade</p>
+            <p id="detalhe-gravidade" style="font-size: 0.875rem; margin-bottom: 1rem;">-</p>
+
+            <p class="sobrescrito">Providências Tomadas</p>
+            <p id="detalhe-providencia" style="font-size: 0.875rem; margin-bottom: 1rem; white-space: pre-wrap;">-</p>
+
+            <p class="sobrescrito">Acompanhamento</p>
+            <p id="detalhe-acompanhamento" style="font-size: 0.875rem; margin-bottom: 1rem;">-</p>
+        </div>
+    </div>
 </dialog>
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Arquivo que cria busca para o supabase 'banco' -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/ocorrenciasService.js"></script>
+
+<!-- Componentes (ADMIN) -->
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/ocorrenciasAdmin.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-ocorrencias", "../");
     renderizarBarraTopoAdministrador("../");
 </script>
 
 </body>
-
 </html>

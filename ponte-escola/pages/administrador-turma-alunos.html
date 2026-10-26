@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Alunos da Turma</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-turmas.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <a href="administrador-turmas.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--color-primary); text-decoration: none; margin-bottom: 0.5rem; font-weight: 600;">
+                        ← Voltar para Turmas
+                    </a>
+                    <h2 id="titulo-turma">Alunos</h2>
+                    <p id="subtitulo-turma" class="subtitulo-pagina">Carregando...</p>
+                </div>
+            </div>
+
+            <div class="lista-alunos-container" id="lista-alunos-turma"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Arquivo que cria busca para o supabase 'banco' -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/turmasService.js"></script>
+
+<!-- Componentes (ADMIN) -->
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+
+<!-- Scripts da Página -->
+<script src="../scripts/turmasAdmin-alunos.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraLateralAdministrador("administrador-turmas", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+</html>

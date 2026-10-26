@@ -1,4 +1,6 @@
-const AtividadeService = (() => {
+const AtividadeService = {
+    // //MUDEI: Descomentei o código antigo e adicionei o Supabase
+    /*
     const CHAVE = 'ponteescola.atividades';
     const TOTAL_ALUNOS = 22;
 
@@ -41,4 +43,80 @@ const AtividadeService = (() => {
     }
 
     return { listar, criar };
-})();
+    */
+
+    //MUDEI
+    async listarPorTurma(turmaId) {
+        const { data: atividades, error } = await banco
+            .from('atividades')
+            .select(`
+                *,
+                atividades_lidas ( count )
+            `)
+            .eq('turma_id', turmaId)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        const { count: totalAlunos } = await banco
+            .from('aluno')
+            .select('*', { count: 'exact', head: true })
+            .eq('turma_id', turmaId);
+
+        return atividades.map(ativ => {
+            const lidas = ativ.atividades_lidas[0]?.count || 0;
+            
+            const dataCriacao = new Date(ativ.created_at).toLocaleDateString('pt-BR');
+            const dataPrazo = new Date(ativ.prazo + 'T12:00:00').toLocaleDateString('pt-BR');
+
+            return {
+                ...ativ,
+                lidas: lidas,
+                total: totalAlunos || 0,
+                criadaEm: `Criada em ${dataCriacao}`,
+                prazo: dataPrazo,
+                prazoOriginal: ativ.prazo //MUDEI
+            };
+        });
+    },
+
+    //MUDEI
+    async criar(titulo, descricao, prazo, turmaId, autorId) {
+        const { data, error } = await banco
+            .from('atividades')
+            .insert([{ 
+                titulo, 
+                descricao, 
+                prazo, 
+                turma_id: turmaId, 
+                autor_id: autorId 
+            }])
+            .select();
+
+        if (error) throw error;
+        return data;
+    },
+
+    //MUDEI
+    async atualizar(id, titulo, descricao, prazo) {
+        const { data, error } = await banco
+            .from('atividades')
+            .update({ titulo, descricao, prazo })
+            .eq('id', id)
+            .select();
+
+        if (error) throw error;
+        return data;
+    },
+
+    //MUDEI
+    async excluir(id) {
+        const { error } = await banco
+            .from('atividades')
+            .delete()
+            .eq('id', id);
+        if (error) throw error;
+    }
+};
+
+window.AtividadeService = AtividadeService;

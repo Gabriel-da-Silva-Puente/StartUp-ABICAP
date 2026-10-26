@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PonteEscola — Perfil</title>
+    <title>PonteEscola — Meu Perfil</title>
 
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
@@ -28,7 +28,7 @@
                 <div>
                     <h2>Meu Perfil</h2>
                     <p class="subtitulo-pagina">
-                        Gerencie suas informações e preferências
+                        Gerencie suas informações pessoais
                     </p>
                 </div>
             </div>
@@ -59,32 +59,17 @@
 
                         <div class="perfil-campo">
                             <label for="perfil-nome-exibicao">Nome de exibição</label>
-                            <input
-                                type="text"
-                                id="perfil-nome-exibicao"
-                                maxlength="60"
-                                placeholder="Seu nome completo"
-                            >
+                            <input type="text" id="perfil-nome-exibicao" maxlength="60" placeholder="Seu nome completo">
                         </div>
 
                         <div class="perfil-campo">
                             <label for="perfil-email">E-mail</label>
-                            <input
-                                type="email"
-                                id="perfil-email"
-                                maxlength="80"
-                                placeholder="seu@email.com"
-                            >
+                            <input type="email" id="perfil-email" maxlength="80" placeholder="seu@email.com">
                         </div>
 
                         <div class="perfil-campo">
                             <label for="perfil-telefone">Telefone</label>
-                            <input
-                                type="tel"
-                                id="perfil-telefone"
-                                maxlength="20"
-                                placeholder="(00) 00000-0000"
-                            >
+                            <input type="tel" id="perfil-telefone" maxlength="20" placeholder="(00) 00000-0000">
                         </div>
                     </section>
 
@@ -111,21 +96,18 @@
 
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!--  Arquivo que cria busca para o supabase 'banco'  -->
 <script src="../services/supabase.js"></script>
 
-<!-- Services  -->
+<!-- Services -->
 <script src="../services/administradorService.js"></script>
 
 <!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
 
-<!-- Scripts-->
+<!-- Scripts -->
 <script src="../scripts/perfil.js"></script>
 
-<!-- Inicialização da página -->
 <script>
     renderizarBarraLateral("perfil", "../");
     renderizarBarraTopo("../");

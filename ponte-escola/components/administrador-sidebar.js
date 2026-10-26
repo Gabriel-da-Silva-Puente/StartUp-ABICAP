@@ -59,7 +59,7 @@ function renderizarBarraLateralAdministrador(paginaAtual, prefixo = "") {
         </nav>
 
         <div class="lateral-rodape">
-            <a href="${prefixo}pages/perfil.html" class="${paginaAtual === "perfil" ? "ativo" : ""}">
+            <a href="${prefixo}pages/administrador-perfil.html" class="${paginaAtual === "perfil" ? "ativo" : ""}">
                 <img src="${prefixo}assets/icons/users.svg" alt="" class="lateral-icone">
                 <span>Perfil</span>
             </a>

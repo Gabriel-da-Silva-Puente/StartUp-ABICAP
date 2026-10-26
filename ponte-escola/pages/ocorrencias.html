@@ -28,7 +28,7 @@
                 <div>
                     <h2>Ocorrências</h2>
                     <p id="subtitulo-ocorrencias-data" class="subtitulo-pagina">
-                        0 registros · Jardim II — Turma A
+                        0 registros · Carregando...
                     </p>
                 </div>
 
@@ -59,6 +59,7 @@
                         <button type="button" data-filtro="acidente" aria-pressed="false">Acidente</button>
                         <button type="button" data-filtro="alimentacao" aria-pressed="false">Alimentação</button>
                         <button type="button" data-filtro="outro" aria-pressed="false">Outro</button>
+                        <button type="button" data-filtro="disciplinar" aria-pressed="false">Disciplinar</button>
                     </div>
 
                 </div>
@@ -73,16 +74,124 @@
 
 </div>
 
+<!-- MODAL DE CRIAR / EDITAR OCORRÊNCIA -->
+<dialog id="modal-ocorrencia" class="modal">
+    <form id="form-ocorrencia" class="modal-form">
+        <div class="modal-cabecalho">
+            <h3 id="modal-ocorrencia-titulo">Nova Ocorrência</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="campo-grupo">
+            <label>Tipo de ocorrência</label>
+            <div class="botoes-categoria" id="botoes-tipo-ocorrencia">
+                <button type="button" class="btn-categoria" data-valor="comportamental">Comportamental</button>
+                <button type="button" class="btn-categoria" data-valor="saude">Saúde</button>
+                <button type="button" class="btn-categoria" data-valor="acidente">Acidente</button>
+                <button type="button" class="btn-categoria" data-valor="alimentacao">Alimentação</button>
+                <button type="button" class="btn-categoria" data-valor="outro">Outro</button>
+                <!-- O professor não pode criar "Disciplinar" -->
+            </div>
+            <input type="hidden" id="ocorrencia-tipo" value="comportamental">
+        </div>
+
+        <div class="campo-grupo">
+            <label for="ocorrencia-aluno">Nome do aluno</label>
+            <select id="ocorrencia-aluno" required>
+                <option value="">Selecione o aluno...</option>
+            </select>
+        </div>
+
+        <div class="campo-grupo">
+            <label for="ocorrencia-descricao">Descrição</label>
+            <textarea id="ocorrencia-descricao" required rows="4" maxlength="400" placeholder="Descreva a ocorrência com detalhes..."></textarea>
+        </div>
+
+        <div id="campos-extras" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="campo-grupo">
+                <label for="ocorrencia-gravidade">Gravidade</label>
+                <select id="ocorrencia-gravidade">
+                    <option value="leve">Leve</option>
+                    <option value="media">Média</option>
+                    <option value="grave">Grave</option>
+                </select>
+            </div>
+            <div class="campo-grupo">
+                <label for="ocorrencia-providencia">Providências tomadas</label>
+                <textarea id="ocorrencia-providencia" rows="3" maxlength="300" placeholder="Ex.: Conversa com os responsáveis, advertência..."></textarea>
+            </div>
+            <label class="campo-checkbox" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; cursor: pointer;">
+                <input type="checkbox" id="ocorrencia-acompanhamento" style="width: 18px; height: 18px;">
+                Necessita acompanhamento contínuo
+            </label>
+        </div>
+
+        <div class="modal-acoes">
+            <button type="button" id="btn-cancelar-ocorrencia" class="btn-secundario">Cancelar</button>
+            <button type="submit" class="btn-principal btn-perigo">Registrar Ocorrência</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- MODAL DE DETALHES DA OCORRÊNCIA -->
+<dialog id="modal-detalhe-ocorrencia" class="modal-detalhe">
+    <div class="detalhe-header">
+        <div class="detalhe-header-info">
+            <span id="detalhe-tipo" class="card-ocorrencia-tipo tipo-comportamental" style="width: fit-content;">Comportamental</span>
+            <h2 id="detalhe-aluno">Nome do Aluno</h2>
+            <div class="detalhe-meta">
+                <span>📅 <span id="detalhe-data">Data</span></span>
+            </div>
+        </div>
+        <button type="button" class="modal-fechar" id="btn-fechar-detalhe" aria-label="Fechar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="detalhe-body">
+        <p class="sobrescrito">Descrição</p>
+        <p id="detalhe-descricao" style="font-size: 0.9375rem; line-height: 1.5; margin-bottom: 1.5rem; white-space: pre-wrap;">Descrição completa...</p>
+
+        <div id="detalhe-campos-extras" style="display: none; border-top: 1px solid #eee; padding-top: 1rem;">
+            <p class="sobrescrito">Gravidade</p>
+            <p id="detalhe-gravidade" style="font-size: 0.875rem; margin-bottom: 1rem;">-</p>
+
+            <p class="sobrescrito">Providências Tomadas</p>
+            <p id="detalhe-providencia" style="font-size: 0.875rem; margin-bottom: 1rem; white-space: pre-wrap;">-</p>
+
+            <p class="sobrescrito">Acompanhamento</p>
+            <p id="detalhe-acompanhamento" style="font-size: 0.875rem; margin-bottom: 1rem;">-</p>
+        </div>
+    </div>
+</dialog>
+
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
 
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/ocorrenciasService.js"></script>
+
+<!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
+
+<!-- Scripts da Página -->
+<script src="../scripts/ocorrencias.js"></script>
+
 <script>
     renderizarBarraLateral("ocorrencias", "../");
     renderizarBarraTopo("../");
 </script>
 
 </body>
-
 </html>

@@ -14,7 +14,6 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--transition), transform var(--transition);
-  cursor: pointer;
 }
 
 .card-turma:hover {
@@ -78,29 +77,128 @@
   color: var(--color-text-muted);
 }
 
-.card-turma-alerta {
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.75rem;
-  font-weight: 600;
-  flex-shrink: 0;
+/* --- MENU DE 3 PONTINHOS E MODAL --- */
+.menu-container {
+  position: relative;
+  margin-left: auto;
 }
 
-.card-turma-alerta.ocorrencia {
-  background: #FDECEE;
+.btn-opcoes {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-opcoes:hover {
+  background: #eee;
+  color: #333;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 0.25rem;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+.menu-dropdown.aberto {
+  display: flex;
+}
+
+.menu-dropdown button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-dropdown button:hover {
+  background: var(--color-bg);
+}
+
+.menu-dropdown button.excluir {
   color: var(--color-danger);
 }
 
-.card-turma-alerta.pendencia {
-  background: #FFF3E0;
-  color: var(--color-warning);
+.menu-dropdown button.excluir:hover {
+  background: #FDECEE;
+}
+
+/* --- LISTA DE ALUNOS (PÁGINA 2) --- */
+.lista-alunos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 800px;
+}
+
+.linha-aluno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.linha-aluno:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.aluno-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.aluno-nome {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.aluno-turma {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.btn-ver-perfil {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
 }
 
 @media (max-width: 860px) {
   .card-turma {
     flex-wrap: wrap;
   }
-
   .card-turma-stats {
     width: 100%;
     justify-content: space-between;
@@ -112,21 +210,17 @@
     flex-direction: column;
     align-items: stretch;
   }
-
   .filtros-turmas {
     width: 100%;
   }
-
   .filtros-turmas button {
     flex: 1;
     padding-inline: 0.5rem;
   }
-
   .card-turma {
     padding: 1rem;
     gap: 1rem;
   }
-
   .card-turma-stats {
     gap: 1rem;
   }

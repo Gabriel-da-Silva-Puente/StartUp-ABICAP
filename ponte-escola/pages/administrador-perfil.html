@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Perfil</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../styles/administrador-perfil.css">
+</head>
+
+<body>
+
+<div class="estrutura-app">
+
+    <aside class="barra-lateral"></aside>
+
+    <main class="conteudo-principal">
+
+        <header class="barra-topo"></header>
+
+        <section class="conteudo-pagina">
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h2>Meu Perfil</h2>
+                    <p class="subtitulo-pagina">
+                        Gerencie suas informações pessoais
+                    </p>
+                </div>
+            </div>
+
+            <div class="perfil-layout">
+
+                <aside class="perfil-card">
+
+                    <div class="perfil-avatar" id="perfil-avatar-iniciais">
+                        <span>...</span>
+                    </div>
+
+                    <button class="btn-secundario perfil-trocar-foto" type="button" disabled>
+                        Alterar foto
+                    </button>
+
+                    <div class="perfil-info">
+                        <p class="perfil-nome" id="perfil-nome-visual">Carregando...</p>
+                        <p class="perfil-funcao" id="perfil-tipo-visual">...</p>
+                    </div>
+
+                </aside>
+
+                <div class="perfil-conteudo">
+
+                    <section class="perfil-secao">
+                        <h3 class="perfil-secao-titulo">Dados pessoais</h3>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-nome-exibicao">Nome de exibição</label>
+                            <input type="text" id="perfil-nome-exibicao" maxlength="60" placeholder="Seu nome completo">
+                        </div>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-email">E-mail</label>
+                            <input type="email" id="perfil-email" maxlength="80" placeholder="seu@email.com">
+                        </div>
+
+                        <div class="perfil-campo">
+                            <label for="perfil-telefone">Telefone</label>
+                            <input type="tel" id="perfil-telefone" maxlength="20" placeholder="(00) 00000-0000">
+                        </div>
+                    </section>
+
+                    <div class="perfil-acoes">
+                        <button class="btn-secundario" type="button" id="btn-cancelar">
+                            Cancelar
+                        </button>
+                        <button class="btn-principal" type="button" id="btn-salvar-perfil">
+                            Salvar alterações
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+
+<!-- Componentes -->
+<script src="../components/administrador-sidebar.js"></script>
+<script src="../components/administrador-topbar.js"></script>
+
+<!-- Scripts -->
+<script src="../scripts/perfilAdmin.js"></script>
+
+<script>
+    renderizarBarraLateralAdministrador("administrador-perfil", "../");
+    renderizarBarraTopoAdministrador("../");
+</script>
+
+</body>
+</html>

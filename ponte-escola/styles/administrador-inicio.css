@@ -27,21 +27,9 @@
   color: var(--color-text-muted);
 }
 
-.card-resumo.azul strong {
-  color: var(--color-primary);
-}
-
-.card-resumo.vermelho strong {
-  color: var(--color-danger);
-}
-
-.card-resumo.verde strong {
-  color: var(--color-success);
-}
-
-.card-resumo.laranja strong {
-  color: var(--color-warning);
-}
+.card-resumo.azul strong { color: var(--color-primary); }
+.card-resumo.vermelho strong { color: var(--color-danger); }
+.card-resumo.verde strong { color: var(--color-success); }
 
 .grade-home {
   display: grid;
@@ -110,21 +98,10 @@
   flex-shrink: 0;
 }
 
-.linha-ocorrencia-tipo.comportamental {
-  background: #7C3AED;
-}
-
-.linha-ocorrencia-tipo.saude {
-  background: var(--color-danger);
-}
-
-.linha-ocorrencia-tipo.acidente {
-  background: var(--color-warning);
-}
-
-.linha-ocorrencia-tipo.alimentacao {
-  background: var(--color-success);
-}
+.linha-ocorrencia-tipo.comportamental { background: #7C3AED; }
+.linha-ocorrencia-tipo.saude { background: var(--color-danger); }
+.linha-ocorrencia-tipo.acidente { background: var(--color-warning); }
+.linha-ocorrencia-tipo.alimentacao { background: var(--color-success); }
 
 .linha-ocorrencia-info {
   flex: 1;
@@ -182,20 +159,8 @@
   font-size: 1.125rem;
 }
 
-.linha-pendencia-icone.vermelho {
-  background: #FDECEE;
-  color: var(--color-danger);
-}
-
-.linha-pendencia-icone.laranja {
-  background: #FFF3E0;
-  color: var(--color-warning);
-}
-
-.linha-pendencia-icone.azul {
-  background: #EBF2FC;
-  color: var(--color-primary);
-}
+.linha-pendencia-icone.vermelho { background: #FDECEE; color: var(--color-danger); }
+.linha-pendencia-icone.azul { background: #EBF2FC; color: var(--color-primary); }
 
 .linha-pendencia-info {
   flex: 1;
@@ -251,21 +216,11 @@
 }
 
 @media (max-width: 900px) {
-  .grade-resumo {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grade-home {
-    grid-template-columns: 1fr;
-  }
-
-  .grade-acesso-rapido {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .grade-resumo { grid-template-columns: repeat(2, 1fr); }
+  .grade-home { grid-template-columns: 1fr; }
+  .grade-acesso-rapido { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
-  .grade-resumo {
-    grid-template-columns: 1fr;
-  }
+  .grade-resumo { grid-template-columns: 1fr; }
 }

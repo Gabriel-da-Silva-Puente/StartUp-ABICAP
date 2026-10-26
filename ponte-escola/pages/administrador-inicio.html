@@ -26,9 +26,9 @@
 
             <div class="cabecalho-pagina">
                 <div>
-                    <h2>Olá, Ricardo Nunes! 👋</h2>
+                    <h2 id="saudacao-admin">Olá, Administrador! 👋</h2>
                     <p id="subtitulo-inicio-data" class="subtitulo-pagina">
-                        Admininstre tudo em um só lugar.
+                        Administre tudo em um só lugar.
                     </p>
                 </div>
             </div>
@@ -84,24 +84,16 @@
                         <a href="../pages/administrador-ocorrencias.html" class="linha-pendencia">
                             <div class="linha-pendencia-icone vermelho">!</div>
                             <div class="linha-pendencia-info">
-                                <p class="linha-pendencia-titulo">3 ocorrências abertas</p>
-                                <p class="linha-pendencia-desc">Precisam de acompanhamento</p>
+                                <p class="linha-pendencia-titulo" id="pendencia-ocorrencias">0 ocorrências abertas</p>
+                                <p class="linha-pendencia-desc">Pais ainda não leram</p>
                             </div>
                         </a>
 
                         <a href="../pages/administrador-mensagens.html" class="linha-pendencia">
                             <div class="linha-pendencia-icone azul">✉</div>
                             <div class="linha-pendencia-info">
-                                <p class="linha-pendencia-titulo">5 mensagens não lidas</p>
+                                <p class="linha-pendencia-titulo">0 mensagens não lidas</p>
                                 <p class="linha-pendencia-desc">De pais e responsáveis</p>
-                            </div>
-                        </a>
-
-                        <a href="../pages/administrador-autorizacoes.html" class="linha-pendencia">
-                            <div class="linha-pendencia-icone laranja">✓</div>
-                            <div class="linha-pendencia-info">
-                                <p class="linha-pendencia-titulo">12 autorizações pendentes</p>
-                                <p class="linha-pendencia-desc">Aguardando resposta dos pais</p>
                             </div>
                         </a>
 
@@ -142,13 +134,25 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/inicioAdminService.js"></script>
+
+<!-- Componentes (SIDEBAR E TOPBAR DO ADMINISTRADOR) -->
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/inicioAdmin.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador", "../");
     renderizarBarraTopoAdministrador("../");
 </script>
 
 </body>
-
 </html>

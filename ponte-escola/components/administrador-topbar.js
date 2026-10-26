@@ -1,16 +1,30 @@
-function renderizarBarraTopoAdministrador(prefixo = "") {
+async function renderizarBarraTopoAdministrador(prefixo = "") {
 
     const topbar = document.querySelector(".barra-topo");
     if (!topbar) return;
 
-    const usuario = {
-        id: 1,
-        nome: "Ricardo Nunes",
-        iniciais: "RN",
-        perfil: "administrador"
-    };
+    const idLogado = localStorage.getItem('usuarioLogadoId');
+    if (!idLogado) {
+        window.location.href = prefixo + "index.html";
+        return;
+    }
 
-    // const usuario = UsuariosServico.usuarioAtual();
+    let usuario = null;
+    try {
+        usuario = await AdministradorService.buscarPerfilCompleto(idLogado);
+    } catch (erro) {
+        console.error("Erro ao buscar usuário admin:", erro);
+    }
+
+    if (!usuario) {
+        topbar.innerHTML = `<div style="padding: 1rem; color: red;">Erro ao carregar perfil</div>`;
+        return;
+    }
+
+    const partesNome = usuario.nome.trim().split(" ");
+    const iniciais = partesNome.length > 1 
+        ? (partesNome[0][0] + partesNome[partesNome.length - 1][0]).toUpperCase()
+        : partesNome[0][0].toUpperCase();
 
     topbar.innerHTML = `
         <div class="topo-esquerda">
@@ -26,7 +40,7 @@ function renderizarBarraTopoAdministrador(prefixo = "") {
             </button>
 
             <a href="${prefixo}pages/perfil.html" class="topo-avatar" id="btn-perfil-topo">
-                ${usuario.iniciais || "AD"}
+                ${iniciais}
             </a>
 
         </div>

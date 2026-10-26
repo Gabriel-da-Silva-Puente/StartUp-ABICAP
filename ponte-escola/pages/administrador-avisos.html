@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PonteEscola — Avisos</title>
+    <title>PonteEscola — Avisos (Admin)</title>
 
     <link rel="stylesheet" href="../components/global.css">
     <link rel="stylesheet" href="../components/layout.css">
     <link rel="stylesheet" href="../components/components.css">
-    <link rel="stylesheet" href="../styles/administrador-avisos.css">
+    <link rel="stylesheet" href="../styles/administrador-avisos.css"> 
+    <link rel="stylesheet" href="../styles/avisos.css">
 </head>
 
 <body>
@@ -18,12 +19,12 @@
 
     <aside class="barra-lateral"></aside>
 
-    <main class="conteudo-principal">
+    <main class="conteudo-principal"> 
 
         <header class="barra-topo"></header>
 
         <section class="conteudo-pagina">
-
+            
             <div class="cabecalho-pagina">
                 <div>
                     <h2>Avisos</h2>
@@ -39,43 +40,31 @@
             </div>
 
             <section class="grade-estatisticas" aria-label="Resumo avisos">
-
                 <div class="card-estatistica">
                     <strong id="stat-total-avisos">0</strong>
                     <p>Total enviados</p>
                 </div>
-
                 <div class="card-estatistica">
                     <strong id="stat-aguardando">0</strong>
                     <p>Aguardando leitura</p>
                 </div>
-
                 <div class="card-estatistica">
                     <strong id="stat-confirmados">0</strong>
                     <p>Confirmados</p>
                 </div>
-
             </section>
 
             <section class="grade-avisos">
 
                 <div class="barra-ferramentas">
-
                     <div class="campo-pesquisa">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.3-4.3"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                         <input type="search" id="busca-avisos" placeholder="Buscar avisos..." aria-label="Buscar avisos">
                     </div>
 
+                    <!-- NOVO: SELECT DE TURMAS PARA O ADMIN -->
                     <select class="select-turma" id="filtro-turma" aria-label="Filtrar por turma">
                         <option value="todas">Todas as turmas</option>
-                        <option value="jI-A">Jardim I — Turma A</option>
-                        <option value="jI-B">Jardim I — Turma B</option>
-                        <option value="jII-A">Jardim II — Turma A</option>
-                        <option value="jII-B">Jardim II — Turma B</option>
-                        <option value="5A">5º Ano — Turma A</option>
                     </select>
 
                     <div class="filtros-avisos" id="filtros-avisos">
@@ -83,29 +72,127 @@
                         <button type="button" data-filtro="comunicado" aria-pressed="false">Comunicado</button>
                         <button type="button" data-filtro="evento" aria-pressed="false">Evento</button>
                     </div>
-
                 </div>
 
                 <div class="lista-avisos" id="lista-avisos"></div>
 
             </section>
 
-        </section>
+        </section> 
 
     </main>
 
 </div>
 
+<!-- MODAL DE CRIAR AVISO (igual ao professor) -->
+<dialog id="modal-aviso" class="modal">
+    <form id="form-aviso" class="modal-form">
+        <div class="modal-cabecalho">
+            <h3>Novo Aviso</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="campo-grupo">
+            <label>Categoria</label>
+            <div class="botoes-categoria" id="botoes-categoria">
+                <button type="button" class="btn-categoria ativo" data-valor="comunicado">Comunicado</button>
+                <button type="button" class="btn-categoria" data-valor="evento">Evento</button>
+            </div>
+            <input type="hidden" id="aviso-tipo" value="comunicado">
+        </div>
+
+        <div class="campo-grupo">
+            <label for="aviso-titulo">Título</label>
+            <input type="text" id="aviso-titulo" required maxlength="80" placeholder="Ex: Reunião de pais — outubro">
+        </div>
+
+        <div class="campo-grupo">
+            <label for="aviso-mensagem">Descrição</label>
+            <textarea id="aviso-mensagem" required rows="4" maxlength="500" placeholder="Descreva os detalhes do aviso..."></textarea>
+        </div>
+
+        <div class="linha-dupla">
+            <div class="campo-grupo">
+                <label for="aviso-turma">Turma</label>
+                <select id="aviso-turma" required>
+                    <option value="">Carregando turmas...</option>
+                </select>
+            </div>
+            <div class="campo-grupo" id="campo-data-evento">
+                <label for="aviso-data">Data do Evento</label>
+                <input type="date" id="aviso-data">
+            </div>
+        </div>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" id="btn-cancelar-aviso">Cancelar</button>
+            <button type="submit" class="btn-principal">Publicar Aviso</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- MODAL DE DETALHES DO AVISO -->
+<dialog id="modal-detalhe-aviso" class="modal-detalhe">
+    <div class="detalhe-header">
+        <div class="detalhe-header-info">
+            <span id="detalhe-tipo" class="badge-tipo badge-comunicado" style="width: fit-content;">Comunicado</span>
+            <h2 id="detalhe-titulo">Título do Aviso</h2>
+            <div class="detalhe-meta">
+                <span id="detalhe-data">Data</span>
+                <span>👥 <span id="detalhe-turma">Turma</span></span>
+            </div>
+        </div>
+        <button type="button" class="modal-fechar" id="btn-fechar-detalhe" aria-label="Fechar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="detalhe-body">
+        <p id="detalhe-descricao">Descrição do aviso...</p>
+    </div>
+
+    <div class="detalhe-footer">
+        <h4>Confirmações de leitura</h4>
+        <div class="progresso-container">
+            <div class="barra-fundo">
+                <div id="detalhe-barra" class="barra-preenchida" style="width: 0%;"></div>
+            </div>
+            <div id="detalhe-status-texto" class="progresso-texto">
+                0/0 <span>⏱</span>
+            </div>
+        </div>
+        <span id="detalhe-faltam" class="detalhe-faltam">Carregando...</span>
+        <button type="button" id="btn-ver-todos" class="btn-fechar-detalhe">Fechar detalhes</button>
+    </div>
+</dialog>
+
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
 
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/avisoService.js"></script>
+
+<!-- Componentes do Admin -->
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/avisosAdmin.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-avisos", "../");
     renderizarBarraTopoAdministrador("../");
 </script>
 
 </body>
-
 </html>

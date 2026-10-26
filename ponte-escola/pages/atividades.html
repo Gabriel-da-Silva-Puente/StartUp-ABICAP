@@ -29,7 +29,7 @@
                 <div>
                     <h2>Atividades</h2>
                     <p id="subtitulo-atividades-turma" class="subtitulo-pagina">
-                        0 atividades · Jardim II — Turma A
+                        0 atividades · Carregando...
                     </p>
                 </div>
                 <button id="btn-nova-atividade" class="btn-principal" type="button">
@@ -76,7 +76,14 @@
 
 <dialog id="modal-atividade" class="modal" aria-labelledby="modal-titulo">
     <form id="form-atividade" class="modal-form">
-        <h3 id="modal-titulo">Nova atividade</h3>
+        <div class="modal-cabecalho">
+            <h3 id="modal-titulo">Nova atividade</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
 
         <label>Título
             <input type="text" name="titulo" required maxlength="80" placeholder="Ex.: Trazer avental na quinta">
@@ -97,134 +104,62 @@
     </form>
 </dialog>
 
+<!--MUDEI: Adicionado o Modal de Detalhes -->
+<dialog id="modal-detalhe-atividade" class="modal-detalhe">
+    <div class="detalhe-header">
+        <div class="detalhe-header-info">
+            <span class="badge-tipo badge-comunicado" style="width: fit-content;">Atividade</span>
+            <h2 id="detalhe-titulo">Título da Atividade</h2>
+            <div class="detalhe-meta">
+                <span>📅 Prazo: <span id="detalhe-prazo">Data</span></span>
+                <span>👥 <span id="detalhe-leituras">0/0</span> leituras</span>
+            </div>
+        </div>
+        <button type="button" class="modal-fechar" id="btn-fechar-detalhe" aria-label="Fechar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="detalhe-body">
+        <p id="detalhe-descricao" style="font-size: 0.9375rem; line-height: 1.5; margin-bottom: 1rem; white-space: pre-wrap;">Descrição completa...</p>
+        
+        <div style="border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem;">
+            <h4 style="font-size: 0.875rem; color: var(--color-text); margin-bottom: 0.75rem;">Confirmações de leitura</h4>
+            <div class="progresso-container">
+                <div class="barra-fundo">
+                    <div id="detalhe-barra" class="barra-preenchida" style="width: 0%;"></div>
+                </div>
+                <div id="detalhe-status-texto" class="progresso-texto">
+                    0/0 <span>⏱</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</dialog>
+
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!--MUDEI -->
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
 <script src="../services/atividadeService.js"></script>
+
+<!-- Componentes -->
 <script src="../components/sidebar.js"></script>
 <script src="../components/topbar.js"></script>
-<script>
 
+<!-- Script da Página -->
+<script src="../scripts/atividades.js"></script>
+
+<script>
     renderizarBarraLateral("atividades", "../");
     renderizarBarraTopo("../");
-
-    const listaEl = document.getElementById('lista-atividades');
-    const buscaEl = document.getElementById('busca-atividades');
-    const filtrosEl = document.getElementById('filtros-atividades');
-    const modalEl = document.getElementById('modal-atividade');
-    const formEl = document.getElementById('form-atividade');
-    const avisoEl = document.getElementById('aviso-flutuante');
-
-    let filtro = 'todas';
-
-    const iconeRelogio = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
-    const iconeSeta = '<svg class="item-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
-
-    function escapar(texto) {
-        const div = document.createElement('div');
-        div.textContent = texto;
-        return div.innerHTML;
-    }
-
-    function avisar(mensagem) {
-        avisoEl.textContent = mensagem;
-        avisoEl.classList.add('visivel');
-        setTimeout(() => avisoEl.classList.remove('visivel'), 2600);
-    }
-
-    function renderizarResumo(todas) {
-        const confirmadas = todas.filter(a => a.lidas === a.total).length;
-
-        document.getElementById('subtitulo-atividades-turma').textContent =
-            `${todas.length} ${todas.length === 1 ? 'atividade' : 'atividades'} · Jardim II — Turma A`;
-        document.getElementById('stat-total').textContent = todas.length;
-        document.getElementById('stat-aguardando').textContent = todas.length - confirmadas;
-        document.getElementById('stat-confirmadas').textContent = confirmadas;
-    }
-
-    function renderizar() {
-        const todas = AtividadeService.listar();
-        const termo = buscaEl.value.trim().toLowerCase();
-
-        renderizarResumo(todas);
-
-        const exibidas = todas.filter(a => {
-            const completa = a.lidas === a.total;
-            if (filtro === 'aguardando' && completa) return false;
-            if (filtro === 'confirmadas' && !completa) return false;
-            return a.titulo.toLowerCase().includes(termo) || a.descricao.toLowerCase().includes(termo);
-        });
-
-        if (exibidas.length === 0) {
-            listaEl.innerHTML = '<p class="lista-vazia">Nenhuma atividade encontrada.</p>';
-            return;
-        }
-
-        listaEl.innerHTML = exibidas.map(a => {
-            const completa = a.lidas === a.total;
-            const pct = Math.round((a.lidas / a.total) * 100);
-            return `
-            <button type="button" class="item-atividade" aria-expanded="false">
-                <div class="item-corpo">
-                    <div class="item-meta">
-                        <span class="selo-atividade">Atividade</span>
-                        <span>Prazo: ${a.prazo}</span>
-                    </div>
-                    <h3 class="item-titulo">${escapar(a.titulo)}</h3>
-                    <p class="item-descricao">${escapar(a.descricao)}</p>
-                    <span class="item-data">${a.criadaEm}</span>
-                </div>
-                <div class="item-leituras ${completa ? 'completo' : ''}">
-                    <b>${iconeRelogio}${a.lidas}/${a.total}</b>
-                    <span>leituras</span>
-                    <span class="progresso" aria-hidden="true"><i style="width:${pct}%"></i></span>
-                </div>
-                ${iconeSeta}
-            </button>`;
-        }).join('');
-    }
-
-    buscaEl.addEventListener('input', renderizar);
-
-    filtrosEl.addEventListener('click', e => {
-        const botao = e.target.closest('button[data-filtro]');
-        if (!botao) return;
-        filtro = botao.dataset.filtro;
-        filtrosEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === botao));
-        renderizar();
-    });
-
-    listaEl.addEventListener('click', e => {
-        const item = e.target.closest('.item-atividade');
-        if (!item) return;
-        const aberta = item.getAttribute('aria-expanded') === 'true';
-        item.setAttribute('aria-expanded', String(!aberta));
-    });
-
-    document.getElementById('btn-nova-atividade').addEventListener('click', () => {
-        formEl.reset();
-        formEl.prazo.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-        modalEl.showModal();
-    });
-
-    document.getElementById('btn-cancelar').addEventListener('click', () => modalEl.close());
-
-    modalEl.addEventListener('click', e => {
-        if (e.target === modalEl) modalEl.close();
-    });
-
-    formEl.addEventListener('submit', e => {
-        e.preventDefault();
-        AtividadeService.criar({
-            titulo: formEl.titulo.value.trim(),
-            descricao: formEl.descricao.value.trim(),
-            prazo: formEl.prazo.value
-        });
-        modalEl.close();
-        renderizar();
-        avisar('Atividade publicada.');
-    });
-
-    renderizar();
 </script>
 </body>
 </html>

@@ -63,15 +63,77 @@
 
 </div>
 
+<!-- MODAL DE CRIAR / EDITAR TURMA -->
+<dialog id="modal-turma" class="modal">
+    <form id="form-turma" class="modal-form">
+        <div class="modal-cabecalho">
+            <h3 id="modal-turma-titulo">Nova Turma</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="campo-grupo">
+            <label for="turma-nome">Nome da Turma</label>
+            <input type="text" id="turma-nome" required maxlength="50" placeholder="Ex: Jardim II — Turma A">
+        </div>
+
+        <!-- NOVOS CAMPOS DO BANCO -->
+        <div class="linha-dupla">
+            <div class="campo-grupo">
+                <label for="turma-ano">Ano Letivo</label>
+                <input type="text" id="turma-ano" maxlength="10" placeholder="Ex: 2026">
+            </div>
+            <div class="campo-grupo">
+                <label for="turma-turno">Turno</label>
+                <select id="turma-turno">
+                    <option value="">Selecione</option>
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                    <option value="Integral">Integral</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="campo-grupo" style="flex-direction: row; align-items: center; gap: 0.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+            <input type="checkbox" id="turma-infantil" style="width: 18px; height: 18px; cursor: pointer;">
+            <label for="turma-infantil" style="margin-bottom: 0; cursor: pointer;">É turma de Educação Infantil?</label>
+        </div>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" id="btn-cancelar-turma">Cancelar</button>
+            <button type="submit" class="btn-principal">Salvar Turma</button>
+        </div>
+    </form>
+</dialog>
+
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Arquivo que cria busca para o supabase 'banco' -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/turmasService.js"></script>
+
+<!-- Componentes (ADMIN) -->
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Scripts da Página -->
+<script src="../scripts/turmasAdmin.js"></script>
+
+<!-- Inicialização da página -->
 <script>
     renderizarBarraLateralAdministrador("administrador-turmas", "../");
     renderizarBarraTopoAdministrador("../");
 </script>
 
 </body>
-
 </html>

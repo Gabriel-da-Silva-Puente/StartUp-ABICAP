@@ -61,7 +61,14 @@
 <dialog id="modal-autorizacao" class="modal">
     <form id="form-autorizacao" class="modal-form">
 
-        <h3>Nova Autorização</h3>
+        <div class="modal-cabecalho">
+            <h3 id="modal-titulo">Nova Autorização</h3>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
 
         <label>
             Nome do evento
@@ -92,41 +99,12 @@
 
         <fieldset class="campo-turmas">
             <legend>Turmas participantes</legend>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jI-A">
-                Jardim I — Turma A
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jI-B">
-                Jardim I — Turma B
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jII-A">
-                Jardim II — Turma A
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jII-B">
-                Jardim II — Turma B
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="5A">
-                5º Ano — Turma A
-            </label>
-
-            <label class="checkbox-turma checkbox-todas">
-                <input type="checkbox" id="todas-turmas">
-                <strong>Todas as turmas</strong>
-            </label>
+            <div id="container-turmas-checkbox"></div>
         </fieldset>
 
         <div class="modal-acoes">
             <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
-            <button type="submit" class="btn-principal">Criar Autorização</button>
+            <button type="submit" class="btn-principal">Salvar Autorização</button>
         </div>
 
     </form>
@@ -134,14 +112,25 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
 
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/autorizacoesService.js"></script>
+
+<!-- Componentes -->
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Scripts -->
+<script src="../scripts/autorizacoesAdmin.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-autorizacoes", "../");
     renderizarBarraTopoAdministrador("../");
 </script>
 
 </body>
-
 </html>

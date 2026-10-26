@@ -29,17 +29,9 @@
   margin: 0;
 }
 
-#stat-total-avisos {
-    color: var(--color-primary);
-}
-
-#stat-aguardando {
-    color: var(--color-warning);
-}
-
-#stat-confirmados {
-    color: var(--color-success);
-}
+#stat-total-avisos { color: var(--color-primary); }
+#stat-aguardando { color: var(--color-warning); }
+#stat-confirmados { color: var(--color-success); }
 
 .barra-ferramentas {
   display: flex;
@@ -121,161 +113,150 @@
 
 
 .badge-tipo {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    font-weight: 600;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.badge-evento {
-    background: #F3E8FF; 
-    color: #7C3AED;
-}
+.badge-evento { background: #F3E8FF; color: #7C3AED; }
+.badge-comunicado { background: #EBF2FC; color: #1E5AA8; }
 
-.badge-comunicado {
-    background: #EBF2FC; 
-    color: #1E5AA8;
-}
-
-
-.status-verde {
-    color: #28A745; 
-}
-
-.status-laranja {
-    color: #FF8C00; 
-}
+.status-verde { color: #28A745; }
+.status-laranja { color: #FF8C00; }
 
 
 .modal-detalhe {
-    border: none;
-    border-radius: 16px;
-    padding: 0;
-    width: min(500px, 90vw);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  width: min(500px, 90vw);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .modal-detalhe::backdrop {
-    background: rgba(17, 24, 39, 0.6);
-    backdrop-filter: blur(2px);
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(2px);
 }
 
 .detalhe-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1.5rem 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem 1.5rem 1rem;
 }
 
 .detalhe-header-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .detalhe-header-info h2 {
-    font-size: 1.25rem;
-    color: var(--color-text);
-    margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin: 0;
 }
 
 .detalhe-meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.8125rem;
-    color: #888;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: #888;
+  margin-top: 0.25rem;
 }
 
 .detalhe-meta span {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 .detalhe-body {
-    padding: 1.5rem;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    font-size: 0.4125rem;
-    color: #555;
-    line-height: 1.6;
+  padding: 1.5rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  color: #555;
+  line-height: 1.6;
 }
 
 .detalhe-body p {
-    font-size: 0.875rem !important; 
-    line-height: 1.5;
-    margin: 0;
+  font-size: 0.875rem !important;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .detalhe-footer {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .detalhe-footer h4 {
-    font-size: 0.875rem;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
 }
 
 .progresso-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .barra-fundo {
-    flex: 1;
-    height: 8px;
-    background: #eee;
-    border-radius: 99px;
-    overflow: hidden;
+  flex: 1;
+  height: 8px;
+  background: #eee;
+  border-radius: 99px;
+  overflow: hidden;
 }
 
 .barra-preenchida {
-    height: 100%;
-    background: var(--color-success);
-    border-radius: 99px;
+  height: 100%;
+  background: var(--color-success);
+  border-radius: 99px;
 }
 
 .progresso-texto {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--color-warning);
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-warning);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .progresso-texto.completo {
-    color: var(--color-success);
+  color: var(--color-success);
 }
 
 .detalhe-faltam {
-    font-size: 0.8125rem;
-    color: #888;
-    margin-bottom: 1.5rem;
-    display: block;
+  font-size: 0.8125rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
 .btn-fechar-detalhe {
-    background: var(--color-primary-light);
-    color: var(--color-primary);
-    font-weight: 600;
-    width: 100%;
-    padding: 0.875rem;
-    border-radius: 8px;
-    text-align: center;
-    transition: background 0.2s;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+  width: 100%;
+  padding: 0.875rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: background 0.2s;
 }
 
 .btn-fechar-detalhe:hover {
-    background: #dce7f7;
+  background: #dce7f7;
 }
 
-/* --- MENU DE 3 PONTINHOS --- */
+
 .menu-container {
   position: relative;
 }
@@ -343,18 +324,54 @@
   background: #FDECEE;
 }
 
-@media (max-width: 640px) {
-  .grade-estatisticas {
-    grid-template-columns: 1fr;
-  }
 
-  .filtros-avisos {
-    width: 100%;
-  }
-
-  .filtros-avisos button {
-    flex: 1;
-    padding-inline: 0.5rem;
-  }
+.linha-dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
 }
 
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.campo-grupo select,
+.campo-grupo input[type="date"] {
+    height: 42px;
+    padding: 0 0.9rem;
+    font-size: 0.9375rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-white);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.campo-grupo input[type="date"] {
+    padding-right: 0.5rem;
+}
+
+.campo-grupo input[type="date"]:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+.campo-grupo input[type="date"]:focus::-webkit-datetime-edit {
+    color: var(--color-text);
+}
+
+.campo-grupo input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+}
+.campo-grupo input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .grade-estatisticas { grid-template-columns: 1fr; }
+  .filtros-avisos { width: 100%; }
+  .filtros-avisos button { flex: 1; padding-inline: 0.5rem; }
+  .linha-dupla { grid-template-columns: 1fr; }
+}
