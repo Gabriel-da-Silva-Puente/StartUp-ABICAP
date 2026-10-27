@@ -12,7 +12,9 @@
     let idAtividadeEditando = null; 
     let idAtividadeDetalhe = null; 
 
-    const iconeRelogio = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+    // Ícones
+    const iconeRelogio = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+    const iconeCheck = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px; height:16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>';
 
     function escapar(texto) {
         const div = document.createElement('div');
@@ -53,17 +55,34 @@
             return;
         }
 
+        const idLogado = localStorage.getItem('usuarioLogadoId');
+
         listaEl.innerHTML = exibidas.map(a => {
             const completa = a.lidas === a.total && a.total > 0;
+            const classeCor = completa ? 'var(--color-success)' : 'var(--color-warning)';
+            const iconeStatus = completa ? iconeCheck : iconeRelogio;
             
             const avisoPrazo = a.prazoEncerrado 
                 ? `<span style="font-size: 0.75rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; background: #FDECEE; color: var(--color-danger);">⚠ Prazo encerrado</span>` 
                 : '';
 
+            const ehDono = String(a.autor_id) === String(idLogado);
+            const menuAcoes = ehDono ? `
+                <div class="menu-container" onclick="event.stopPropagation();">
+                    <button class="btn-opcoes" onclick="toggleMenu(this)">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                    </button>
+                    <div class="menu-dropdown">
+                        <button onclick="prepararEdicao(${a.id})">✏️ Editar</button>
+                        <button class="excluir" onclick="excluirAtividade(${a.id})">🗑️ Excluir</button>
+                    </div>
+                </div>
+            ` : '';
+
             return `
             <div class="card-aviso" 
                  onclick="abrirDetalheAtividade(${a.id})"
-                 style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; border-bottom: 1px solid #eee;">
+                 style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem;">
                 
                 <div class="aviso-info">
                     <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.25rem;">
@@ -71,27 +90,20 @@
                         ${avisoPrazo}
                     </div>
                     <h3 style="margin: 0.5rem 0; font-size: 1.1rem; color: #333;">${escapar(a.titulo)}</h3>
-                    <span style="font-size: 0.8125rem; color: #888;">📅 Prazo: ${a.prazo}</span>
+                    <span style="font-size: 0.8125rem; color: #888;">📅 Prazo: ${a.prazo} · Por: ${a.autor_nome}</span>
                 </div>
 
                 <div class="aviso-status" style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; color: ${completa ? 'var(--color-success)' : 'var(--color-warning)'};">
+                    <!-- RELÓGIO DE LEITURAS AQUI -->
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; color: ${classeCor};">
                         <div style="display: flex; align-items: center; gap: 0.4rem; font-weight: 700; font-size: 1.1rem;">
-                            ${iconeRelogio}
+                            ${iconeStatus}
                             ${a.lidas}/${a.total}
                         </div>
                         <span style="font-size: 0.75rem; color: #888;">leituras</span>
                     </div>
-
-                    <div class="menu-container" onclick="event.stopPropagation();">
-                        <button class="btn-opcoes" onclick="toggleMenu(this)">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-                        </button>
-                        <div class="menu-dropdown">
-                            <button onclick="prepararEdicao(${a.id})">✏️ Editar</button>
-                            <button class="excluir" onclick="excluirAtividade(${a.id})">🗑️ Excluir</button>
-                        </div>
-                    </div>
+                    
+                    ${menuAcoes}
                 </div>
             </div>`;
         }).join('');
@@ -241,14 +253,14 @@
         document.getElementById('detalhe-total').textContent = ativ.total;
 
         const tagPrazo = document.getElementById('detalhe-status-prazo');
-        const secaoNotificar = document.getElementById('secao-notificar'); // NOVO
+        const secaoNotificar = document.getElementById('secao-notificar');
 
         if (ativ.prazoEncerrado) {
             tagPrazo.style.display = 'inline-block';
-            secaoNotificar.style.display = 'block'; // Mostra a seção de notificar
+            secaoNotificar.style.display = 'block'; 
         } else {
             tagPrazo.style.display = 'none';
-            secaoNotificar.style.display = 'none'; // Esconde a seção
+            secaoNotificar.style.display = 'none'; 
         }
 
         if (ativ.prazoEncerrado) {
@@ -258,17 +270,14 @@
             
             try {
                 const todosAlunos = await AtividadeService.listarAlunosTurma(turmaId);
-                const alunosLeram = await AtividadeService.listarAlunosQueLeram(id);
-                
-                const alunosNaoLeram = todosAlunos.filter(a => !alunosLeram.includes(a.id));
 
-                if (alunosNaoLeram.length === 0) {
-                    document.getElementById('lista-alunos-notificar').innerHTML = '<p style="font-size:0.8rem; color:var(--color-success); font-weight:600;">Todos os alunos já leram esta atividade!</p>';
+                if (todosAlunos.length === 0) {
+                    document.getElementById('lista-alunos-notificar').innerHTML = '<p style="font-size:0.8rem; color:#888;">Nenhum aluno cadastrado nesta turma.</p>';
                     return;
                 }
 
                 document.getElementById('btn-notificar-nao-fizeram').style.display = 'block';
-                document.getElementById('lista-alunos-notificar').innerHTML = alunosNaoLeram.map(aluno => `
+                document.getElementById('lista-alunos-notificar').innerHTML = todosAlunos.map(aluno => `
                     <label style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border: 1px solid #eee; border-radius: 8px; cursor: pointer; background: #fff;">
                         <input type="checkbox" class="check-aluno" value="${aluno.id}" onchange="atualizarContadorNotificar()" style="width: 18px; height: 18px;">
                         <span style="font-size: 0.875rem; color: #333;">${aluno.nome}</span>

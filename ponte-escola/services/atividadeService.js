@@ -51,6 +51,7 @@ const AtividadeService = {
             .from('atividades')
             .select(`
                 *,
+                administrador ( nome ),
                 atividades_lidas ( count )
             `)
             .eq('turma_id', turmaId)
@@ -69,7 +70,7 @@ const AtividadeService = {
             const dataCriacao = new Date(ativ.created_at).toLocaleDateString('pt-BR');
             const dataPrazo = new Date(ativ.prazo + 'T12:00:00').toLocaleDateString('pt-BR');
 
-            //MUDEI: Verifica se o prazo já passou para marcar com aviso vermelho
+            //MUDEI:
             const hoje = new Date();
             hoje.setHours(0,0,0,0);
             const prazoDate = new Date(ativ.prazo + 'T12:00:00');
@@ -77,6 +78,7 @@ const AtividadeService = {
 
             return {
                 ...ativ,
+                autor_nome: ativ.administrador?.nome || 'Professor',
                 lidas: lidas,
                 total: totalAlunos || 0,
                 criadaEm: `Criada em ${dataCriacao}`,
