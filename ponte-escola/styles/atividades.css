@@ -97,6 +97,7 @@
 .card-aviso {
   background: var(--color-white);
   transition: background 0.2s;
+  border-radius: 50%;
 }
 
 .card-aviso:hover {

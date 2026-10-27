@@ -1,5 +1,5 @@
 const AtividadeService = {
-    // //MUDEI: Descomentei o código antigo e adicionei o Supabase
+    // //MUDEI
     /*
     const CHAVE = 'ponteescola.atividades';
     const TOTAL_ALUNOS = 22;
@@ -69,13 +69,20 @@ const AtividadeService = {
             const dataCriacao = new Date(ativ.created_at).toLocaleDateString('pt-BR');
             const dataPrazo = new Date(ativ.prazo + 'T12:00:00').toLocaleDateString('pt-BR');
 
+            //MUDEI: Verifica se o prazo já passou para marcar com aviso vermelho
+            const hoje = new Date();
+            hoje.setHours(0,0,0,0);
+            const prazoDate = new Date(ativ.prazo + 'T12:00:00');
+            const prazoEncerrado = prazoDate < hoje;
+
             return {
                 ...ativ,
                 lidas: lidas,
                 total: totalAlunos || 0,
                 criadaEm: `Criada em ${dataCriacao}`,
                 prazo: dataPrazo,
-                prazoOriginal: ativ.prazo //MUDEI
+                prazoOriginal: ativ.prazo, //MUDEI
+                prazoEncerrado: prazoEncerrado //MUDEI
             };
         });
     },
@@ -115,6 +122,41 @@ const AtividadeService = {
             .from('atividades')
             .delete()
             .eq('id', id);
+        if (error) throw error;
+    },
+
+    //MUDEI
+    async listarAlunosTurma(turmaId) {
+        const { data, error } = await banco
+            .from('aluno')
+            .select('id, nome')
+            .eq('turma_id', turmaId)
+            .order('nome');
+        if (error) throw error;
+        return data;
+    },
+
+    //MUDEI
+    async listarAlunosQueLeram(atividadeId) {
+        const { data, error } = await banco
+            .from('atividades_lidas')
+            .select('aluno_id')
+            .eq('atividade_id', atividadeId);
+        if (error) throw error;
+        return data.map(a => a.aluno_id);
+    },
+
+    //MUDEI
+    async notificarResponsaveis(atividadeId, alunosIds) {
+        const registros = alunosIds.map(alunoId => ({
+            atividade_id: atividadeId,
+            aluno_id: alunoId
+        }));
+
+        const { error } = await banco
+            .from('notificacoes_atividades')
+            .upsert(registros, { onConflict: 'atividade_id, aluno_id', ignoreDuplicates: true });
+            
         if (error) throw error;
     }
 };

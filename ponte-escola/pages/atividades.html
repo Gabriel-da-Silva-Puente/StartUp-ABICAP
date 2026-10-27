@@ -16,21 +16,15 @@
 <body>
 
 <div class="estrutura-app">
-
     <aside class="barra-lateral"></aside>
-
     <main class="conteudo-principal">
-
         <header class="barra-topo"></header>
-
         <section class="conteudo-pagina">
 
             <div class="cabecalho-pagina">
                 <div>
                     <h2>Atividades</h2>
-                    <p id="subtitulo-atividades-turma" class="subtitulo-pagina">
-                        0 atividades · Carregando...
-                    </p>
+                    <p id="subtitulo-atividades-turma" class="subtitulo-pagina">0 atividades · Carregando...</p>
                 </div>
                 <button id="btn-nova-atividade" class="btn-principal" type="button">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
@@ -39,18 +33,9 @@
             </div>
 
             <section class="grade-resumo" aria-label="Resumo das atividades">
-                <div class="card-resumo verde">
-                    <strong id="stat-total">0</strong>
-                    <p>Total enviadas</p>
-                </div>
-                <div class="card-resumo laranja">
-                    <strong id="stat-aguardando">0</strong>
-                    <p>Aguardando leitura</p>
-                </div>
-                <div class="card-resumo azul">
-                    <strong id="stat-confirmadas">0</strong>
-                    <p>Confirmadas</p>
-                </div>
+                <div class="card-resumo verde"><strong id="stat-total">0</strong><p>Total enviadas</p></div>
+                <div class="card-resumo laranja"><strong id="stat-aguardando">0</strong><p>Aguardando leitura</p></div>
+                <div class="card-resumo azul"><strong id="stat-confirmadas">0</strong><p>Confirmadas</p></div>
             </section>
 
             <div class="barra-ferramentas">
@@ -69,9 +54,7 @@
             <div class="lista-atividades" id="lista-atividades"></div>
 
         </section>
-
     </main>
-
 </div>
 
 <dialog id="modal-atividade" class="modal" aria-labelledby="modal-titulo">
@@ -104,15 +87,18 @@
     </form>
 </dialog>
 
-<!--MUDEI: Adicionado o Modal de Detalhes -->
+<!-- MODAL DE DETALHES -->
 <dialog id="modal-detalhe-atividade" class="modal-detalhe">
     <div class="detalhe-header">
         <div class="detalhe-header-info">
-            <span class="badge-tipo badge-comunicado" style="width: fit-content;">Atividade</span>
-            <h2 id="detalhe-titulo">Título da Atividade</h2>
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+                <span class="badge-tipo badge-comunicado" style="width: fit-content;">Atividade</span>
+                <!-- Tag escondida por padrão, o JS mostra se o prazo passou -->
+                <span id="detalhe-status-prazo" style="font-size: 0.75rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; background: #FDECEE; color: var(--color-danger); display: none;">⚠ Prazo encerrado</span>
+            </div>
+            <h2 id="detalhe-titulo">Título</h2>
             <div class="detalhe-meta">
-                <span>📅 Prazo: <span id="detalhe-prazo">Data</span></span>
-                <span>👥 <span id="detalhe-leituras">0/0</span> leituras</span>
+                <span>Enviado em <span id="detalhe-data-envio">Data</span> · <span id="detalhe-turma">Turma</span></span>
             </div>
         </div>
         <button type="button" class="modal-fechar" id="btn-fechar-detalhe" aria-label="Fechar">
@@ -123,25 +109,37 @@
     </div>
 
     <div class="detalhe-body">
-        <p id="detalhe-descricao" style="font-size: 0.9375rem; line-height: 1.5; margin-bottom: 1rem; white-space: pre-wrap;">Descrição completa...</p>
+        <p id="detalhe-descricao" style="font-size: 0.9375rem; line-height: 1.5; margin-bottom: 1.5rem; white-space: pre-wrap; color: #555;">Descrição...</p>
         
-        <div style="border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem;">
-            <h4 style="font-size: 0.875rem; color: var(--color-text); margin-bottom: 0.75rem;">Confirmações de leitura</h4>
-            <div class="progresso-container">
-                <div class="barra-fundo">
-                    <div id="detalhe-barra" class="barra-preenchida" style="width: 0%;"></div>
-                </div>
-                <div id="detalhe-status-texto" class="progresso-texto">
-                    0/0 <span>⏱</span>
-                </div>
+        <div class="resumo-leituras" style="display: flex; gap: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div><strong id="detalhe-lidos" style="color: var(--color-success); font-size: 1.25rem;">0</strong><br><span style="font-size: 0.75rem; color: #888;">leram</span></div>
+            <div><strong id="detalhe-nao-lidos" style="color: var(--color-warning); font-size: 1.25rem;">0</strong><br><span style="font-size: 0.75rem; color: #888;">não leram</span></div>
+            <div><strong id="detalhe-total" style="color: #333; font-size: 1.25rem;">0</strong><br><span style="font-size: 0.75rem; color: #888;">total</span></div>
+        </div>
+
+        <div id="secao-notificar">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--color-danger)" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <strong style="font-size: 0.9375rem; color: var(--color-text);">Notificar responsáveis — atividade não realizada</strong>
             </div>
+            <p style="font-size: 0.8125rem; color: #888; margin-bottom: 1rem;">Selecione os alunos que <strong>não realizaram</strong> a atividade. Os responsáveis receberão uma notificação.</p>
+
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <button type="button" id="btn-selecionar-todos" style="background: none; border: none; color: var(--color-primary); font-size: 0.8125rem; font-weight: 600; cursor: pointer;">Selecionar todos</button>
+                <span id="contador-selecionados" style="font-size: 0.8125rem; color: #888;">0 selecionado(s)</span>
+            </div>
+
+            <div class="lista-alunos-notificar" id="lista-alunos-notificar" style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 200px; overflow-y: auto; margin-bottom: 1rem;"></div>
+
+            <button type="button" id="btn-notificar-nao-fizeram" class="btn-principal btn-perigo" style="width: 100%; display: none;" disabled>
+                Notificar selecionados
+            </button>
         </div>
     </div>
 </dialog>
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
-<!--MUDEI -->
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../services/supabase.js"></script>
