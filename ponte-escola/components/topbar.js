@@ -26,6 +26,9 @@ async function renderizarBarraTopo(prefixo = "") {
         return;
     }
 
+    // Salva o nome do usuário no navegador para outras páginas usarem
+    localStorage.setItem('usuarioLogadoNome', usuario.nome);
+
     //  Gerador de Iniciais para foto de miniperfil
     const partesNome = usuario.nome.trim().split(" ");
     const iniciais = partesNome.length > 1 

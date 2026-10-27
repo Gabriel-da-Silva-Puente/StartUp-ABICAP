@@ -46,12 +46,12 @@
 
                     <div class="sidebar-mes">
                         <p class="sidebar-mes-label">Mês atual</p>
-                        <p class="sidebar-mes-nome">Outubro 2026</p>
+                        <p class="sidebar-mes-nome"></p>
                     </div>
 
                     <div class="sidebar-dia-selecionado">
                         <p class="sidebar-dia-label">Dia selecionado</p>
-                        <p class="sidebar-dia-numero">15/10/2026</p>
+                        <p class="sidebar-dia-numero"></p>
                     </div>
 
                     <div class="sidebar-eventos">
@@ -73,7 +73,7 @@
                             </svg>
                         </button>
 
-                        <h3 class="calendario-mes-atual" id="calendario-mes-atual">Outubro 2026</h3>
+                        <h3 class="calendario-mes-atual" id="calendario-mes-atual"></h3>
 
                         <button class="btn-mes" id="btn-mes-proximo" aria-label="Próximo mês">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -141,31 +141,6 @@
         <fieldset class="campo-turmas">
             <legend>Turmas</legend>
 
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jI-A">
-                Jardim I — Turma A
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jI-B">
-                Jardim I — Turma B
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jII-A">
-                Jardim II — Turma A
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="jII-B">
-                Jardim II — Turma B
-            </label>
-
-            <label class="checkbox-turma">
-                <input type="checkbox" value="5A">
-                5º Ano — Turma A
-            </label>
-
             <label class="checkbox-turma checkbox-todas">
                 <input type="checkbox" id="todas-turmas">
                 <strong>Todas as turmas</strong>
@@ -173,6 +148,7 @@
         </fieldset>
 
         <div class="modal-acoes">
+            <button type="button" id="btn-excluir-evento" class="btn-perigo" hidden>Excluir</button>
             <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
             <button type="submit" class="btn-principal">Salvar Evento</button>
         </div>
@@ -182,8 +158,22 @@
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/calendarioService.js"></script>
+
+<!-- Componentes do Admin -->
+<script src="../components/utilitarios.js"></script>
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/administrador-calendario.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-calendario", "../");
     renderizarBarraTopoAdministrador("../");

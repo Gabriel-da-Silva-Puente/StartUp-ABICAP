@@ -51,8 +51,9 @@
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
                         </button>
                         <div class="menu-dropdown">
-                            <button onclick="editarLegendaPost(${post.id}, '${post.legenda.replace(/'/g, "\\'")}')">
-                                ✏️ Editar
+                            <button data-legenda="${encodeURIComponent(post.legenda)}"
+                                onclick="editarLegendaPost(${post.id}, decodeURIComponent(this.dataset.legenda))">
+                                    ✏️ Editar
                             </button>
                             <button class="excluir" onclick="excluirPostMural(${post.id})">
                                 🗑️ Excluir Post

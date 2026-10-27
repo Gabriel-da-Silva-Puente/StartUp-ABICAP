@@ -111,10 +111,22 @@ Se não encontrar o que procura, entre em contato com a secretaria.
 
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/duvidasService.js"></script>
+
+<!-- Componentes do Admin -->
 <script src="../components/utilitarios.js"></script>
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Script da Página -->
 <script src="../scripts/administrador-duvidas.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-duvidas", "../");
     renderizarBarraTopoAdministrador("../");

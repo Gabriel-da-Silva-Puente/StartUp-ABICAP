@@ -21,6 +21,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
         return;
     }
 
+    localStorage.setItem('usuarioLogadoNome', usuario.nome);
     const partesNome = usuario.nome.trim().split(" ");
     const iniciais = partesNome.length > 1 
         ? (partesNome[0][0] + partesNome[partesNome.length - 1][0]).toUpperCase()

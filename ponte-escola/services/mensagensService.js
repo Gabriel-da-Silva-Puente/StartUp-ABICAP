@@ -8,8 +8,7 @@ const MensagensService = {
         if (error) throw error;
 
         const { data: responsaveis } = await banco.from('responsavel').select('*');
-        const { data: mensagens } = await banco.from('mensagens').select('conversa_id, texto');
-
+        const { data: mensagens } = await banco.from('mensagens').select('conversa_id, texto').order('created_at', { ascending: true });
         return conversas.map(conv => {
             const remetente = responsaveis?.find(r => r.id === conv.responsavel_id);
             const nomeRemetente = remetente ? (remetente.Nome || remetente.nome || "Responsável") : "Responsável";

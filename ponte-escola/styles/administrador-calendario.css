@@ -394,3 +394,6 @@
     font-size: 0.8125rem;
   }
 }
+[hidden] {
+  display: none !important;
+}

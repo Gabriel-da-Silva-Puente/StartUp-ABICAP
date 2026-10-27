@@ -32,122 +32,19 @@
                     </p>
                 </div>
 
+                <div class="cabecalho-acoes" style="display:flex;gap:.5rem;align-items:center">
+                <button id="btn-semana-anterior" class="btn-secundario" type="button" aria-label="Semana anterior">&lsaquo;</button>
+                <button id="btn-semana-proxima" class="btn-secundario" type="button" aria-label="Próxima semana">&rsaquo;</button>
                 <button id="btn-editar-cardapio" class="btn-principal" type="button">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
                     </svg>
                     Editar Cardápio
                 </button>
+                </div>
             </div>
 
-            <div class="cardapio-semana" id="cardapio-semana">
-
-                <article class="card-dia">
-                    <header class="card-dia-cabecalho">
-                        <h3>Segunda-feira</h3>
-                        <span class="card-dia-data">14/10</span>
-                    </header>
-                    <div class="card-dia-refeicoes">
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Café da manhã</span>
-                            <p class="refeicao-descricao">Pão com manteiga, leite e fruta</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Almoço</span>
-                            <p class="refeicao-descricao">Arroz, feijão, frango grelhado e salada</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Lanche da tarde</span>
-                            <p class="refeicao-descricao">Iogurte e biscoito integral</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card-dia">
-                    <header class="card-dia-cabecalho">
-                        <h3>Terça-feira</h3>
-                        <span class="card-dia-data">15/10</span>
-                    </header>
-                    <div class="card-dia-refeicoes">
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Café da manhã</span>
-                            <p class="refeicao-descricao">Vitamina de banana e torrada</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Almoço</span>
-                            <p class="refeicao-descricao">Macarrão com molho de tomate e carne moída</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Lanche da tarde</span>
-                            <p class="refeicao-descricao">Suco natural e bolo caseiro</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card-dia">
-                    <header class="card-dia-cabecalho">
-                        <h3>Quarta-feira</h3>
-                        <span class="card-dia-data">16/10</span>
-                    </header>
-                    <div class="card-dia-refeicoes">
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Café da manhã</span>
-                            <p class="refeicao-descricao">Cereal com leite e fruta</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Almoço</span>
-                            <p class="refeicao-descricao">Arroz, lentilha, peixe assado e legumes</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Lanche da tarde</span>
-                            <p class="refeicao-descricao">Pão de queijo e chá</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card-dia">
-                    <header class="card-dia-cabecalho">
-                        <h3>Quinta-feira</h3>
-                        <span class="card-dia-data">17/10</span>
-                    </header>
-                    <div class="card-dia-refeicoes">
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Café da manhã</span>
-                            <p class="refeicao-descricao">Pão integral com requeijão e suco</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Almoço</span>
-                            <p class="refeicao-descricao">Arroz, feijão, carne cozida e purê de batata</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Lanche da tarde</span>
-                            <p class="refeicao-descricao">Fruta da estação e biscoito</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card-dia">
-                    <header class="card-dia-cabecalho">
-                        <h3>Sexta-feira</h3>
-                        <span class="card-dia-data">18/10</span>
-                    </header>
-                    <div class="card-dia-refeicoes">
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Café da manhã</span>
-                            <p class="refeicao-descricao">Mingau de aveia e fruta</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Almoço</span>
-                            <p class="refeicao-descricao">Arroz, feijão, omelete e salada verde</p>
-                        </div>
-                        <div class="refeicao">
-                            <span class="refeicao-titulo">Lanche da tarde</span>
-                            <p class="refeicao-descricao">Pipoca e suco de laranja</p>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
+            <div class="cardapio-semana" id="cardapio-semana"></div>
 
         </section>
 
@@ -256,8 +153,22 @@
 <div class="aviso-flutuante" id="aviso-flutuante"></div>
 
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<!-- Services -->
+<script src="../services/administradorService.js"></script>
+<script src="../services/cardapioService.js"></script>
+
+<!-- Componentes do Admin -->
+<script src="../components/utilitarios.js"></script>
 <script src="../components/administrador-sidebar.js"></script>
 <script src="../components/administrador-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/administrador-cardapio.js"></script>
+
 <script>
     renderizarBarraLateralAdministrador("administrador-cardapio", "../");
     renderizarBarraTopoAdministrador("../");
