@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Login</title>
+    <link rel="stylesheet" href="./components/global.css">
+    <link rel="stylesheet" href="./styles/index.css">
+
+</head>
+
+<body>
+
+    <main>
+
+        <div class="login-screen">
+
+            <div class="login-header">
+
+                <img src="./assets/logo/logo ponte escola em qualidade alta sem fundo.png" alt="PonteEscola" id="login-logo">
+                <h1 id="login-titulo">PonteEscola</h1>
+                <p>Selecione o perfil para acessar</p>
+
+            </div>
+
+            <div id="login-cards">
+
+                <button id="btn-login-professor" onclick="window.location.href='./pages/inicio.html'">
+                    <img src="./assets/icons/graduation-cap.svg" alt="Professor">
+                    <p class="login-card-titulo">Professor</p>
+                    <p class="login-card-desc">Avisos, ocorrências, mural e chat</p>
+                </button>
+
+                <button id="btn-login-coordenador" onclick="window.location.href='./pages/administrador-inicio.html'">
+                    <img src="./assets/icons/book-open.svg" alt="Administrador">
+                    <p class="login-card-titulo">Coordenador</p>
+                    <p class="login-card-desc">Gestão pedagógica completa</p>
+                </button>
+
+                <button id="btn-login-pai-responsavel" onclick="window.location.href='./pages/responsavel-inicio.html'">
+                    <img src="./assets/icons/users.svg" alt="Responsável">
+                    <p class="login-card-titulo">Responsável</p>
+                    <p class="login-card-desc">Acompanhe seu filho</p>
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+    <script>
+        // 1. Professor
+        document.getElementById('btn-login-professor').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 4);
+            localStorage.setItem('usuarioLogadoTipo', 'professor');
+     
+        });
+
+        // 2. Admin
+        document.getElementById('btn-login-coordenador').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 1);
+            localStorage.setItem('usuarioLogadoTipo', 'admin');
+            // O onclick no HTML já faz o redirecionamento para a página.
+        });
+
+        // 3. RESPONSAVEL SERA ADICIONADO NO FUTURO
+        
+    </script>
+
+</body>
+</html>
