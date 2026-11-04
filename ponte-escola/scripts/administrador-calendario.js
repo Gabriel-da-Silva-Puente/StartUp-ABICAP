@@ -22,7 +22,7 @@
  
     // Nomes dos meses e rótulos de cada tipo de evento (usados na tela).
     const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    const ROTULO_TIPO = { prova: 'Prova', reuniao: 'Reunião', evento: 'Evento', feriado: 'Feriado', atividade: 'Atividade', outro: 'Outro' };
+    const ROTULO_TIPO = { prova: 'Prova', reuniao: 'Reunião', evento: 'Evento', feriado: 'Feriado', atividade: 'Atividade', outro: 'Outro', aviso: 'Aviso', passeio: 'Passeio', entrega: 'Entrega de atividade' };
  
     // --- Estado da tela ---
     // 'hoje' serve para destacar o dia atual; ano/mês definem o mês exibido.
@@ -127,6 +127,8 @@
  
     // Texto com as turmas do evento ("Todas as turmas" ou os nomes separados por vírgula).
     function nomesTurmas(ev) {
+        // eventos vindos de avisos, passeios e atividades já trazem o texto pronto
+        if (ev.turmas_texto) return ev.turmas_texto;
         if (ev.todas_turmas) return 'Todas as turmas';
         const nomes = (ev.eventos_turmas || []).map(et => et.turma?.nome).filter(Boolean);
         return nomes.length ? nomes.join(', ') : 'Sem turma definida';
@@ -143,7 +145,7 @@
             return;
         }
         listaDia.innerHTML = doDia.map(ev => `
-            <div class="card-evento-sidebar ${escaparHtml(ev.tipo)}" data-id="${ev.id}" title="Clique para editar">
+            <div class="card-evento-sidebar ${escaparHtml(ev.tipo)}" data-id="${ev.id}" title="${ev.origem === 'calendario' ? 'Clique para editar' : ev.link ? 'Clique para abrir' : 'Somente consulta'}">
                 <p class="card-evento-titulo">${escaparHtml(ev.titulo)}</p>
                 <p class="card-evento-turmas">${ROTULO_TIPO[ev.tipo] || 'Evento'} · ${escaparHtml(nomesTurmas(ev))}</p>
                 ${ev.descricao ? `<p class="card-evento-turmas">${escaparHtml(ev.descricao)}</p>` : ''}
@@ -175,7 +177,7 @@
     // Abre o modal vazio (novo evento) ou preenchido (editar).
     // O botão Excluir só aparece quando está editando.
     function abrirModal(evento) {
-        idEditando = evento ? evento.id : null;
+        idEditando = evento ? evento.idOriginal : null;
         form.reset();
         checksTurmas().forEach(c => { c.checked = false; });
         tituloModal.textContent = evento ? 'Editar Evento' : 'Novo Evento';
@@ -205,7 +207,12 @@
     listaDia.addEventListener('click', (e) => {
         const card = e.target.closest('.card-evento-sidebar');
         if (!card) return;
-        abrirModal(eventos.find(ev => String(ev.id) === card.dataset.id));
+        const ev = eventos.find(x => String(x.id) === card.dataset.id);
+        if (!ev) return;
+        // Só os eventos criados no calendário são editados aqui;
+        // avisos e passeios abrem a página onde são gerenciados.
+        if (ev.origem === 'calendario') abrirModal(ev);
+        else if (ev.link) window.location.href = ev.link;
     });
  
     // Salvar (criar ou atualizar) o evento.
