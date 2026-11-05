@@ -1,0 +1,266 @@
+/* ================================================================
+   RESUMO DE LEITURA
+================================================================ */
+
+.resumo-comunicados {
+  display: grid;
+  grid-template-columns: 1fr 140px 140px;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.resumo-progresso,
+.resumo-numero {
+  padding: 1.25rem 1.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.resumo-progresso-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.resumo-progresso-topo strong {
+  display: block;
+  font-size: 1.0625rem;
+}
+
+.resumo-progresso-topo span {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.btn-marcar-todos {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--transition);
+}
+
+.btn-marcar-todos:hover {
+  background: #D9E7F8;
+}
+
+.barra-progresso {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.barra-progresso-preenchimento {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+  transition: width 0.4s ease;
+}
+
+.resumo-numero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.resumo-numero strong {
+  font-size: 1.75rem;
+  color: var(--color-primary);
+}
+
+.resumo-numero span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   BUSCA E FILTROS
+================================================================ */
+
+.barra-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.campo-busca {
+  flex: 1;
+  min-width: 220px;
+  max-width: 360px;
+  padding: 0.65rem 1rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+}
+
+.campo-busca:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.grupo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ================================================================
+   LISTA AGRUPADA
+================================================================ */
+
+.titulo-grupo {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.grade-comunicados {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.cartao-comunicado {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  text-align: left;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.cartao-comunicado:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+/* FAIXA LATERAL NOS NÃO LIDOS */
+.cartao-comunicado.nao-lido::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--color-primary);
+}
+
+.cartao-comunicado.nao-lido.evento::before {
+  background: #7C3AED;
+}
+
+.cartao-comunicado:not(.nao-lido) .cartao-comunicado-titulo {
+  font-weight: 500;
+}
+
+.icone-comunicado {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+}
+
+.icone-comunicado.azul { background: var(--color-primary-light); color: var(--color-primary); }
+.icone-comunicado.roxo { background: #F3E8FF; color: #7C3AED; }
+
+/* "CALENDÁRIO" DOS EVENTOS COM DATA */
+.data-evento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: #F3E8FF;
+  color: #7C3AED;
+  line-height: 1;
+}
+
+.data-evento strong {
+  font-size: 1.125rem;
+}
+
+.data-evento span {
+  margin-top: 0.15rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cartao-comunicado-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cartao-comunicado-topo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.cartao-comunicado-titulo {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.cartao-comunicado-texto {
+  margin-top: 0.2rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.badge-comunicado {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+/* ================================================================
+   RESPONSIVO
+================================================================ */
+
+@media (max-width: 800px) {
+  .resumo-comunicados {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resumo-progresso {
+    grid-column: 1 / -1;
+  }
+
+  .grade-comunicados {
+    grid-template-columns: 1fr;
+  }
+}

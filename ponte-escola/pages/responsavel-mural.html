@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Mural</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+    <link rel="stylesheet" href="../styles/responsavel-mural.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel">Momentos da turma</p>
+                <h2>Mural</h2>
+                <p id="subtitulo-mural" class="subtitulo-pagina">
+                    Fotos e recados do dia a dia na escola.
+                </p>
+            </div>
+
+            <div class="seletor-filho" id="seletor-filho"></div>
+        </section>
+
+        <!-- Resumo do mural -->
+        <section class="resumo-mural" id="resumo-mural"></section>
+
+        <!-- Fotos em colunas -->
+        <section class="galeria-mural" id="galeria-mural"></section>
+
+    </main>
+
+</div>
+
+<a class="botao-ajuda" href="responsavel-duvidas.html" aria-label="Central de dúvidas">?</a>
+
+<!-- Modal: foto ampliada com legenda e comentários -->
+<dialog class="modal modal-foto" id="modal-foto">
+    <div class="foto-detalhe">
+
+        <div class="foto-detalhe-imagem">
+            <img id="foto-imagem" src="" alt="Foto da turma">
+        </div>
+
+        <div class="foto-detalhe-lateral">
+
+            <div class="modal-cabecalho">
+                <div class="foto-autor">
+                    <span class="foto-autor-avatar" id="foto-avatar">PR</span>
+                    <div>
+                        <strong id="foto-autor">Professor</strong>
+                        <small id="foto-data"></small>
+                    </div>
+                </div>
+                <button type="button" class="modal-fechar" data-fechar="modal-foto" aria-label="Fechar">✕</button>
+            </div>
+
+            <p class="foto-legenda" id="foto-legenda"></p>
+
+            <button type="button" class="btn-curtir" id="btn-curtir"></button>
+
+            <div class="foto-comentarios" id="foto-comentarios"></div>
+
+            <div class="foto-novo-comentario">
+                <input type="text" id="input-comentario" placeholder="Escreva um comentário..." maxlength="300">
+                <button type="button" class="btn-principal" id="btn-comentar">Enviar</button>
+            </div>
+
+        </div>
+    </div>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/responsavelService.js"></script>
+<script src="../services/muralService.js"></script>
+
+<!-- Components  -->
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/muralResponsavel.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraTopoResponsavel("mural", "../");
+</script>
+
+</body>
+
+</html>

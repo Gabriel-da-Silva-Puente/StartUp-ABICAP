@@ -1,0 +1,284 @@
+/* ================================================================
+   RESUMO
+================================================================ */
+
+.resumo-mural {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.resumo-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.resumo-item strong {
+  font-size: 1.125rem;
+  color: var(--color-primary);
+}
+
+.resumo-item span {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   GALERIA EM COLUNAS
+================================================================ */
+
+.galeria-mural {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+.galeria-mural > .painel-vazio {
+  column-span: all;
+}
+
+.foto-cartao {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.foto-cartao:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.foto-cartao img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* LEGENDA E CONTAGEM APARECEM AO PASSAR O MOUSE */
+.foto-cartao-sombra {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+  color: var(--color-white);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.foto-cartao:hover .foto-cartao-sombra,
+.foto-cartao:focus-visible .foto-cartao-sombra {
+  opacity: 1;
+}
+
+.foto-cartao-sombra p {
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.foto-cartao-contagem {
+  display: flex;
+  gap: 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ================================================================
+   MODAL DA FOTO
+================================================================ */
+
+.modal-foto {
+  width: min(960px, 94vw);
+  max-width: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.foto-detalhe {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  max-height: 85vh;
+}
+
+.foto-detalhe-imagem {
+  display: grid;
+  place-items: center;
+  background: #111;
+}
+
+.foto-detalhe-imagem img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.foto-detalhe-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  min-height: 0;
+}
+
+.foto-autor {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.foto-autor strong {
+  display: block;
+  font-size: 0.9375rem;
+}
+
+.foto-autor small {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
+.foto-autor-avatar,
+.comentario-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.foto-legenda {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.btn-curtir {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: all var(--transition);
+}
+
+.btn-curtir:hover {
+  border-color: var(--color-danger);
+}
+
+.btn-curtir.curtido {
+  background: var(--color-danger-light);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.foto-comentarios {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 80px;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  overflow-y: auto;
+}
+
+.comentario-item {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.comentario-avatar {
+  width: 30px;
+  height: 30px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+}
+
+.comentario-item strong {
+  font-size: 0.8125rem;
+}
+
+.comentario-item p {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.foto-novo-comentario {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.foto-novo-comentario input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+}
+
+.foto-novo-comentario input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.foto-novo-comentario .btn-principal {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.875rem;
+}
+
+/* ================================================================
+   RESPONSIVO
+================================================================ */
+
+@media (max-width: 900px) {
+  .galeria-mural {
+    column-count: 2;
+  }
+
+  .foto-detalhe {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .foto-detalhe-imagem img {
+    max-height: 45vh;
+  }
+}
+
+@media (max-width: 560px) {
+  .galeria-mural {
+    column-count: 1;
+  }
+
+  .resumo-mural {
+    flex-wrap: wrap;
+  }
+}
