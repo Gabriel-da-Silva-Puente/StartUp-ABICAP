@@ -1,0 +1,250 @@
+/* ================================================================
+   ESTRUTURA PRINCIPAL (ÁREA DO RESPONSÁVEL)
+   Aqui a navegação fica no topo, sem barra lateral.
+================================================================ */
+
+.estrutura-responsavel {
+  min-height: 100vh;
+}
+
+.conteudo-responsavel {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ================================================================
+   BARRA TOPO DO RESPONSÁVEL
+================================================================ */
+
+.barra-topo-responsavel {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topo-responsavel-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1160px;
+  height: 64px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Marca --- */
+
+.topo-responsavel-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.topo-responsavel-marca:hover {
+  color: var(--color-text);
+}
+
+.topo-responsavel-logo {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* --- Menu central --- */
+
+.topo-responsavel-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.topo-responsavel-menu a {
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition);
+}
+
+.topo-responsavel-menu a:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.topo-responsavel-menu a.ativo {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* --- Notificação (ponto vermelho no lugar do número) --- */
+
+.topo-ponto {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-danger);
+  border: 2px solid var(--color-white);
+  box-sizing: content-box;
+}
+
+.topo-ponto[hidden] {
+  display: none;
+}
+
+/* --- Usuário --- */
+
+.topo-usuario {
+  position: relative;
+}
+
+.topo-usuario-botao {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.6rem 0.35rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  text-align: left;
+  transition: background var(--transition);
+}
+
+.topo-usuario-botao:hover {
+  background: var(--color-bg);
+}
+
+.topo-usuario-avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--color-success-light);
+  color: var(--color-success);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.topo-usuario-texto {
+  display: grid;
+  line-height: 1.2;
+}
+
+.topo-usuario-texto strong {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.topo-usuario-texto small {
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+}
+
+.topo-usuario-seta {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
+
+.topo-usuario-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 180px;
+  padding: 0.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.topo-usuario-menu[hidden] {
+  display: none;
+}
+
+.topo-usuario-menu button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  text-align: left;
+  transition: background var(--transition);
+}
+
+.topo-usuario-menu button:hover {
+  background: var(--color-bg);
+}
+
+/* ================================================================
+   RESPONSIVO
+================================================================ */
+
+/* --- Tablet: menu desce para uma linha própria, com rolagem lateral --- */
+
+@media (max-width: 860px) {
+  .topo-responsavel-conteudo {
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    row-gap: 0.5rem;
+  }
+
+  .topo-responsavel-menu {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .topo-direita {
+    margin-left: auto;
+  }
+}
+
+/* --- Mobile --- */
+
+@media (max-width: 640px) {
+  .conteudo-responsavel {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .topo-responsavel-conteudo {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .topo-usuario-texto,
+  .topo-usuario-seta {
+    display: none;
+  }
+
+  .topo-usuario-botao {
+    padding: 0.3rem;
+  }
+}
