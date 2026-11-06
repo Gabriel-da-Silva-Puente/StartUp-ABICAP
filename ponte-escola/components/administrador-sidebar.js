@@ -71,6 +71,7 @@ function renderizarBarraLateralAdministrador(paginaAtual, prefixo = "") {
     `;
 
     document.getElementById("btn-sair")?.addEventListener("click", () => {
+        localStorage.removeItem('usuarioLogadoId'); localStorage.removeItem('usuarioLogadoTipo'); localStorage.removeItem('usuarioLogadoNome'); localStorage.removeItem('alunoVisualizadoId'); localStorage.removeItem('turmaVisualizadaId');
         window.location.href = `${prefixo}index.html`;
     });
 }

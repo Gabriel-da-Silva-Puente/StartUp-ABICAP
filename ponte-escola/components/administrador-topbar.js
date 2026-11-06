@@ -4,7 +4,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
     if (!topbar) return;
 
     const idLogado = localStorage.getItem('usuarioLogadoId');
-    if (!idLogado) {
+    if (!idLogado || localStorage.getItem('usuarioLogadoTipo') !== 'admin') {
         window.location.href = prefixo + "index.html";
         return;
     }

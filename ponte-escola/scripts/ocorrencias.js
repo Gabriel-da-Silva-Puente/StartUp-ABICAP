@@ -30,7 +30,7 @@
             const alunos = await OcorrenciasService.listarAlunosPorTurma(turmaId);
             selectAlunoModal.innerHTML = '<option value="">Selecione o aluno...</option>';
             alunos.forEach(a => {
-                selectAlunoModal.innerHTML += `<option value="${a.id}">${a.nome}</option>`;
+                selectAlunoModal.innerHTML += `<option value="${a.id}">${escaparHtml(a.nome)}</option>`;
             });
         } catch (e) {
             console.error("Erro ao carregar alunos:", e);

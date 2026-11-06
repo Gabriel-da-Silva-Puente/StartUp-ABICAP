@@ -25,8 +25,9 @@ const MensagensService = {
     // ABRE UMA CONVERSA E MARCA COMO LIDA
     async abrirConversa(id) {
         const { data: conversa, error } = await banco
-            .from('conversas').select('*').eq('id', id).single();
+            .from('conversas').select('*').eq('id', id).maybeSingle();
         if (error) throw error;
+        if (!conversa) throw new Error('Conversa não encontrada');
 
         const { data: mensagens } = await banco
             .from('mensagens').select('*').eq('conversa_id', id).order('created_at', { ascending: true });

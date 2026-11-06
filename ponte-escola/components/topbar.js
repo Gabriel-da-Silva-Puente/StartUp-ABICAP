@@ -4,7 +4,7 @@ async function renderizarBarraTopo(prefixo = "") {
 
     // Pega o ID salvo no navegador
     const idLogado = localStorage.getItem('usuarioLogadoId');
-    if (!idLogado) {
+    if (!idLogado || localStorage.getItem('usuarioLogadoTipo') === 'responsavel') {
         window.location.href = prefixo + "index.html";
         return;
     }

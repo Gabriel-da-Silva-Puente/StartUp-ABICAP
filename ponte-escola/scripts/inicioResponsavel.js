@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     function renderizarAtalhos(numeros) {
         document.getElementById('atalho-comunicados').textContent = plural(numeros.novidades, "novo", "novos");
         document.getElementById('atalho-calendario').textContent = plural(numeros.eventos, "evento", "eventos");
-        document.getElementById('atalho-autorizacoes').textContent = plural(numeros.pendentes, "pendente", "pendentes");
+        const _atalhoAut = document.getElementById('atalho-autorizacoes'); if (_atalhoAut) _atalhoAut.textContent = plural(numeros.pendentes, "pendente", "pendentes");
     }
 
     function renderizarAtualizacoes() {

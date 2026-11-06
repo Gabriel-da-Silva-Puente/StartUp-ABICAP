@@ -40,7 +40,7 @@ const TurmasService = {
             .from('aluno')
             .select('*, responsavel ( nome, telefone )')
             .eq('id', alunoId)
-            .single();
+            .maybeSingle();
         if (error) throw error;
         return data;
     },

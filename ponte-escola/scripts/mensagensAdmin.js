@@ -18,7 +18,7 @@
             const turmas = await MensagensService.listarTurmas();
             selectTurma.innerHTML = '<option value="">Selecione a turma...</option>';
             turmas.forEach(t => {
-                selectTurma.innerHTML += `<option value="${t.id}">${t.nome}</option>`;
+                selectTurma.innerHTML += `<option value="${t.id}">${escaparHtml(t.nome)}</option>`;
             });
         } catch (e) { console.error("Erro ao carregar turmas:", e); }
     }
@@ -37,7 +37,7 @@
             const alunos = await MensagensService.listarAlunosPorTurma(turmaId);
             selectAluno.innerHTML = '<option value="">Selecione o aluno...</option>';
             alunos.forEach(a => {
-                selectAluno.innerHTML += `<option value="${a.responsavel_id}">${a.nome}</option>`;
+                selectAluno.innerHTML += `<option value="${a.responsavel_id}">${escaparHtml(a.nome)}</option>`;
             });
             selectAluno.disabled = false;
         } catch (err) {
