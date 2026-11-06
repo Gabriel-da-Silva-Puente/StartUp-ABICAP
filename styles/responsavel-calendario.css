@@ -1,0 +1,274 @@
+/* ================================================================
+   CORES POR TIPO DE EVENTO (MESMOS TIPOS DA COORDENAÇÃO)
+================================================================ */
+
+.tipo-prova     { --cor-tipo: #DC2626; --cor-tipo-fundo: #FEE2E2; }
+.tipo-reuniao   { --cor-tipo: #D97706; --cor-tipo-fundo: #FEF3C7; }
+.tipo-evento    { --cor-tipo: #7C3AED; --cor-tipo-fundo: #F3E8FF; }
+.tipo-feriado   { --cor-tipo: #059669; --cor-tipo-fundo: #D1FAE5; }
+.tipo-atividade { --cor-tipo: #2563EB; --cor-tipo-fundo: #DBEAFE; }
+.tipo-aviso     { --cor-tipo: #0891B2; --cor-tipo-fundo: #CFFAFE; }
+.tipo-passeio   { --cor-tipo: #DB2777; --cor-tipo-fundo: #FCE7F3; }
+.tipo-entrega   { --cor-tipo: #EA580C; --cor-tipo-fundo: #FFEDD5; }
+.tipo-outro     { --cor-tipo: #64748B; --cor-tipo-fundo: #F1F5F9; }
+
+.ponto {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cor-tipo);
+}
+
+/* ================================================================
+   LAYOUT
+================================================================ */
+
+.layout-calendario {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.painel-calendario,
+.painel-dia {
+  padding: 1.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.lateral-calendario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ================================================================
+   GRADE DO MÊS
+================================================================ */
+
+.calendario-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.calendario-navegacao {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.calendario-navegacao h3 {
+  min-width: 170px;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
+.btn-mes {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: background var(--transition);
+}
+
+.btn-mes:hover {
+  background: var(--color-primary-light);
+}
+
+.btn-mes img {
+  width: 16px;
+  height: 16px;
+}
+
+.seta-anterior {
+  transform: rotate(180deg);
+}
+
+.btn-hoje {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+.btn-hoje:hover {
+  background: #D9E7F8;
+}
+
+.calendario-semana,
+.calendario-grade {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.calendario-semana span {
+  padding-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  aspect-ratio: 1 / 0.85;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background var(--transition);
+}
+
+.dia:not(.vazio):hover {
+  background: var(--color-bg);
+}
+
+.dia.hoje span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.dia.selecionado {
+  background: var(--color-primary-light);
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+.pontos {
+  display: flex;
+  gap: 3px;
+  min-height: 7px;
+}
+
+.calendario-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.calendario-legenda span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   LATERAL
+================================================================ */
+
+.painel-dia-topo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.painel-dia-topo strong {
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.painel-dia-topo span {
+  display: block;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.painel-dia-topo small {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
+.painel-dia .titulo-grupo {
+  margin: 0 0 0.75rem;
+}
+
+#lista-eventos-mes {
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.evento-item {
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.6rem;
+  border-left: 4px solid var(--cor-tipo);
+  border-radius: var(--radius-md);
+  background: var(--cor-tipo-fundo);
+}
+
+.evento-item[data-data] {
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.evento-item[data-data]:hover {
+  transform: translateX(3px);
+}
+
+.evento-item-tipo {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-tipo);
+}
+
+.evento-item strong {
+  font-size: 0.875rem;
+}
+
+.evento-item p {
+  margin-top: 0.2rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   RESPONSIVO
+================================================================ */
+
+@media (max-width: 960px) {
+  .layout-calendario {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .painel-calendario {
+    padding: 1rem;
+  }
+
+  .dia {
+    font-size: 0.8125rem;
+  }
+}

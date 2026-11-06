@@ -4,7 +4,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
     if (!topbar) return;
 
     const idLogado = localStorage.getItem('usuarioLogadoId');
-    if (!idLogado) {
+    if (!idLogado || localStorage.getItem('usuarioLogadoTipo') !== 'admin') {
         window.location.href = prefixo + "index.html";
         return;
     }
@@ -21,6 +21,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
         return;
     }
 
+    localStorage.setItem('usuarioLogadoNome', usuario.nome);
     const partesNome = usuario.nome.trim().split(" ");
     const iniciais = partesNome.length > 1 
         ? (partesNome[0][0] + partesNome[partesNome.length - 1][0]).toUpperCase()
@@ -39,7 +40,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
                 <span class="topo-badge">3</span>
             </button>
 
-            <a href="${prefixo}pages/perfil.html" class="topo-avatar" id="btn-perfil-topo">
+            <a href="${prefixo}pages/administrador-perfil.html" class="topo-avatar" id="btn-perfil-topo">
                 ${iniciais}
             </a>
 

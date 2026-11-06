@@ -118,6 +118,18 @@
   border-left-color: var(--color-text-faint);
 }
 
+.card-evento-sidebar.aviso {
+  border-left-color: #0EA5E9;
+}
+
+.card-evento-sidebar.passeio {
+  border-left-color: #F97316;
+}
+
+.card-evento-sidebar.entrega {
+  border-left-color: #14B8A6;
+}
+
 .card-evento-titulo {
   font-size: 0.8125rem;
   font-weight: 600;
@@ -393,4 +405,7 @@
   .dia {
     font-size: 0.8125rem;
   }
+}
+[hidden] {
+  display: none !important;
 }

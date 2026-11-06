@@ -42,7 +42,7 @@
             
             selectFiltroTurma.innerHTML = '<option value="todas">Todas as turmas</option>';
             turmas.forEach(t => {
-                selectFiltroTurma.innerHTML += `<option value="${t.id}">${t.nome}</option>`;
+                selectFiltroTurma.innerHTML += `<option value="${t.id}">${escaparHtml(t.nome)}</option>`;
             });
 
             selectTurmaModal.innerHTML = '';

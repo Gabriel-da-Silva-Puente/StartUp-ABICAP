@@ -67,8 +67,13 @@
             // O onclick no HTML já faz o redirecionamento para a página.
         });
 
-        // 3. RESPONSAVEL SERA ADICIONADO NO FUTURO
-        
+        // 3. Responsável (o ID é da tabela 'responsavel', não da 'administrador')
+        document.getElementById('btn-login-pai-responsavel').addEventListener('click', () => {
+            localStorage.setItem('usuarioLogadoId', 1);
+            localStorage.setItem('usuarioLogadoTipo', 'responsavel');
+            localStorage.removeItem('alunoVisualizadoId');
+        });
+
     </script>
 
 </body>

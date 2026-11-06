@@ -8,8 +8,7 @@ const MensagensService = {
         if (error) throw error;
 
         const { data: responsaveis } = await banco.from('responsavel').select('*');
-        const { data: mensagens } = await banco.from('mensagens').select('conversa_id, texto');
-
+        const { data: mensagens } = await banco.from('mensagens').select('conversa_id, texto').order('created_at', { ascending: true });
         return conversas.map(conv => {
             const remetente = responsaveis?.find(r => r.id === conv.responsavel_id);
             const nomeRemetente = remetente ? (remetente.Nome || remetente.nome || "Responsável") : "Responsável";
@@ -26,8 +25,9 @@ const MensagensService = {
     // ABRE UMA CONVERSA E MARCA COMO LIDA
     async abrirConversa(id) {
         const { data: conversa, error } = await banco
-            .from('conversas').select('*').eq('id', id).single();
+            .from('conversas').select('*').eq('id', id).maybeSingle();
         if (error) throw error;
+        if (!conversa) throw new Error('Conversa não encontrada');
 
         const { data: mensagens } = await banco
             .from('mensagens').select('*').eq('conversa_id', id).order('created_at', { ascending: true });

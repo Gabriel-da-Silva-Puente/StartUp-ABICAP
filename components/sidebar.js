@@ -45,7 +45,7 @@ function renderizarBarraLateral(paginaAtual, prefixo = "") {
                 <img src="${prefixo}assets/icons/users.svg" alt="" class="lateral-icone">
                 <span>Perfil</span>
             </a>
-            <button id="btn-sair" onclick="window.location.href='${prefixo}index.html'">
+            <button id="btn-sair" onclick="localStorage.removeItem('usuarioLogadoId'); localStorage.removeItem('usuarioLogadoTipo'); localStorage.removeItem('usuarioLogadoNome'); localStorage.removeItem('alunoVisualizadoId'); localStorage.removeItem('turmaVisualizadaId'); window.location.href='${prefixo}index.html'">
                 <img src="${prefixo}assets/icons/log-out.svg" alt="" class="lateral-icone">
                 <span>Sair</span>
             </button>

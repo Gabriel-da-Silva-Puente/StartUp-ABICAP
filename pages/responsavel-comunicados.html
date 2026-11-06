@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Comunicados</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+    <link rel="stylesheet" href="../styles/responsavel-comunicados.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel">Mural da escola</p>
+                <h2>Comunicados</h2>
+                <p id="subtitulo-comunicados" class="subtitulo-pagina">
+                    Recados da professora e da coordenação sobre a turma.
+                </p>
+            </div>
+
+            <div class="seletor-filho" id="seletor-filho"></div>
+        </section>
+
+        <!-- Resumo de leitura -->
+        <section class="resumo-comunicados" id="resumo-comunicados"></section>
+
+        <!-- Busca e filtros -->
+        <section class="barra-filtros">
+            <input type="search" id="busca-comunicados" class="campo-busca" placeholder="Buscar nos comunicados...">
+
+            <div class="grupo-chips" id="filtros-comunicados">
+                <button type="button" class="chip ativo" data-filtro="todos">Todos</button>
+                <button type="button" class="chip" data-filtro="nao-lidos">Não lidos</button>
+                <button type="button" class="chip" data-filtro="comunicado">Comunicados</button>
+                <button type="button" class="chip" data-filtro="evento">Eventos</button>
+            </div>
+        </section>
+
+        <section id="lista-comunicados"></section>
+
+    </main>
+
+</div>
+
+
+<!-- Modal: detalhe do comunicado -->
+<dialog class="modal" id="modal-comunicado">
+    <div class="modal-form">
+
+        <div class="modal-cabecalho">
+            <h3 id="comunicado-titulo">Comunicado</h3>
+            <button type="button" class="modal-fechar" data-fechar="modal-comunicado" aria-label="Fechar">✕</button>
+        </div>
+
+        <div class="modal-info">
+            <span class="badge-tipo" id="comunicado-tipo">comunicado</span>
+            <span id="comunicado-meta"></span>
+            <span id="comunicado-data-evento" hidden></span>
+        </div>
+
+        <p class="modal-texto" id="comunicado-descricao"></p>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" data-fechar="modal-comunicado">Fechar</button>
+        </div>
+
+    </div>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/responsavelService.js"></script>
+<script src="../services/avisoService.js"></script>
+<script src="../services/inicioResponsavelService.js"></script>
+<script src="../services/comunicadosResponsavelService.js"></script>
+
+<!-- Components  -->
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/comunicadosResponsavel.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraTopoResponsavel("comunicados", "../");
+</script>
+
+</body>
+
+</html>

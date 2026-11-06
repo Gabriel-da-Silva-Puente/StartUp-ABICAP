@@ -18,8 +18,9 @@ const AutorizacoesService = {
 
     async detalharAutorizacao(autorizacaoId) {
         const { data: autorizacao, error: errAut } = await banco
-            .from('autorizacoes').select('*').eq('id', autorizacaoId).single();
+            .from('autorizacoes').select('*').eq('id', autorizacaoId).maybeSingle();
         if (errAut) throw errAut;
+        if (!autorizacao) throw new Error('Autorização não encontrada');
         
         const turmasIds = await this.buscarTurmasDaAutorizacao(autorizacaoId);
         

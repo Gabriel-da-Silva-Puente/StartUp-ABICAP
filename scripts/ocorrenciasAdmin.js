@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
             selectTurma.innerHTML = '<option value="todas">Todas as turmas</option>';
             selectTurmaModal.innerHTML = '<option value="">Selecione a turma...</option>';
             turmas.forEach(t => {
-                selectTurma.innerHTML += `<option value="${t.id}">${t.nome}</option>`;
-                selectTurmaModal.innerHTML += `<option value="${t.id}">${t.nome}</option>`;
+                selectTurma.innerHTML += `<option value="${t.id}">${escaparHtml(t.nome)}</option>`;
+                selectTurmaModal.innerHTML += `<option value="${t.id}">${escaparHtml(t.nome)}</option>`;
             });
         } catch (e) {
             console.error("Erro ao carregar turmas:", e);
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const alunos = await OcorrenciasService.listarAlunosPorTurma(turmaId);
             selectAlunoModal.innerHTML = '<option value="">Selecione o aluno...</option>';
             alunos.forEach(a => {
-                selectAlunoModal.innerHTML += `<option value="${a.id}">${a.nome}</option>`;
+                selectAlunoModal.innerHTML += `<option value="${a.id}">${escaparHtml(a.nome)}</option>`;
             });
         } catch (erro) {
             console.error("Erro ao buscar alunos:", erro);
@@ -296,7 +296,7 @@ window.prepararEdicaoOcorrencia = async function(id) {
             const selectAlunoModal = document.getElementById("ocorrencia-aluno");
             selectAlunoModal.innerHTML = '<option value="">Selecione o aluno...</option>';
             alunos.forEach(a => {
-                selectAlunoModal.innerHTML += `<option value="${a.id}">${a.nome}</option>`;
+                selectAlunoModal.innerHTML += `<option value="${a.id}">${escaparHtml(a.nome)}</option>`;
             });
             selectAlunoModal.value = oc.aluno_id;
         } catch (e) { console.error(e); }

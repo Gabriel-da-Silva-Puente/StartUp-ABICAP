@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (recentes.length === 0) {
             container.innerHTML = "<p style='font-size:0.875rem; color:#888;'>Nenhuma ocorrência registrada.</p>";
             return;
-        }s
+        }
 
         container.innerHTML = recentes.map(oc => {
             let classeTipo = 'comportamental'; 

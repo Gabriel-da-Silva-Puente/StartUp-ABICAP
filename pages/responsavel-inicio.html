@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Início</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel" id="data-inicio"></p>
+                <h2 id="saudacao-responsavel">Olá! 👋</h2>
+                <p id="subtitulo-responsavel" class="subtitulo-pagina">
+                    Aqui está o que importa hoje na rotina do seu filho.
+                </p>
+            </div>
+
+            <div class="seletor-filho" id="seletor-filho"></div>
+        </section>
+
+        <!-- Destaque: autorização pendente ou "tudo em dia" -->
+        <section class="destaque-atencao" id="destaque-atencao"></section>
+
+        <section class="grade-atalhos" aria-label="Atalhos">
+
+            <a class="card-atalho" href="responsavel-comunicados.html">
+                <div class="icone-atalho azul">
+                    <span class="icone-mascara" style="--icone: url('../assets/icons/megaphone.svg')"></span>
+                </div>
+                <div class="atalho-texto">
+                    <strong>Comunicados</strong>
+                    <span id="atalho-comunicados">0 novos</span>
+                </div>
+            </a>
+
+            <a class="card-atalho" href="responsavel-calendario.html">
+                <div class="icone-atalho roxo">
+                    <span class="icone-mascara" style="--icone: url('../assets/icons/calendar-days.svg')"></span>
+                </div>
+                <div class="atalho-texto">
+                    <strong>Calendário</strong>
+                    <span id="atalho-calendario">0 eventos</span>
+                </div>
+            </a>
+
+            <a class="card-atalho" href="responsavel-cardapio.html">
+                <div class="icone-atalho verde">
+                    <span class="icone-mascara" style="--icone: url('../assets/icons/cooking-pot.svg')"></span>
+                </div>
+                <div class="atalho-texto">
+                    <strong>Cardápio</strong>
+                    <span>Ver semana</span>
+                </div>
+            </a>
+
+
+        </section>
+
+        <section class="grade-responsavel">
+
+            <article class="painel">
+                <div class="cabecalho-painel">
+                    <div>
+                        <h3>Últimas atualizações</h3>
+                        <p class="sobrescrito">Da professora e da escola</p>
+                    </div>
+                    <a href="responsavel-comunicados.html">Ver tudo</a>
+                </div>
+                <div id="lista-atualizacoes"></div>
+            </article>
+
+            <article class="painel">
+                <div class="cabecalho-painel">
+                    <div>
+                        <h3>Próximos passos</h3>
+                        <p class="sobrescrito">Sua lista da semana</p>
+                    </div>
+                    <span class="selo-pendentes" id="selo-pendentes">0 pendentes</span>
+                </div>
+                <div class="lista-passos" id="lista-passos"></div>
+            </article>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Modal: revisar autorização -->
+<dialog class="modal" id="modal-autorizacao">
+    <div class="modal-form">
+
+        <div class="modal-cabecalho">
+            <h3 id="autorizacao-titulo">Autorização</h3>
+            <button type="button" class="modal-fechar" data-fechar="modal-autorizacao" aria-label="Fechar">✕</button>
+        </div>
+
+        <div class="modal-info">
+            <span id="autorizacao-data">📅 Data a definir</span>
+            <span id="autorizacao-prazo">⏰ Responder até —</span>
+            <span id="autorizacao-local">📍 Local não informado</span>
+            <span id="autorizacao-aluno">👤 Aluno</span>
+        </div>
+
+        <p class="modal-texto" id="autorizacao-descricao"></p>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" id="btn-recusar">Não autorizar</button>
+            <button type="button" class="btn-principal" id="btn-autorizar">Autorizar</button>
+        </div>
+
+    </div>
+</dialog>
+
+<!-- Modal: detalhe de aviso ou ocorrência -->
+<dialog class="modal" id="modal-atualizacao">
+    <div class="modal-form">
+
+        <div class="modal-cabecalho">
+            <h3 id="atualizacao-titulo">Atualização</h3>
+            <button type="button" class="modal-fechar" data-fechar="modal-atualizacao" aria-label="Fechar">✕</button>
+        </div>
+
+        <div class="modal-info">
+            <span class="badge-tipo" id="atualizacao-tipo">comunicado</span>
+            <span id="atualizacao-meta"></span>
+        </div>
+
+        <p class="modal-texto" id="atualizacao-descricao"></p>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" data-fechar="modal-atualizacao">Fechar</button>
+        </div>
+
+    </div>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/responsavelService.js"></script>
+<script src="../services/avisoService.js"></script>
+<script src="../services/inicioResponsavelService.js"></script>
+
+<!-- Components  -->
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/inicioResponsavel.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraTopoResponsavel("inicio", "../");
+</script>
+
+</body>
+
+</html>

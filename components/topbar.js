@@ -4,7 +4,7 @@ async function renderizarBarraTopo(prefixo = "") {
 
     // Pega o ID salvo no navegador
     const idLogado = localStorage.getItem('usuarioLogadoId');
-    if (!idLogado) {
+    if (!idLogado || localStorage.getItem('usuarioLogadoTipo') === 'responsavel') {
         window.location.href = prefixo + "index.html";
         return;
     }
@@ -25,6 +25,9 @@ async function renderizarBarraTopo(prefixo = "") {
         window.location.href = prefixo + "index.html";
         return;
     }
+
+    // Salva o nome do usuário no navegador para outras páginas usarem
+    localStorage.setItem('usuarioLogadoNome', usuario.nome);
 
     //  Gerador de Iniciais para foto de miniperfil
     const partesNome = usuario.nome.trim().split(" ");
