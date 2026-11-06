@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Calendário</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+    <link rel="stylesheet" href="../styles/responsavel-calendario.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel">Agenda da turma</p>
+                <h2>Calendário</h2>
+                <p id="subtitulo-calendario" class="subtitulo-pagina">
+                    Provas, reuniões, passeios e prazos em um só lugar.
+                </p>
+            </div>
+
+            <div class="seletor-filho" id="seletor-filho"></div>
+        </section>
+
+        <div class="layout-calendario">
+
+            <!-- Grade do mês -->
+            <section class="painel-calendario">
+
+                <div class="calendario-topo">
+                    <div class="calendario-navegacao">
+                        <button type="button" class="btn-mes" id="btn-mes-anterior" aria-label="Mês anterior">
+                            <img src="../assets/icons/chevron-right.svg" alt="" class="seta-anterior">
+                        </button>
+                        <h3 id="calendario-mes-atual"></h3>
+                        <button type="button" class="btn-mes" id="btn-mes-proximo" aria-label="Próximo mês">
+                            <img src="../assets/icons/chevron-right.svg" alt="">
+                        </button>
+                    </div>
+                    <button type="button" class="btn-hoje" id="btn-hoje">Hoje</button>
+                </div>
+
+                <div class="calendario-semana">
+                    <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                </div>
+
+                <div class="calendario-grade" id="calendario-grade"></div>
+
+                <!-- Legenda das cores -->
+                <div class="calendario-legenda" id="calendario-legenda"></div>
+            </section>
+
+            <!-- Lateral: dia selecionado + eventos do mês -->
+            <aside class="lateral-calendario">
+
+                <div class="painel-dia">
+                    <div class="painel-dia-topo">
+                        <strong id="dia-numero">--</strong>
+                        <div>
+                            <span id="dia-semana">—</span>
+                            <small id="dia-mes">—</small>
+                        </div>
+                    </div>
+                    <div id="lista-eventos-dia"></div>
+                </div>
+
+                <div class="painel-dia">
+                    <h4 class="titulo-grupo">Neste mês</h4>
+                    <div id="lista-eventos-mes"></div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+</div>
+
+<a class="botao-ajuda" href="responsavel-duvidas.html" aria-label="Central de dúvidas">?</a>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/responsavelService.js"></script>
+<script src="../services/calendarioResponsavelService.js"></script>
+
+<!-- Components  -->
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/calendarioResponsavel.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraTopoResponsavel("calendario", "../");
+</script>
+
+</body>
+
+</html>

@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return `${data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })}, ${hora}`;
     }
 
-    // EX: "26 de setembro"
+    
     function formatarDiaMes(iso) {
         return isoParaData(iso).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
     }
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return `${qtd} ${qtd === 1 ? singular : pluralTexto}`;
     }
 
-    // ---------------- CARREGAMENTO ----------------
+    // CARREGAMENTO
 
     async function carregarComunicados() {
         const container = document.getElementById('lista-comunicados');
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // ---------------- RENDERIZAÇÃO ----------------
+    //  RENDERIZAÇÃO 
 
     function renderizarResumo() {
         const total = comunicados.length;
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
     }
 
-    // ---------------- AÇÕES ----------------
+    //  AÇÕES 
 
     // MODAL DO COMUNICADO (MARCA COMO LIDO AO ABRIR)
     async function abrirComunicado(c) {
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // ---------------- INICIALIZAÇÃO ----------------
+    //  INICIALIZAÇÃO
 
     document.querySelectorAll('[data-fechar]').forEach(botao => {
         botao.addEventListener("click", () => document.getElementById(botao.dataset.fechar).close());
