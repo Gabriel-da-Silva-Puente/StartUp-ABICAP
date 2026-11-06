@@ -40,7 +40,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
                 <span class="topo-badge">3</span>
             </button>
 
-            <a href="${prefixo}pages/perfil.html" class="topo-avatar" id="btn-perfil-topo">
+            <a href="${prefixo}pages/administrador-perfil.html" class="topo-avatar" id="btn-perfil-topo">
                 ${iniciais}
             </a>
 
