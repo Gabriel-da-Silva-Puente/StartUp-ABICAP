@@ -36,7 +36,7 @@
         </section>
 
         <!-- Resumo de leitura -->
-        <section class="resumo-ocorrencias" id="resumo-ocorrencias"></section>
+        <section class="resumo-comunicados" id="resumo-ocorrencias"></section>
 
         <!-- Busca e filtros -->
         <section class="barra-filtros">
@@ -45,10 +45,14 @@
             <div class="grupo-chips" id="filtros-ocorrencias">
                 <button type="button" class="chip ativo" data-filtro="todos">Todos</button>
                 <button type="button" class="chip" data-filtro="nao-lidos">Não lidas</button>
+                <button type="button" class="chip" data-filtro="graves">Graves</button>
+                <button type="button" class="chip" data-filtro="acompanhamento">Em acompanhamento</button>
                 <button type="button" class="chip" data-filtro="saude">Saúde</button>
                 <button type="button" class="chip" data-filtro="comportamental">Comportamento</button>
                 <button type="button" class="chip" data-filtro="acidente">Acidente</button>
+                <button type="button" class="chip" data-filtro="disciplinar">Disciplinar</button>
                 <button type="button" class="chip" data-filtro="alimentacao">Alimentação</button>
+                <button type="button" class="chip" data-filtro="outro">Outro</button>
             </div>
         </section>
 
@@ -74,6 +78,7 @@
         </div>
 
         <p class="modal-texto" id="ocorrencia-descricao"></p>
+        <div id="ocorrencia-detalhes"></div>
         <p class="aviso-orientacao">Em caso de dúvida, entre em contato com a coordenação da escola.</p>
 
         <div class="modal-acoes">

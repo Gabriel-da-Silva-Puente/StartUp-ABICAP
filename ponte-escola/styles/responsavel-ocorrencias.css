@@ -3,6 +3,10 @@
 .icone-comunicado.verde    { background: var(--color-success-light); color: var(--color-success); }
 .icone-comunicado.laranja  { background: var(--color-warning-light); color: #EA580C; }
 
+/* só há o card de progresso: ocupa a linha toda */
+.resumo-comunicados { grid-template-columns: 1fr; }
+
+.badge-disciplinar    { background: var(--color-warning-light); color: #EA580C; }
 .badge-comportamental { background: #F3E8FF; color: #7C3AED; }
 .badge-saude          { background: var(--color-danger-light); color: var(--color-danger); }
 .badge-acidente       { background: var(--color-warning-light); color: #EA580C; }

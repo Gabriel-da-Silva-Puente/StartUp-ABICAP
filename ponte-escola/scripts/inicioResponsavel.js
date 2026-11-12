@@ -375,6 +375,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById('atualizacao-meta').textContent =
             `${item.autor || "Coordenação Pedagógica"} · ${formatarDataHora(item.created_at)}`;
         document.getElementById('atualizacao-descricao').textContent = item.descricao;
+        document.getElementById('atualizacao-detalhes').innerHTML = ehOcorrencia ? montarDetalhesOcorrencia(item) : '';
 
         document.getElementById('modal-atualizacao').showModal();
 

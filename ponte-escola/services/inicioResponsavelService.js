@@ -94,7 +94,7 @@ const InicioResponsavelService = {
     async listarOcorrencias(alunoId) {
         const { data, error } = await banco
             .from('ocorrencias')
-            .select('id, tipo, descricao, autor_id, created_at, ocorrencias_lidas ( aluno_id )')
+            .select('id, tipo, descricao, autor_id, created_at, gravidade, providencias, acompanhamento, status, ocorrencias_lidas ( aluno_id )')
             .eq('aluno_id', alunoId)
             .order('created_at', { ascending: false })
             .limit(20);

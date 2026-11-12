@@ -14,14 +14,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         comportamental: "Acompanhamento em sala",
         saude: "Ocorrência de saúde",
         acidente: "Acidente na escola",
-        alimentacao: "Ocorrência de alimentação"
+        alimentacao: "Ocorrência de alimentação",
+        disciplinar: "Ocorrência disciplinar",
+        outro: "Ocorrência"
     };
+    const ROTULOS = {
+        comportamental: "Comportamental", saude: "Saúde", acidente: "Acidente",
+        alimentacao: "Alimentação", disciplinar: "Disciplinar", outro: "Outro"
+    };
+    const rotuloDoTipo = (tipo) => ROTULOS[tipo] || tipo;
     // ícone e cor de cada tipo
     const VISUAL = {
         comportamental: { icone: 'users', cor: 'roxo' },
         saude: { icone: 'triangle-alert', cor: 'vermelho' },
         acidente: { icone: 'triangle-alert', cor: 'laranja' },
-        alimentacao: { icone: 'cooking-pot', cor: 'verde' }
+        alimentacao: { icone: 'cooking-pot', cor: 'verde' },
+        disciplinar: { icone: 'triangle-alert', cor: 'laranja' }
     };
 
     const nomeDoTipo = (tipo) => NOMES[tipo] || "Ocorrência";
@@ -76,7 +84,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     function renderizarResumo() {
         const total = ocorrencias.length;
         const naoLidas = ocorrencias.filter(o => !o.lido).length;
-        const importantes = ocorrencias.filter(o => o.tipo === 'saude' || o.tipo === 'acidente').length;
         const porcentagem = total === 0 ? 100 : Math.round(((total - naoLidas) / total) * 100);
 
         document.getElementById('resumo-ocorrencias').innerHTML = `
@@ -90,8 +97,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <div class="barra-progresso"><div class="barra-progresso-preenchimento" style="width: ${porcentagem}%"></div></div>
             </div>
-            <div class="resumo-numero"><strong>${total}</strong><span>no total</span></div>
-            <div class="resumo-numero"><strong>${importantes}</strong><span>saúde/acidente</span></div>
         `;
 
         const btnTodas = document.getElementById('btn-marcar-todos');
@@ -103,6 +108,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const filtradas = ocorrencias.filter(o => {
             if (filtroAtual === 'nao-lidos') { if (o.lido) return false; }
+            else if (filtroAtual === 'graves') { if (o.gravidade !== 'grave') return false; }
+            else if (filtroAtual === 'acompanhamento') { if (!o.acompanhamento) return false; }
             else if (filtroAtual !== 'todos' && o.tipo !== filtroAtual) return false;
 
             const busca = textoBusca.toLowerCase();
@@ -149,7 +156,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <div class="cartao-comunicado-info">
                     <div class="cartao-comunicado-topo">
-                        <span class="badge-tipo badge-${escaparHtml(o.tipo)}">${escaparHtml(o.tipo)}</span>
+                        <span class="badge-tipo badge-${escaparHtml(o.tipo)}">${escaparHtml(rotuloDoTipo(o.tipo))}</span>
+                        ${GRAVIDADE_OCORRENCIA[o.gravidade] ? `<span class="badge-gravidade gravidade-${o.gravidade}">${GRAVIDADE_OCORRENCIA[o.gravidade].rotulo}</span>` : ''}
+                        ${o.acompanhamento ? '<span class="badge-acompanhamento">Em acompanhamento</span>' : ''}
                         ${o.lido ? '' : '<span class="ponto-novo" title="Nova"></span>'}
                     </div>
                     <p class="cartao-comunicado-titulo">${escaparHtml(nomeDoTipo(o.tipo))}</p>
@@ -167,13 +176,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!o) return;
 
         const badge = document.getElementById('ocorrencia-tipo');
-        badge.textContent = o.tipo;
+        badge.textContent = rotuloDoTipo(o.tipo);
         badge.className = `badge-tipo badge-${o.tipo}`;
 
         document.getElementById('ocorrencia-titulo').textContent = nomeDoTipo(o.tipo);
         document.getElementById('ocorrencia-meta').textContent =
             `${autores[o.autor_id] || "Escola"} · ${formatarDataHora(o.created_at)}`;
         document.getElementById('ocorrencia-descricao').textContent = o.descricao;
+        document.getElementById('ocorrencia-detalhes').innerHTML = montarDetalhesOcorrencia(o);
 
         document.getElementById('modal-ocorrencia').showModal();
 

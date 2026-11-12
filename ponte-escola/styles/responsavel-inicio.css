@@ -646,3 +646,28 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Gravidade, providências e acompanhamento */
+.badge-gravidade {
+    display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px;
+    font-size: 0.75rem; font-weight: 600;
+}
+.gravidade-leve  { background: var(--color-success-light); color: var(--color-success); }
+.gravidade-media { background: var(--color-warning-light); color: #EA580C; }
+.gravidade-grave { background: var(--color-danger-light);  color: var(--color-danger); }
+
+.badge-acompanhamento {
+    display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px;
+    font-size: 0.75rem; font-weight: 600; background: #F3E8FF; color: #7C3AED;
+}
+
+.ocorrencia-detalhes {
+    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #E2E8F0);
+    display: flex; flex-direction: column; gap: 0.9rem;
+}
+.ocorrencia-detalhe { display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start; }
+.ocorrencia-detalhe-rotulo {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--color-text-muted, #64748B);
+}
+.ocorrencia-detalhe-texto { font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; margin: 0; }
