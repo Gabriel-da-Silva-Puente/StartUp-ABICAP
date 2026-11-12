@@ -41,6 +41,7 @@ async function renderizarBarraTopoResponsavel(paginaAtual, prefixo = "") {
     const itensMenu = [
         { chave: "inicio",      texto: "Início",      pagina: "responsavel-inicio.html" },
         { chave: "comunicados", texto: "Comunicados", pagina: "responsavel-comunicados.html" },
+        { chave: "ocorrencias", texto: "Ocorrências", pagina: "responsavel-ocorrencias.html" },
         { chave: "calendario",  texto: "Calendário",  pagina: "responsavel-calendario.html" },
         { chave: "cardapio",    texto: "Cardápio",    pagina: "responsavel-cardapio.html" },
         { chave: "mural",       texto: "Mural",       pagina: "responsavel-mural.html" }
