@@ -44,7 +44,8 @@ async function renderizarBarraTopoResponsavel(paginaAtual, prefixo = "") {
         { chave: "ocorrencias", texto: "Ocorrências", pagina: "responsavel-ocorrencias.html" },
         { chave: "calendario",  texto: "Calendário",  pagina: "responsavel-calendario.html" },
         { chave: "cardapio",    texto: "Cardápio",    pagina: "responsavel-cardapio.html" },
-        { chave: "mural",       texto: "Mural",       pagina: "responsavel-mural.html" }
+        { chave: "mural",       texto: "Mural",       pagina: "responsavel-mural.html" },
+        { chave: "duvidas",     texto: "Dúvidas",     pagina: "responsavel-duvidas.html" }
     ];
 
     const linksHTML = itensMenu.map(item => `

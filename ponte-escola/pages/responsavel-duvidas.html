@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Central de Dúvidas</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+    <link rel="stylesheet" href="../styles/responsavel-comunicados.css">
+    <link rel="stylesheet" href="../styles/responsavel-duvidas.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel">Informações da escola</p>
+                <h2>Central de Dúvidas</h2>
+                <p class="subtitulo-pagina">
+                    Horários, regras, contatos e procedimentos da escola em um só lugar.
+                </p>
+            </div>
+        </section>
+
+        <!-- Texto de apresentação (escrito pela coordenação) -->
+        <section class="texto-geral-responsavel">
+            <p id="texto-geral-conteudo"></p>
+        </section>
+
+        <!-- Busca nos tópicos -->
+        <section class="barra-filtros">
+            <input type="search" id="busca-duvidas" class="campo-busca" placeholder="Buscar nas dúvidas..." aria-label="Buscar nas dúvidas">
+        </section>
+
+        <h3 class="titulo-topicos">Tópicos</h3>
+        <section class="lista-topicos-responsavel" id="lista-topicos"></section>
+
+    </main>
+
+</div>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/responsavelService.js"></script>
+<script src="../services/duvidasService.js"></script>
+
+<!-- Components  -->
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/duvidasResponsavel.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraTopoResponsavel("duvidas", "../");
+</script>
+
+</body>
+
+</html>

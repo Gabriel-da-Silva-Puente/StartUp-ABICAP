@@ -1,0 +1,94 @@
+/* Central de Dúvidas — visão do responsável (somente leitura) */
+
+.texto-geral-responsavel {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+}
+
+.texto-geral-responsavel p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    white-space: pre-line;
+}
+
+.titulo-topicos {
+    margin: 1.5rem 0 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.lista-topicos-responsavel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.topico {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+}
+
+.topico:hover { box-shadow: var(--shadow-md); }
+
+.topico-cabecalho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.125rem 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+.topico-cabecalho:hover { background: var(--color-bg); }
+
+.topico-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.topico-seta {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: transform var(--transition);
+}
+
+.topico.aberto .topico-seta { transform: rotate(180deg); }
+
+.topico-conteudo {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.topico-conteudo p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    white-space: pre-line;
+}
+
+@media (max-width: 640px) {
+    .topico-cabecalho,
+    .topico-conteudo,
+    .texto-geral-responsavel { padding-left: 1rem; padding-right: 1rem; }
+}
