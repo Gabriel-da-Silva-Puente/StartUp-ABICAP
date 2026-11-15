@@ -1,0 +1,24 @@
+/* Complementa responsavel-comunicados.css com as cores por tipo de ocorrência */
+.icone-comunicado.vermelho { background: var(--color-danger-light); color: var(--color-danger); }
+.icone-comunicado.verde    { background: var(--color-success-light); color: var(--color-success); }
+.icone-comunicado.laranja  { background: var(--color-warning-light); color: #EA580C; }
+
+/* só há o card de progresso: ocupa a linha toda */
+.resumo-comunicados { grid-template-columns: 1fr; }
+
+.badge-disciplinar    { background: var(--color-warning-light); color: #EA580C; }
+.badge-comportamental { background: #F3E8FF; color: #7C3AED; }
+.badge-saude          { background: var(--color-danger-light); color: var(--color-danger); }
+.badge-acidente       { background: var(--color-warning-light); color: #EA580C; }
+.badge-alimentacao    { background: var(--color-success-light); color: var(--color-success); }
+
+.aviso-orientacao {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted, #64748B);
+}
+
+/* Status dos passeios */
+.badge-pendente   { background: var(--color-warning-light); color: #EA580C; }
+.badge-autorizado { background: var(--color-success-light); color: var(--color-success); }
+.badge-recusado   { background: var(--color-danger-light); color: var(--color-danger); }

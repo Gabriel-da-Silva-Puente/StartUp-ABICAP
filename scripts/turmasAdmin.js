@@ -146,14 +146,16 @@
     window.excluirTurma = async function(id) {
         document.querySelectorAll('.menu-dropdown').forEach(m => m.classList.remove('aberto'));
         
-        if (!confirm("Tem certeza que deseja excluir esta turma? Todos os alunos e avisos vinculados podem ser afetados.")) return;
+        if (!confirm("Tem certeza que deseja excluir esta turma? Avisos, ocorrências, atividades e mural desta turma também serão apagados. Só é possível excluir turmas sem alunos.")) return;
         
         try {
             await TurmasService.excluir(id);
             carregarTurmas();
         } catch (erro) {
             console.error("Erro ao excluir turma:", erro);
-            alert("Erro ao excluir a turma. Verifique se não há alunos vinculados.");
+            alert(erro.codigo === 'TURMA_COM_ALUNOS'
+                ? "Esta turma ainda possui alunos. Remova ou mude os alunos de turma antes de excluí-la."
+                : "Erro ao excluir a turma. Tente novamente.");
         }
     }
 

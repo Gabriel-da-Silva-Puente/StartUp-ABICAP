@@ -83,7 +83,7 @@ async function renderizarBarraTopo(prefixo = "") {
 
             <button class="topo-notificacao" id="btn-notificacoes">
                 <img src="${prefixo}assets/icons/bell.svg" alt="" class="topo-icone">
-                <span class="topo-badge">3</span>
+                <span class="topo-badge" style="display:none">0</span>
             </button>
 
             <a href="${prefixo}pages/perfil.html" class="topo-avatar">
@@ -91,6 +91,8 @@ async function renderizarBarraTopo(prefixo = "") {
             </a>
         </div>
     `;
+
+    ativarNotificacoes(notificacoesProfessor);
 
    
     const btnTrocar = document.getElementById("btn-trocar-turma");

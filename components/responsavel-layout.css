@@ -248,3 +248,31 @@
     padding: 0.3rem;
   }
 }
+
+/* --- Ajuste: o menu ganhou itens (Ocorrências, Passeios, Dúvidas) e passou por cima do sino --- */
+.topo-responsavel-conteudo {
+  gap: 1rem;
+}
+
+.topo-responsavel-menu {
+  flex: 1 1 auto;
+  justify-content: center;
+  justify-content: safe center; /* centraliza, mas não corta o início se precisar rolar */
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.topo-responsavel-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.topo-responsavel-menu a {
+  padding: 0.5rem 0.6rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.topo-direita {
+  flex-shrink: 0;
+}

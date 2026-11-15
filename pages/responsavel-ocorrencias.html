@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Ocorrências</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+    <link rel="stylesheet" href="../styles/responsavel-comunicados.css">
+    <link rel="stylesheet" href="../styles/responsavel-ocorrencias.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel">Acompanhamento do aluno</p>
+                <h2>Ocorrências</h2>
+                <p id="subtitulo-ocorrencias" class="subtitulo-pagina">
+                    Registros feitos pela escola sobre o seu filho(a).
+                </p>
+            </div>
+
+            <div class="seletor-filho" id="seletor-filho"></div>
+        </section>
+
+        <!-- Resumo de leitura -->
+        <section class="resumo-comunicados" id="resumo-ocorrencias"></section>
+
+        <!-- Busca e filtros -->
+        <section class="barra-filtros">
+            <input type="search" id="busca-ocorrencias" class="campo-busca" placeholder="Buscar nas ocorrências...">
+
+            <div class="grupo-chips" id="filtros-ocorrencias">
+                <button type="button" class="chip ativo" data-filtro="todos">Todos</button>
+                <button type="button" class="chip" data-filtro="nao-lidos">Não lidas</button>
+                <button type="button" class="chip" data-filtro="graves">Graves</button>
+                <button type="button" class="chip" data-filtro="acompanhamento">Em acompanhamento</button>
+                <button type="button" class="chip" data-filtro="saude">Saúde</button>
+                <button type="button" class="chip" data-filtro="comportamental">Comportamento</button>
+                <button type="button" class="chip" data-filtro="acidente">Acidente</button>
+                <button type="button" class="chip" data-filtro="disciplinar">Disciplinar</button>
+                <button type="button" class="chip" data-filtro="alimentacao">Alimentação</button>
+                <button type="button" class="chip" data-filtro="outro">Outro</button>
+            </div>
+        </section>
+
+        <section id="lista-ocorrencias"></section>
+
+    </main>
+
+</div>
+
+
+<!-- Modal: detalhe da ocorrência -->
+<dialog class="modal" id="modal-ocorrencia">
+    <div class="modal-form">
+
+        <div class="modal-cabecalho">
+            <h3 id="ocorrencia-titulo">Ocorrência</h3>
+            <button type="button" class="modal-fechar" data-fechar="modal-ocorrencia" aria-label="Fechar">✕</button>
+        </div>
+
+        <div class="modal-info">
+            <span class="badge-tipo" id="ocorrencia-tipo">ocorrência</span>
+            <span id="ocorrencia-meta"></span>
+        </div>
+
+        <p class="modal-texto" id="ocorrencia-descricao"></p>
+        <div id="ocorrencia-detalhes"></div>
+        <p class="aviso-orientacao">Em caso de dúvida, entre em contato com a coordenação da escola.</p>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn-secundario" data-fechar="modal-ocorrencia">Fechar</button>
+        </div>
+
+    </div>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!--  Arquivo que cria busca para o supabase 'banco'  -->
+<script src="../services/supabase.js"></script>
+
+<!-- Services  -->
+<script src="../services/responsavelService.js"></script>
+<script src="../services/avisoService.js"></script>
+<script src="../services/inicioResponsavelService.js"></script>
+<script src="../services/ocorrenciasResponsavelService.js"></script>
+
+<!-- Components  -->
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<!-- Script da Página -->
+<script src="../scripts/ocorrenciasResponsavel.js"></script>
+
+<!-- Inicialização da página -->
+<script>
+    renderizarBarraTopoResponsavel("ocorrencias", "../");
+</script>
+
+</body>
+
+</html>

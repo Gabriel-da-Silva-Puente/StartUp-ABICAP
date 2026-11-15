@@ -117,6 +117,7 @@
                                 ${conversa.status !== 'resolvido' 
                                     ? `<button class="btn-email-acao" onclick="resolverConversa(${conversa.id})" title="Arquivar">Arquivar</button>` 
                                     : `<span class="email-status">✓ Arquivado</span>`}
+                                <button class="btn-email-acao" onclick="excluirConversa(${conversa.id})" title="Excluir">Excluir</button>
                             </div>
                         </div>
                         
@@ -186,6 +187,17 @@
             await MensagensService.responder(id, texto);
             selecionarConversa(id); 
         } catch (erro) { console.error("Erro ao responder:", erro); }
+    }
+
+    window.excluirConversa = async function(id) {
+        if (!confirm("Excluir esta conversa e todas as mensagens? Esta ação não pode ser desfeita.")) return;
+        try {
+            await MensagensService.excluir(id);
+            window.location.reload();
+        } catch (erro) {
+            console.error("Erro ao excluir:", erro);
+            alert("Não foi possível excluir a conversa.");
+        }
     }
 
     window.resolverConversa = async function(id) {

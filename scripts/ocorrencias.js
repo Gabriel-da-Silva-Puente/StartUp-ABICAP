@@ -258,10 +258,10 @@
         badge.className = `card-ocorrencia-tipo tipo-${oc.tipo}`;
 
         const camposExtras = document.getElementById("detalhe-campos-extras");
-        if (oc.gravidade || oc.providencia || oc.acompanhamento) {
+        if (oc.gravidade || oc.providencias || oc.acompanhamento) {
             camposExtras.style.display = 'block';
             document.getElementById("detalhe-gravidade").textContent = oc.gravidade || 'Não informada';
-            document.getElementById("detalhe-providencia").textContent = oc.providencia || 'Não informadas';
+            document.getElementById("detalhe-providencia").textContent = oc.providencias || 'Não informadas';
             document.getElementById("detalhe-acompanhamento").textContent = oc.acompanhamento ? 'Sim' : 'Não';
         } else {
             camposExtras.style.display = 'none';

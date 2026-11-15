@@ -1,4 +1,4 @@
-// BARRA DE NAVEGAÇÃO DO RESPONSÁVEL (fica no topo, no lugar da barra lateral)
+// BARRA DE NAVEGAÇÃO DO RESPONSÁVEL 
 async function renderizarBarraTopoResponsavel(paginaAtual, prefixo = "") {
 
     const barra = document.querySelector(".barra-topo-responsavel");
@@ -20,7 +20,6 @@ async function renderizarBarraTopoResponsavel(paginaAtual, prefixo = "") {
         console.error("Erro ao buscar responsável:", erro);
     }
 
-    // Se o responsável não existe, volta para o login
     if (!responsavel) {
         console.warn("Responsável não encontrado no banco. Voltando para o login.");
         localStorage.removeItem('usuarioLogadoId');
@@ -41,9 +40,12 @@ async function renderizarBarraTopoResponsavel(paginaAtual, prefixo = "") {
     const itensMenu = [
         { chave: "inicio",      texto: "Início",      pagina: "responsavel-inicio.html" },
         { chave: "comunicados", texto: "Comunicados", pagina: "responsavel-comunicados.html" },
+        { chave: "ocorrencias", texto: "Ocorrências", pagina: "responsavel-ocorrencias.html" },
+        { chave: "passeios",    texto: "Passeios",    pagina: "responsavel-passeios.html" },
         { chave: "calendario",  texto: "Calendário",  pagina: "responsavel-calendario.html" },
         { chave: "cardapio",    texto: "Cardápio",    pagina: "responsavel-cardapio.html" },
-        { chave: "mural",       texto: "Mural",       pagina: "responsavel-mural.html" }
+        { chave: "mural",       texto: "Mural",       pagina: "responsavel-mural.html" },
+        { chave: "duvidas",     texto: "Dúvidas",     pagina: "responsavel-duvidas.html" }
     ];
 
     const linksHTML = itensMenu.map(item => `
@@ -113,7 +115,6 @@ async function renderizarBarraTopoResponsavel(paginaAtual, prefixo = "") {
     document.dispatchEvent(new Event("barraTopoResponsavelPronta"));
 }
 
-// DEVOLVE O FILHO SELECIONADO (O ÚLTIMO ESCOLHIDO OU O PRIMEIRO DA LISTA) E SALVA NO NAVEGADOR
 async function obterFilhoSelecionado(responsavelId) {
     const filhos = await ResponsavelService.listarFilhos(responsavelId);
     if (filhos.length === 0) return { filho: null, filhos };
@@ -121,7 +122,6 @@ async function obterFilhoSelecionado(responsavelId) {
     const filhoSalvoId = localStorage.getItem('alunoVisualizadoId');
     const filho = filhos.find(f => f.id == filhoSalvoId) || filhos[0];
 
-    // Salva para as outras páginas usarem (turmaVisualizadaId é o mesmo nome usado pelo professor)
     localStorage.setItem('alunoVisualizadoId', filho.id);
     localStorage.setItem('alunoVisualizadoNome', filho.nome);
     localStorage.setItem('turmaVisualizadaId', filho.turma_id);
@@ -130,7 +130,6 @@ async function obterFilhoSelecionado(responsavelId) {
     return { filho, filhos };
 }
 
-// DESENHA O CARTÃO DO FILHO (COM TROCA DE FILHO QUANDO HÁ MAIS DE UM)
 function renderizarSeletorFilho(container, filho, filhos, prefixo = "") {
     if (!container || !filho) return;
 
