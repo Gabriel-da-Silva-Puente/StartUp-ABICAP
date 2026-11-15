@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PonteEscola — Passeios</title>
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/layout.css">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/responsavel-layout.css">
+    <link rel="stylesheet" href="../styles/responsavel-inicio.css">
+    <link rel="stylesheet" href="../styles/responsavel-comunicados.css">
+    <link rel="stylesheet" href="../styles/responsavel-ocorrencias.css">
+</head>
+
+<body>
+
+<div class="estrutura-responsavel">
+
+    <header class="barra-topo-responsavel"></header>
+
+    <main class="conteudo-responsavel">
+
+        <section class="cabecalho-responsavel">
+            <div>
+                <p class="data-responsavel">Passeios e autorizações</p>
+                <h2>Passeios</h2>
+                <p id="subtitulo-passeios" class="subtitulo-pagina">
+                    Veja os passeios da turma e responda às autorizações.
+                </p>
+            </div>
+
+            <div class="seletor-filho" id="seletor-filho"></div>
+        </section>
+
+        <section class="resumo-comunicados" id="resumo-passeios"></section>
+
+        <section class="barra-filtros">
+            <input type="search" id="busca-passeios" class="campo-busca" placeholder="Buscar passeios...">
+
+            <div class="grupo-chips" id="filtros-passeios">
+                <button type="button" class="chip ativo" data-filtro="todos">Todos</button>
+                <button type="button" class="chip" data-filtro="pendente">Aguardando resposta</button>
+                <button type="button" class="chip" data-filtro="autorizado">Autorizados</button>
+                <button type="button" class="chip" data-filtro="recusado">Não autorizados</button>
+            </div>
+        </section>
+
+        <section id="lista-passeios"></section>
+
+    </main>
+
+</div>
+
+<!-- Modal: detalhe do passeio -->
+<dialog class="modal" id="modal-passeio">
+    <div class="modal-form">
+
+        <div class="modal-cabecalho">
+            <h3 id="passeio-titulo">Passeio</h3>
+            <button type="button" class="modal-fechar" data-fechar="modal-passeio" aria-label="Fechar">✕</button>
+        </div>
+
+        <div class="modal-info">
+            <span id="passeio-status" class="badge-tipo">pendente</span>
+            <span id="passeio-data"></span>
+            <span id="passeio-prazo"></span>
+            <span id="passeio-local"></span>
+            <span id="passeio-aluno"></span>
+        </div>
+
+        <p class="modal-texto" id="passeio-descricao"></p>
+
+        <div class="modal-acoes" id="passeio-acoes">
+            <button type="button" class="btn-secundario" id="btn-recusar">Não autorizar</button>
+            <button type="button" class="btn-principal" id="btn-autorizar">Autorizar</button>
+        </div>
+
+    </div>
+</dialog>
+
+<div class="aviso-flutuante" id="aviso-flutuante"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../services/supabase.js"></script>
+
+<script src="../services/responsavelService.js"></script>
+<script src="../services/avisoService.js"></script>
+<script src="../services/inicioResponsavelService.js"></script>
+<script src="../services/autorizacoesService.js"></script>
+
+<script src="../components/utilitarios.js"></script>
+<script src="../components/responsavel-topbar.js"></script>
+
+<script src="../scripts/passeiosResponsavel.js"></script>
+
+<script>
+    renderizarBarraTopoResponsavel("passeios", "../");
+</script>
+
+</body>
+
+</html>

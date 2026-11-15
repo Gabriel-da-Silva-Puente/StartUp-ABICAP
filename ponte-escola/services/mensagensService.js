@@ -45,6 +45,14 @@ const MensagensService = {
         if (error) throw error;
     },
 
+    // EXCLUI A CONVERSA E TODAS AS SUAS MENSAGENS
+    async excluir(conversaId) {
+        const { error: e1 } = await banco.from('mensagens').delete().eq('conversa_id', conversaId);
+        if (e1) throw e1;
+        const { error: e2 } = await banco.from('conversas').delete().eq('id', conversaId);
+        if (e2) throw e2;
+    },
+
     // MARCA COMO RESOLVIDO
     async resolver(conversaId) {
         const { error } = await banco

@@ -17,3 +17,8 @@
     font-size: 0.85rem;
     color: var(--color-text-muted, #64748B);
 }
+
+/* Status dos passeios */
+.badge-pendente   { background: var(--color-warning-light); color: #EA580C; }
+.badge-autorizado { background: var(--color-success-light); color: var(--color-success); }
+.badge-recusado   { background: var(--color-danger-light); color: var(--color-danger); }

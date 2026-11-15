@@ -37,7 +37,7 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
 
             <button class="topo-notificacao" id="btn-notificacoes" aria-label="Notificações">
                 <img src="${prefixo}assets/icons/bell.svg" alt="" class="topo-icone">
-                <span class="topo-badge">3</span>
+                <span class="topo-badge" style="display:none">0</span>
             </button>
 
             <a href="${prefixo}pages/administrador-perfil.html" class="topo-avatar" id="btn-perfil-topo">
@@ -47,7 +47,5 @@ async function renderizarBarraTopoAdministrador(prefixo = "") {
         </div>
     `;
 
-    document.getElementById("btn-notificacoes")?.addEventListener("click", () => {
-        mostrarAviso("Você tem 3 novas notificações.");
-    });
+    ativarNotificacoes(notificacoesAdmin);
 }
