@@ -1,7 +1,7 @@
 package com.abicap.ponteescola_api.domain.comunicacao.avisos.avisos_lidos.model;
 
 import com.abicap.ponteescola_api.domain.acesso.aluno.model.Aluno;
-import com.abicap.ponteescola_api.domain.comunicacao.avisos.avisos.model.Aviso;
+import com.abicap.ponteescola_api.domain.comunicacao.avisos.avisos.model.Avisos;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -29,7 +29,7 @@ public class AvisosLido {
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "aviso_id")
-    private Aviso aviso;
+    private Avisos avisos;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aluno_id")
