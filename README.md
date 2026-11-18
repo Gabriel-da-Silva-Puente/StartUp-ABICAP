@@ -6,6 +6,12 @@ O **PonteEscola** é um aplicativo que centraliza e facilita a comunicação ent
 
 Projeto desenvolvido como parte da disciplina **Startup Project: One** do curso de **Análise e Desenvolvimento de Sistemas** do **Centro Universitário Facens**, sob orientação do professor **Bruno Aguilar da Cunha**.
 
+## 🌐 Acesse o projeto
+
+👉 **[https://gabriel-da-silva-puente.github.io/StartUp-ABICAP/](https://gabriel-da-silva-puente.github.io/StartUp-ABICAP/)**
+
+Na tela inicial, escolha o perfil que deseja testar: Professor, Coordenador ou Responsável.
+
 ---
 
 ## 🎯 O Problema
@@ -79,6 +85,12 @@ Um responsável com mais de um filho troca de aluno pelo seletor no topo da pág
 
 ## ▶️ Como executar
 
+### Online
+
+Basta acessar [https://gabriel-da-silva-puente.github.io/StartUp-ABICAP/](https://gabriel-da-silva-puente.github.io/StartUp-ABICAP/), sem instalar nada.
+
+### Localmente
+
 Não há nada para instalar ou compilar.
 
 1. Clone o repositório:
@@ -96,7 +108,7 @@ O projeto já vem configurado com o banco de dados da equipe (conexão na pasta 
 ### Usando seu próprio banco
 
 1. Crie um banco PostgreSQL em nuvem com acesso por API.
-2. Crie as tabelas do sistema, seguindo o diagrama do banco em `docs/diagrama-banco.png` e o agrupamento da seção [Banco de dados](#️-banco-de-dados).
+2. Crie as tabelas do sistema, seguindo o diagrama do banco disponível em `docs/` e o agrupamento da seção [Banco de dados](#️-banco-de-dados).
 3. Ajuste a URL e a chave **pública** de acesso no arquivo de conexão da pasta `services/`. Nunca use uma chave de administrador no front-end.
 4. Ative e configure o **RLS** (políticas de acesso por linha) das tabelas. Sem políticas, as consultas retornam vazio; com políticas abertas, qualquer pessoa com a URL lê e altera os dados.
 
