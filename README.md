@@ -96,7 +96,7 @@ O projeto já vem configurado com o banco de dados da equipe (conexão na pasta 
 ### Usando seu próprio banco
 
 1. Crie um banco PostgreSQL em nuvem com acesso por API.
-2. Crie as tabelas do sistema. O arquivo `docs/schema-cardapio-calendario-duvidas.sql` cria as tabelas de cardápio, eventos e dúvidas; as demais tabelas estão no diagrama do banco em `docs/`.
+2. Crie as tabelas do sistema, seguindo o diagrama do banco em `docs/diagrama-banco.png` e o agrupamento da seção [Banco de dados](#️-banco-de-dados).
 3. Ajuste a URL e a chave **pública** de acesso no arquivo de conexão da pasta `services/`. Nunca use uma chave de administrador no front-end.
 4. Ative e configure o **RLS** (políticas de acesso por linha) das tabelas. Sem políticas, as consultas retornam vazio; com políticas abertas, qualquer pessoa com a URL lê e altera os dados.
 
@@ -122,12 +122,10 @@ Principais tabelas (PostgreSQL):
 
 | Documento | Link |
 |---|---|
-| 📄 Documentação do Projeto (AC1) | [Google Docs](https://docs.google.com/document/d/1qNMrtLopg8fIFg4Wt9QJkrzxaej2pps_dFxfPcN8lYs/edit?tab=t.0) |
-| 📄 Documentação do Projeto (AC2) | `docs/StartUp Documentacao AC2-1.pdf` |
+| 📄 Documentação do Projeto | [PonteEscola_Documentacao_AC2_Revisada_v2.docx](docs/PonteEscola_Documentacao_AC2_Revisada_v2.docx) |
 | 🧪 Planilha de Teste de Usabilidade | [Google Sheets](https://docs.google.com/spreadsheets/d/19xOnLLK_7is7UFR0Kb8XYMJ54Sn2aR47nqkAI8BORKk/edit?gid=1392540101#gid=1392540101) |
 | 🎨 Protótipo Navegável (Figma Make) | [Figma Make](https://www.figma.com/make/9deQojtbyI4S7AXxzjgW4g/Criar-conte%25C3%25BAdo-do-markdown?p=f&fullscreen=1&preview-route=%2Flanding) |
-| 🗃️ Diagrama do banco | imagem em `docs/` |
-| 🧱 SQL de cardápio, calendário e dúvidas | `docs/schema-cardapio-calendario-duvidas.sql` |
+| 🗃️ Diagrama do banco de dados | [diagrama-banco.png](docs/diagrama-banco.png) |
 
 ---
 
@@ -153,7 +151,7 @@ ponte-escola/
 ├── scripts/            # Lógica de cada página
 ├── styles/             # CSS de cada página
 ├── assets/             # Logo e ícones (Lucide)
-└── docs/               # Documentação, SQL e diagrama do banco
+└── docs/               # Documentação e diagrama do banco
 ```
 
 **Padrão adotado:** cada página `.html` carrega a biblioteca de acesso ao banco (CDN), a conexão em `services/`, os *services* de que precisa, os *components* (barra do topo) e, por fim, o seu *script*. Os *services* concentram as consultas; os *scripts* cuidam de tela e eventos.
