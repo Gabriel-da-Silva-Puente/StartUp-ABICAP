@@ -122,10 +122,10 @@ Principais tabelas (PostgreSQL):
 
 | Documento | Link |
 |---|---|
-| 📄 Documentação do Projeto | [PonteEscola_Documentacao_AC2_Revisada_v2.docx](docs/PonteEscola_Documentacao_AC2_Revisada_v2.docx) |
+| 📄 Documentação do Projeto | [Abrir documento (Word)](docs/PonteEscola_Documentacao_AC2_Revisada_v2.docx) |
 | 🧪 Planilha de Teste de Usabilidade | [Google Sheets](https://docs.google.com/spreadsheets/d/19xOnLLK_7is7UFR0Kb8XYMJ54Sn2aR47nqkAI8BORKk/edit?gid=1392540101#gid=1392540101) |
 | 🎨 Protótipo Navegável (Figma Make) | [Figma Make](https://www.figma.com/make/9deQojtbyI4S7AXxzjgW4g/Criar-conte%25C3%25BAdo-do-markdown?p=f&fullscreen=1&preview-route=%2Flanding) |
-| 🗃️ Diagrama do banco de dados | [diagrama-banco.png](docs/diagrama-banco.png) |
+| 🗃️ Diagrama do banco de dados | [Abrir diagrama](docs/supabase-schema-ngwvwvjmkhitiikjovtz%282%29.png) |
 
 ---
 
